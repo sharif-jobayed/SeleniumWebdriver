@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group = 'SeleniumWebdriver_TheInternetHerokuApp'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+// Define the version of Allure you want to use via the allureVersion property
+def allureVersion = "2.24.0"
+// Define the version of AspectJ
+def aspectJVersion = "1.9.20.1"
+
+configurations {
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.21.0'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation 'org.testng:testng:7.10.2'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    testImplementation 'com.google.code.gson:gson:2.11.0'
+    // Import allure-bom to ensure correct versions of all the dependencies are used
+    testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
+    // Add necessary Allure dependencies to dependencies section
+    testImplementation "io.qameta.allure:allure-testng"
+    // Add aspectjweaver dependency
+    agent "org.aspectj:aspectjweaver:$aspectJVersion"
+}
+
+test {
+    useTestNG()
+    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+}
