@@ -5,7 +5,7 @@ public class Constants {
     private static int medSec;
     private static int maxSec;
 
-    public Constants () {
+    public Constants() {
         minSec = 5;
         medSec = 30;
         maxSec = 60;
