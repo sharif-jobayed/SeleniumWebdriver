@@ -16,16 +16,16 @@ public class DriverTools {
     private Actions actions;
     private JavascriptExecutor jsExec;
 
-    public DriverTools (String webDriver) {
+    public DriverTools(String webDriver) {
         // Make driver
-        if(webDriver.equals("Firefox".toLowerCase())) {
+        if (webDriver.equals("Firefox".toLowerCase())) {
             this.driver = new FirefoxDriver();
         } else if (webDriver.equals("Chrome".toLowerCase())) {
             this.driver = new ChromeDriver();
         } else if (webDriver.equals("Edge".toLowerCase())) {
             this.driver = new EdgeDriver();
         } else {
-            throw new IllegalArgumentException("The "+webDriver+" is not a valid Webdriver");
+            throw new IllegalArgumentException("The " + webDriver + " is not a valid Webdriver");
         }
 
         // Make xWait
