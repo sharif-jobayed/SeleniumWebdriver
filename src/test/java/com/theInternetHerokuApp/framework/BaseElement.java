@@ -14,21 +14,21 @@ public class BaseElement {
     private List<WebElement> elLocators;
     private String elName;
 
-    public BaseElement (By elLocator, String elName) {
+    public BaseElement(By elLocator, String elName) {
         this.elLocator = getDriver().findElement(elLocator);
         this.elLocators = getDriver().findElements(elLocator);
         this.elName = elName;
     }
 
-    public void doClick () {
+    public void doClick() {
         this.elLocator.click();
     }
 
-    public void itsText () {
+    public void itsText() {
         this.elLocator.getText();
     }
 
-    public void clearAndType (String text) {
+    public void clearAndType(String text) {
         this.elLocator.clear();
         this.elLocator.sendKeys(text);
     }
@@ -53,7 +53,7 @@ public class BaseElement {
         if (index >= 0 && index < this.elLocators.size()) {
             return this.elLocators.get(index);
         } else {
-            throw new IndexOutOfBoundsException("Index "+index+" is out of bounds for element list");
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds for element list");
         }
     }
 }

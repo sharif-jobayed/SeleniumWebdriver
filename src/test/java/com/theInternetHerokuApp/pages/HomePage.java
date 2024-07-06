@@ -5,7 +5,7 @@ import com.theInternetHerokuApp.framework.BasePage;
 import static com.theInternetHerokuApp.data.Constants.getBaseURL;
 
 public class HomePage extends BasePage {
-    public HomePage () {
+    public HomePage() {
         super(getBaseURL(), "Home page");
     }
 }
