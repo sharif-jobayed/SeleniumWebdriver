@@ -9,48 +9,42 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Locale;
 
 public class DriverTools {
-    private WebDriver driver;
-    private WebDriverWait xWait;
-    private Actions actions;
-    private JavascriptExecutor jsExec;
+    private static WebDriver driver;
 
     public DriverTools(String webDriver) {
+        String browser = webDriver.toLowerCase(Locale.ROOT);
         // Make driver
-        if (webDriver.equals("Firefox".toLowerCase())) {
-            this.driver = new FirefoxDriver();
-        } else if (webDriver.equals("Chrome".toLowerCase())) {
-            this.driver = new ChromeDriver();
-        } else if (webDriver.equals("Edge".toLowerCase())) {
-            this.driver = new EdgeDriver();
-        } else {
-            throw new IllegalArgumentException("The " + webDriver + " is not a valid Webdriver");
+        switch (browser) {
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "edge":
+                driver = new EdgeDriver();
+                break;
+            default:
+                throw new IllegalArgumentException("The " + webDriver + " is not a valid WebDriver");
         }
-
-        // Make xWait
-        this.xWait = new WebDriverWait(driver, Duration.ofSeconds(10000));
-
-        // Make actions
-        this.actions = new Actions(driver);
-
-        // Make jsExec
-        this.jsExec = (JavascriptExecutor) driver;
     }
 
-    public WebDriver getDriver() {
-        return this.driver;
+    public static WebDriver getDriver() {
+        return driver;
     }
 
-    public WebDriverWait getxWait() {
-        return this.xWait;
+    public static WebDriverWait getxWait(int seconds) {
+        return new WebDriverWait(getDriver(), Duration.ofSeconds(seconds));
     }
 
-    public Actions getActions() {
-        return this.actions;
+    public static Actions getActions() {
+        return new Actions(getDriver());
     }
 
-    public JavascriptExecutor getJsExec() {
-        return this.jsExec;
+    public static JavascriptExecutor getJsExec() {
+        return (JavascriptExecutor) getDriver();
     }
 }
