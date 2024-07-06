@@ -53,7 +53,7 @@ public class BaseElement {
         if (index >= 0 && index < this.elLocators.size()) {
             return this.elLocators.get(index);
         } else {
-            throw new IndexOutOfBoundsException(index+" Index is out of bounds for element list");
+            throw new IndexOutOfBoundsException("Index "+index+" is out of bounds for element list");
         }
     }
 }
