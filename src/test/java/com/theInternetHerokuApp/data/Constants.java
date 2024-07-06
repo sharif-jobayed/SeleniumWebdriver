@@ -1,25 +1,20 @@
 package com.theInternetHerokuApp.data;
 
 public class Constants {
-    private static int minSec;
-    private static int medSec;
-    private static int maxSec;
-
-    public Constants() {
-        minSec = 5;
-        medSec = 30;
-        maxSec = 60;
-    }
 
     public static int getMinSec() {
-        return minSec;
+        return 5;
     }
 
     public static int getMedSec() {
-        return medSec;
+        return 30;
     }
 
     public static int getMaxSec() {
-        return maxSec;
+        return 60;
+    }
+
+    public static String getBaseURL() {
+        return "https://the-internet.herokuapp.com/";
     }
 }
