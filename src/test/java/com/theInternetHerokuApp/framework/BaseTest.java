@@ -11,7 +11,6 @@ public class BaseTest {
 
     public BaseTest() {
         this.pagesList = new PagesList();
-        this.pagesList.getHomePage();
     }
 
     @BeforeMethod
