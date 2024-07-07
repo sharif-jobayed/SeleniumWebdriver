@@ -9,4 +9,8 @@ public class PagesList {
                 "Home page"
         );
     }
+
+    public static PagesList getPagesList() {
+        return new PagesList();
+    }
 }

@@ -4,22 +4,19 @@ import com.theInternetHerokuApp.pages.PagesList;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.*;
 
+import static com.theInternetHerokuApp.data.Constants.getBaseURL;
 import static com.theInternetHerokuApp.framework.DriverTools.getDriver;
+import static com.theInternetHerokuApp.pages.PagesList.getPagesList;
 
 public class BaseTest {
-    private PagesList pagesList;
-
-    public BaseTest() {
-        this.pagesList = new PagesList();
-    }
 
     @BeforeMethod
     public void setUp() {
         new DriverTools("Chrome");
         getDriver().manage().window().setSize(new Dimension(1440, 900));
-        this.pagesList.getHomePage().openPage();
-        this.pagesList.getHomePage().isPageOpen();
-        this.pagesList.getHomePage().isPageLoaded();
+        getDriver().get(getBaseURL());
+        getPagesList().getHomePage().isPageOpen();
+        getPagesList().getHomePage().isPageLoaded();
     }
 
     @AfterMethod

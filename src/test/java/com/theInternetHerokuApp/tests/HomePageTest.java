@@ -1,18 +1,15 @@
 package com.theInternetHerokuApp.tests;
 
 import com.theInternetHerokuApp.framework.BaseTest;
-import com.theInternetHerokuApp.pages.PagesList;
 import org.testng.annotations.Test;
 
-public class HomePageTest extends BaseTest {
-    private PagesList pagesList;
+import static com.theInternetHerokuApp.pages.PagesList.getPagesList;
 
-    public HomePageTest() {
-        this.pagesList = new PagesList();
-    }
+public class HomePageTest extends BaseTest {
 
     @Test(priority = 1)
     public void testHomePage() {
-        pagesList.getHomePage().getLinkByText("A/B Testing").doClick();
+        getPagesList().getHomePage().getLinkByText("A/B Testing").doClick();
+
     }
 }
