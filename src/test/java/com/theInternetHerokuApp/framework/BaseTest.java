@@ -10,11 +10,12 @@ public class BaseTest {
     private PagesList pagesList;
 
     public BaseTest() {
-        this.pagesList = new PagesList();this.pagesList.getHomePage();
+        this.pagesList = new PagesList();
+        this.pagesList.getHomePage();
     }
 
     @BeforeMethod
-    void setUp() {
+    public void setUp() {
         new DriverTools("Chrome");
         getDriver().manage().window().setSize(new Dimension(1440, 900));
         this.pagesList.getHomePage().openPage();
@@ -23,7 +24,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    void tearDown() {
+    public void tearDown() {
         getDriver().close();
     }
 }

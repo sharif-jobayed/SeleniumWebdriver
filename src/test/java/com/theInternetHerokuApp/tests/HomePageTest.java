@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 public class HomePageTest extends BaseTest {
     private PagesList pagesList;
 
-    public HomePageTest () {
+    public HomePageTest() {
         this.pagesList = new PagesList();
     }
 
     @Test(priority = 1)
-    public void testHomePage () {
+    public void testHomePage() {
         pagesList.getHomePage().getLinkByText("A/B Testing").doClick();
     }
 }
