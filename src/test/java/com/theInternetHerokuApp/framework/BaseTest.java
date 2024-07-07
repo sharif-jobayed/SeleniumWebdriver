@@ -1,13 +1,9 @@
 package com.theInternetHerokuApp.framework;
 
-import com.theInternetHerokuApp.pages.HomePage;
 import com.theInternetHerokuApp.pages.PagesList;
 import org.openqa.selenium.Dimension;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-import static com.theInternetHerokuApp.data.Constants.getBaseURL;
 import static com.theInternetHerokuApp.framework.DriverTools.getDriver;
 
 public class BaseTest {
@@ -17,7 +13,7 @@ public class BaseTest {
         this.pagesList = new PagesList();this.pagesList.getHomePage();
     }
 
-    @BeforeTest
+    @BeforeMethod
     void setUp() {
         new DriverTools("Chrome");
         getDriver().manage().window().setSize(new Dimension(1440, 900));
@@ -26,7 +22,7 @@ public class BaseTest {
         this.pagesList.getHomePage().isPageLoaded();
     }
 
-    @AfterTest
+    @AfterMethod
     void tearDown() {
         getDriver().close();
     }

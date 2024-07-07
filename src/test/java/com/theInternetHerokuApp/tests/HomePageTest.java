@@ -12,7 +12,7 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    void testHomePage () {
+    public void testHomePage () {
         pagesList.getHomePage().getLinkByText("A/B Testing").doClick();
     }
 }
