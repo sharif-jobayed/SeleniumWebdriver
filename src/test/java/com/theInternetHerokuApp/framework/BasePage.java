@@ -1,5 +1,6 @@
 package com.theInternetHerokuApp.framework;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
 
 import static com.theInternetHerokuApp.framework.DriverTools.getDriver;
@@ -54,5 +55,12 @@ public class BasePage {
 
     public void goForword() {
         getDriver().navigate().forward();
+    }
+
+    public BaseElement getLinkByText(String text) {
+        return new BaseElement(
+                By.xpath("//a[contains(text()," + "'" + text + "'" + ")]"),
+                text + " link"
+        );
     }
 }
