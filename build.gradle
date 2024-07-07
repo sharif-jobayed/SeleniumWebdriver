@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group = 'SeleniumWebdriver'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+// Define configuration for AspectJ agent
+configurations {
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
+
+def allureVersion = "2.24.0"
+def aspectJVersion = "1.9.20.1"
+
+dependencies {
+    // Import allure-bom to ensure correct versions of all the dependencies are used
+    testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
+    // Add necessary Allure dependencies to dependencies section
+    testImplementation "io.qameta.allure:allure-testng"
+    // Add aspectjweaver dependency
+    agent "org.aspectj:aspectjweaver:$aspectJVersion"
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation 'org.testng:testng:7.10.2'
+}
+
+test {
+    useTestNG()
+    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+}
