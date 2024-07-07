@@ -8,11 +8,4 @@ public class HomePage extends BasePage {
     public HomePage(String pageURL, String pageName) {
         super(pageURL, pageName);
     }
-
-    public BaseElement getParagraphHeading() {
-        return new BaseElement(
-                By.xpath("//div[@class='example']/h3[text()='A/B Test Control']"),
-                "Paragraph heading"
-        );
-    }
 }

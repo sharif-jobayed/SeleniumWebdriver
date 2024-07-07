@@ -19,6 +19,8 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        getDriver().close();
+        if(getDriver() != null) {
+            getDriver().close();
+        }
     }
 }

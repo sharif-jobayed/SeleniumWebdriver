@@ -10,6 +10,13 @@ public class PagesList {
         );
     }
 
+    public ABTestingPage getABTestingPage() {
+        return new ABTestingPage(
+                getBaseURL()+"abtest",
+                "A/B Testing page"
+        );
+    }
+
     public static PagesList getPagesList() {
         return new PagesList();
     }
