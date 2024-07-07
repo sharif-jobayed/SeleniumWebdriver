@@ -24,8 +24,8 @@ public class BaseElement {
         this.elLocator.click();
     }
 
-    public void itsText() {
-        this.elLocator.getText();
+    public String itsText() {
+        return this.elLocator.getText();
     }
 
     public void clearAndType(String text) {
