@@ -14,12 +14,16 @@ public class BaseTest {
     public void setUp() {
         step("Assign the browser");
         new DriverTools("Chrome");
+
         step("Set window size");
         getDriver().manage().window().setSize(new Dimension(1440, 900));
+
         step("Open home page");
         getPagesList().getHomePage().openPage();
+
         step("Check if the home page has been opened");
         Assert.assertTrue(getPagesList().getHomePage().isPageOpen(), getPagesList().getHomePage().getPageName()+" is not open yet");
+
         step("Check if the home page has been loaded");
         Assert.assertTrue(getPagesList().getHomePage().isPageLoaded(),  getPagesList().getHomePage().getPageName()+" is not fully loaded yet");
     }
