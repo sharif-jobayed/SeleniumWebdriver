@@ -4,7 +4,6 @@ import com.theInternetHerokuApp.framework.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.theInternetHerokuApp.data.Constants.getMinSec;
 import static com.theInternetHerokuApp.pages.PagesList.getPagesList;
 import static io.qameta.allure.Allure.step;
 
