@@ -1,6 +1,7 @@
 package com.theInternetHerokuApp.framework;
 
 import org.openqa.selenium.Dimension;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import static com.theInternetHerokuApp.framework.DriverTools.getDriver;
@@ -18,9 +19,9 @@ public class BaseTest {
         step("Open home page");
         getPagesList().getHomePage().openPage();
         step("Check if the home page has been opened");
-        getPagesList().getHomePage().isPageOpen();
+        Assert.assertTrue(getPagesList().getHomePage().isPageOpen(), getPagesList().getHomePage().getPageName()+" is not open yet");
         step("Check if the home page has been loaded");
-        getPagesList().getHomePage().isPageLoaded();
+        Assert.assertTrue(getPagesList().getHomePage().isPageLoaded(),  getPagesList().getHomePage().getPageName()+" is not fully loaded yet");
     }
 
     @AfterMethod

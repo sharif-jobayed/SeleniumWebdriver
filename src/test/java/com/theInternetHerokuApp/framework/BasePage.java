@@ -63,4 +63,8 @@ public class BasePage {
                 text + " link"
         );
     }
+
+    public String getPageName() {
+        return this.pageName;
+    }
 }
