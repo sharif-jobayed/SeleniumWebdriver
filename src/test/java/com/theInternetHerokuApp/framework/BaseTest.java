@@ -22,16 +22,16 @@ public class BaseTest {
         getPagesList().getHomePage().openPage();
 
         step("Check if the home page has been opened");
-        Assert.assertTrue(getPagesList().getHomePage().isPageOpen(), getPagesList().getHomePage().getPageName()+" is not open yet");
+        Assert.assertTrue(getPagesList().getHomePage().isPageOpen(), getPagesList().getHomePage().getPageName() + " is not open yet");
 
         step("Check if the home page has been loaded");
-        Assert.assertTrue(getPagesList().getHomePage().isPageLoaded(),  getPagesList().getHomePage().getPageName()+" is not fully loaded yet");
+        Assert.assertTrue(getPagesList().getHomePage().isPageLoaded(), getPagesList().getHomePage().getPageName() + " is not fully loaded yet");
     }
 
     @AfterMethod
     public void tearDown() {
         step("Close the browser");
-        if(getDriver() != null) {
+        if (getDriver() != null) {
             getDriver().close();
         }
     }

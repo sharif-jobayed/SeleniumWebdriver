@@ -15,9 +15,9 @@ public class HomePageTest extends BaseTest {
         getPagesList().getHomePage().getLinkByText("A/B Testing").doClick();
 
         step("Check if the ab testing page has been opened");
-        Assert.assertTrue(getPagesList().getABTestingPage().isPageOpen(), getPagesList().getABTestingPage().getPageName()+ " is not open yet");
+        Assert.assertTrue(getPagesList().getABTestingPage().isPageOpen(), getPagesList().getABTestingPage().getPageName() + " is not open yet");
 
         step("Check if the ab testing page has been loaded");
-        Assert.assertTrue(getPagesList().getABTestingPage().isPageLoaded(), getPagesList().getABTestingPage().getPageName()+" is not fully loaded yet");
+        Assert.assertTrue(getPagesList().getABTestingPage().isPageLoaded(), getPagesList().getABTestingPage().getPageName() + " is not fully loaded yet");
     }
 }
