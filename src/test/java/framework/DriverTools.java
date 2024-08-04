@@ -16,7 +16,7 @@ public class DriverTools {
     private static WebDriver driver;
 
     public DriverTools(String webDriver) {
-        switch(webDriver.toLowerCase(Locale.ROOT)) {
+        switch (webDriver.toLowerCase(Locale.ROOT)) {
             case "chrome" -> driver = new ChromeDriver();
             case "firefox" -> driver = new FirefoxDriver();
             case "edge" -> driver = new EdgeDriver();
@@ -27,12 +27,15 @@ public class DriverTools {
     public static WebDriver getDriver() {
         return driver;
     }
+
     public static WebDriverWait getXWait(int time) {
         return new WebDriverWait(getDriver(), Duration.ofMillis(time));
     }
+
     public static Actions getActions() {
         return new Actions(getDriver());
     }
+
     public static JavascriptExecutor getJS() {
         return (JavascriptExecutor) getDriver();
     }
