@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 public class HomePageTest extends BaseTest {
     public HomePageTest() {}
 
-    @Test
+    @Test(priority = 1, description = "")
     void homePageTest() {
-        System.out.println("Home page is loaded!!!");
+
     }
 }

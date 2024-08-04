@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 import pages.HomePage;
 import utils.PageCreator;
 
+import static data.Constants.getMinTimeOut;
 import static framework.DriverTools.getDriver;
 
 public class BaseTest {
@@ -24,10 +25,8 @@ public class BaseTest {
     protected void setUp() {
         getDriver().manage().window().setSize(new Dimension(1440, 900));
         getDriver().get(this.HOME_PAGE.getPAGE_URL());
-
         Assert.assertTrue(this.HOME_PAGE.isPageOpen(), "The "+this.HOME_PAGE.getPAGE_NAME()+" is not open");
-
-        Assert.assertTrue(this.HOME_PAGE.isPageLoaded(Constants.getMinTimeOut()), "The "+this.HOME_PAGE.getPAGE_NAME()+ " is not loaded");
+        Assert.assertTrue(this.HOME_PAGE.isPageLoaded(getMinTimeOut()), "The "+this.HOME_PAGE.getPAGE_NAME()+ " is not loaded");
     }
 
     @AfterMethod
