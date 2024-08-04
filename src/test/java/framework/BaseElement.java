@@ -6,43 +6,65 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-import static framework.DriverTools.getDriver;
-import static framework.DriverTools.getXWait;
+import static framework.DriverTools.*;
 
 public class BaseElement {
-    private final WebElement EL_LOCATOR;
-    private final List<WebElement> EL_LOCATORS;
+    private final By EL_LOCATOR;
     private final String EL_NAME;
 
     public BaseElement(By webElement, String elementName) {
-        this.EL_LOCATOR = getDriver().findElement(webElement);
-        this.EL_LOCATORS = getDriver().findElements(webElement);
+        this.EL_LOCATOR = webElement;
         this.EL_NAME = elementName;
     }
 
     public WebElement getEL_LOCATOR() {
-        return EL_LOCATOR;
+        return getDriver().findElement(this.EL_LOCATOR);
     }
 
     public List<WebElement> getEL_LOCATORS() {
-        return EL_LOCATORS;
+        return getDriver().findElements(this.EL_LOCATOR);
     }
 
     public String getEL_NAME() {
-        return EL_NAME;
+        return this.EL_NAME;
     }
 
     public Boolean isVisible(int timeOut) {
-        getXWait(timeOut).until(ExpectedConditions.visibilityOf(this.EL_LOCATOR));
-        return this.EL_LOCATOR.isDisplayed();
+        getXWait(timeOut).until(ExpectedConditions.visibilityOf(getEL_LOCATOR()));
+        return getEL_LOCATOR().isDisplayed();
     }
 
     public Boolean isEnabled(int timeOut) {
         return getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR)).isEnabled();
     }
 
-    public BaseElement doClick() {
-        this.EL_LOCATOR.click();
+    public Boolean isChecked(int timeOut) {
+        return getXWait(timeOut).until(ExpectedConditions.elementToBeSelected(this.EL_LOCATOR));
+    }
+
+    public BaseElement doClick(int timeOut) {
+        getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR));
+        getEL_LOCATOR().click();
+        return this;
+    }
+
+    public BaseElement clearAndType(int timeOut, String text) {
+        getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR)).isEnabled();
+        getEL_LOCATOR().clear();
+        getEL_LOCATOR().sendKeys(text);
+        return this;
+    }
+
+    public BaseElement doCheck(int timeOut) {
+        if (!isChecked(timeOut)) {
+            getEL_LOCATOR().click();
+        }
+        return this;
+    }
+
+    public BaseElement scrollTo(int timeOut) {
+        getXWait(timeOut).until(ExpectedConditions.presenceOfElementLocated(this.EL_LOCATOR));
+        getActions().scrollToElement(getEL_LOCATOR());
         return this;
     }
 }
