@@ -25,7 +25,7 @@ public class BasePage {
         return getDriver().getCurrentUrl().equals(this.getPAGE_URL());
     }
 
-    public Boolean isPageLoaded(int timeOut) {
+    public Boolean isPageLoaded(Integer timeOut) {
         ExpectedCondition<Boolean> pageLoadCondition = driver -> getJS().executeScript("return document.readyState").equals("complete");
         return getXWait(timeOut).until(pageLoadCondition);
     }

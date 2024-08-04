@@ -29,40 +29,40 @@ public class BaseElement {
         return this.EL_NAME;
     }
 
-    public Boolean isVisible(int timeOut) {
+    public Boolean isVisible(Integer timeOut) {
         getXWait(timeOut).until(ExpectedConditions.visibilityOf(getEL_LOCATOR()));
         return getEL_LOCATOR().isDisplayed();
     }
 
-    public Boolean isEnabled(int timeOut) {
+    public Boolean isEnabled(Integer timeOut) {
         return getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR)).isEnabled();
     }
 
-    public Boolean isChecked(int timeOut) {
+    public Boolean isChecked(Integer timeOut) {
         return getXWait(timeOut).until(ExpectedConditions.elementToBeSelected(this.EL_LOCATOR));
     }
 
-    public BaseElement doClick(int timeOut) {
+    public BaseElement doClick(Integer timeOut) {
         getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR));
         getEL_LOCATOR().click();
         return this;
     }
 
-    public BaseElement clearAndType(int timeOut, String text) {
+    public BaseElement clearAndType(Integer timeOut, String text) {
         getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR)).isEnabled();
         getEL_LOCATOR().clear();
         getEL_LOCATOR().sendKeys(text);
         return this;
     }
 
-    public BaseElement doCheck(int timeOut) {
+    public BaseElement doCheck(Integer timeOut) {
         if (!isChecked(timeOut)) {
             getEL_LOCATOR().click();
         }
         return this;
     }
 
-    public BaseElement scrollTo(int timeOut) {
+    public BaseElement scrollTo(Integer timeOut) {
         getXWait(timeOut).until(ExpectedConditions.presenceOfElementLocated(this.EL_LOCATOR));
         getActions().scrollToElement(getEL_LOCATOR());
         return this;
