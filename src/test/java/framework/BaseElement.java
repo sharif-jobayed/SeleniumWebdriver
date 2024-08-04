@@ -29,6 +29,10 @@ public class BaseElement {
         return this.EL_NAME;
     }
 
+    public String itsText(Integer timeOut) {
+        return getXWait(timeOut).until(ExpectedConditions.visibilityOf(getEL_LOCATOR())).getText();
+    }
+
     public Boolean isVisible(Integer timeOut) {
         getXWait(timeOut).until(ExpectedConditions.visibilityOf(getEL_LOCATOR()));
         return getEL_LOCATOR().isDisplayed();
