@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Constants {
     private static final HashMap<String, Integer> TIMEOUTS = new HashMap<>();
 
-    public Constants() {
+    static {
         TIMEOUTS.put("Minimum", 10000);
         TIMEOUTS.put("Medium", 30000);
         TIMEOUTS.put("Maximum", 60000);

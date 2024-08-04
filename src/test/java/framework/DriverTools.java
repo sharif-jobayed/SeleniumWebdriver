@@ -28,8 +28,8 @@ public class DriverTools {
         return driver;
     }
 
-    public static WebDriverWait getXWait(int time) {
-        return new WebDriverWait(getDriver(), Duration.ofMillis(time));
+    public static WebDriverWait getXWait(Integer timeOut) {
+        return new WebDriverWait(getDriver(), Duration.ofMillis(timeOut));
     }
 
     public static Actions getActions() {
