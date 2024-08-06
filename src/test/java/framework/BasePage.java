@@ -1,5 +1,6 @@
 package framework;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import static framework.DriverTools.*;
@@ -22,11 +23,12 @@ public class BasePage {
     }
 
     public Boolean isPageOpen() {
-        return getDriver().getCurrentUrl().equals(this.getPAGE_URL());
+        return getDriver().getCurrentUrl().equals(this.PAGE_URL);
     }
 
     public Boolean isPageLoaded(Integer timeOut) {
-        ExpectedCondition<Boolean> pageLoadCondition = driver -> getJS().executeScript("return document.readyState").equals("complete");
+        ExpectedCondition<Boolean> pageLoadCondition = driver ->
+                getJS().executeScript("return document.readyState").equals("complete");
         return getXWait(timeOut).until(pageLoadCondition);
     }
 }

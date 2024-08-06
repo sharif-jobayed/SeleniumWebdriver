@@ -18,57 +18,73 @@ public class BaseElement {
     }
 
     public WebElement getEL_LOCATOR() {
-        return getDriver().findElement(this.EL_LOCATOR);
+        return getDriver().findElement(EL_LOCATOR);
     }
 
     public List<WebElement> getEL_LOCATORS() {
-        return getDriver().findElements(this.EL_LOCATOR);
+        return getDriver().findElements(EL_LOCATOR);
     }
 
     public String getEL_NAME() {
-        return this.EL_NAME;
+        return EL_NAME;
     }
 
     public String itsText(Integer timeOut) {
-        return getXWait(timeOut).until(ExpectedConditions.visibilityOf(getEL_LOCATOR())).getText();
+        WebElement element = getXWait(timeOut).until(ExpectedConditions.visibilityOfElementLocated(EL_LOCATOR));
+        return element.getText();
     }
 
     public Boolean isVisible(Integer timeOut) {
-        getXWait(timeOut).until(ExpectedConditions.visibilityOf(getEL_LOCATOR()));
-        return getEL_LOCATOR().isDisplayed();
+        try {
+            getXWait(timeOut).until(ExpectedConditions.visibilityOfElementLocated(EL_LOCATOR));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public Boolean isEnabled(Integer timeOut) {
-        return getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR)).isEnabled();
+        try {
+            WebElement element = getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(EL_LOCATOR));
+            return element.isEnabled();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public Boolean isChecked(Integer timeOut) {
-        return getXWait(timeOut).until(ExpectedConditions.elementToBeSelected(this.EL_LOCATOR));
+        try {
+            WebElement element = getXWait(timeOut).until(ExpectedConditions.visibilityOfElementLocated(EL_LOCATOR));
+            return element.isSelected();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public BaseElement doClick(Integer timeOut) {
-        getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR));
-        getEL_LOCATOR().click();
+        WebElement element = getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(EL_LOCATOR));
+        element.click();
         return this;
     }
 
     public BaseElement clearAndType(Integer timeOut, String text) {
-        getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(this.EL_LOCATOR)).isEnabled();
-        getEL_LOCATOR().clear();
-        getEL_LOCATOR().sendKeys(text);
+        WebElement element = getXWait(timeOut).until(ExpectedConditions.visibilityOfElementLocated(EL_LOCATOR));
+        element.clear();
+        element.sendKeys(text);
         return this;
     }
 
     public BaseElement doCheck(Integer timeOut) {
-        if (!isChecked(timeOut)) {
-            getEL_LOCATOR().click();
+        WebElement element = getXWait(timeOut).until(ExpectedConditions.elementToBeClickable(EL_LOCATOR));
+        if (!element.isSelected()) {
+            element.click();
         }
         return this;
     }
 
     public BaseElement scrollTo(Integer timeOut) {
-        getXWait(timeOut).until(ExpectedConditions.presenceOfElementLocated(this.EL_LOCATOR));
-        getActions().scrollToElement(getEL_LOCATOR());
+        WebElement element = getXWait(timeOut).until(ExpectedConditions.visibilityOfElementLocated(EL_LOCATOR));
+        getJS().executeScript("arguments[0].scrollIntoView(true);", element);
         return this;
     }
 }
