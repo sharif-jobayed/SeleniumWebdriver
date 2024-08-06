@@ -1,73 +1,43 @@
-# IntelliJ IDEA
-.idea/
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+/.idea/
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
 *.iws
 *.iml
 *.ipr
 out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
-# VS Code
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
 .vscode/
 
-# Eclipse IDE
-.project
-.classpath
-.settings/
-bin/
-
-# NetBeans IDE
-nbproject/private/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
-# Java
-*.class
-*.jar
-*.war
-*.ear
-
-# NodeJS
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# Gradle
-.gradle/
-build/
-!gradle-wrapper.jar
-
-# Maven
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-
-# Allure Report
-allure-results/
-allure-report/
-
-# TestNG
-test-output/
-
-# Cucumber
-cucumber-report/
-
-# Selenium
-selenium.log
-
-# General
+### Mac OS ###
 .DS_Store
-Thumbs.db
-*.swp
-*.swo
-*.bak
-*.tmp
-*.log
-*.out
-
-# Temporary files
-tmp/
-temp/
