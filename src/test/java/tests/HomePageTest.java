@@ -13,7 +13,7 @@ public class HomePageTest extends BaseTest {
         this.HOME_PAGE = new PageCreator("").getHomePage();
     }
 
-    @Test(priority = 1, description = "")
+    @Test(priority = 1, description = "Check if the Fortnite game service is operational")
     void homePageTest() {
         Assert.assertEquals(this.HOME_PAGE.getPAGE_URL(), "https://status.epicgames.com/", "Home page URL is not correct");
         this.HOME_PAGE.openGameBox("Fortnite");
