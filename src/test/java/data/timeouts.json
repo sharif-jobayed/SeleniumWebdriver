@@ -1,0 +1,9 @@
+{
+
+  "Timeouts": {
+    "Minimum": 5000,
+    "Medium": 30000,
+    "Maximum": 60000
+  }
+
+}
