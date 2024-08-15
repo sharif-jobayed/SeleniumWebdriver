@@ -10,7 +10,7 @@ public class ABTestingPageTest extends HomePageTest {
             dependsOnMethods = {"testOpenABTestingPage"},
             priority = 2
     )
-    void testABTestingPage() {
+    void testTargetTextExistence() {
         Assert.assertTrue(getPages().getABTestingPage().hasTargetText());
     }
 }
