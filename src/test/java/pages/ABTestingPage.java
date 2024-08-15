@@ -17,10 +17,6 @@ public class ABTestingPage extends BasePage {
 
     public Boolean hasTargetText() {
         String paragraphText = this.PARAGRAPH.elementText();
-        if(paragraphText.contains("split testing")) {
-            return true;
-        } else {
-            return false;
-        }
+        return paragraphText.contains("split testing");
     }
 }
