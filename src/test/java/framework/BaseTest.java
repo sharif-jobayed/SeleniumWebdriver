@@ -9,19 +9,24 @@ import org.testng.annotations.*;
 import static framework.DriverTools.*;
 
 public class BaseTest {
-    protected DataProcessor dataProcessor = new DataProcessor();
-    protected Pages pages = new Pages();
+    public DataProcessor getDataProcessor() {
+        return new DataProcessor();
+    }
 
-    @BeforeMethod
+    public Pages getPages() {
+        return new Pages();
+    }
+
+    @BeforeClass
     protected void setUp() {
         new DriverTools("Edge");
         getDriver().manage().window().setSize(new Dimension(1440, 900));
-        getDriver().get(pages.getHomePage().getPAGE_URL());
-        Assert.assertTrue(pages.getHomePage().isPageOpen(), "The home page is not open");
-        Assert.assertTrue(pages.getHomePage().isPageLoaded(dataProcessor.getTimeouts().getMedium()), "The page is not loaded");
+        getDriver().get(getPages().getHomePage().getPAGE_URL());
+        Assert.assertTrue(getPages().getHomePage().isPageOpen(), "The home page is not open");
+        Assert.assertTrue(getPages().getHomePage().isPageLoaded(getDataProcessor().getTimeouts().getMedium()), "The page is not loaded");
     }
 
-    @AfterMethod
+    @AfterClass
     protected void tearDown() {
         getDriver().close();
     }
