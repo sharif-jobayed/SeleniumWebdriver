@@ -1,4 +1,4 @@
-package com.daraz.bd.tests;
+package darazBD.tests;
 
 public class MainPageTest {
 }

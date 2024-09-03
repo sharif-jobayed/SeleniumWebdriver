@@ -1,4 +1,4 @@
-package com.daraz.bd.framework;
+package darazBD.framework;
 
 public abstract class Page {
 }
