@@ -1,67 +1,43 @@
-# Java
-*.class
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-
-# JavaScript, NodeJS, ReactJS
-node_modules/
-npm-debug.log
-yarn-lock.txt
-.pnp.js
-.flowconfig
-coverage/
-dist/
+.gradle
 build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# General
-.DS_Store
-.editorconfig
-.eslintcache
-.gitattributes
-.gitignore
-.jshintrc
-.lintrc
-.npmrc
-.prettierrc
-.travis.yml
-.vscode/
+### IntelliJ IDEA ###
 /.idea/
-*.log
-*.sqlite3
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
-# Selenium, WebdriverIO
-*.json
-*.xml
-*.dll
-*.exe
-*.dat
-wdio.conf.js
-webdriver.log
-webdriver.sessions.json
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 
-# Allure Report, TestNG, Cucumber
-allure-results/
-test-output/
-testng-failed.xml
-features/
-steps/
-target/
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-# Gradle, Maven
-.gradle/
-.mvn/
-*.ser
-*.lck
-*.bin
-*.properties
+### VS Code ###
+.vscode/
 
-# Others
-*.swp
-*.bak
-*.tmp
-*.pid
-*.old
-*.sync
+### Mac OS ###
+.DS_Store
