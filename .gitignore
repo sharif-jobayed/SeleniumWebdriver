@@ -1,73 +1,67 @@
-# IntelliJ IDEA
-.idea/
-*.iws
-*.iml
-*.ipr
-out/
-
-# VS Code
-.vscode/
-
-# Eclipse IDE
-.project
-.classpath
-.settings/
-bin/
-
-# NetBeans IDE
-nbproject/private/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
 # Java
 *.class
 *.jar
 *.war
 *.ear
+*.zip
+*.tar.gz
 
-# NodeJS
+# JavaScript, NodeJS, ReactJS
 node_modules/
 npm-debug.log
-yarn-error.log
-
-# Gradle
-.gradle/
+yarn-lock.txt
+.pnp.js
+.flowconfig
+coverage/
+dist/
 build/
-!gradle-wrapper.jar
-
-# Maven
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-
-# Allure Report
-allure-results/
-allure-report/
-
-# TestNG
-test-output/
-
-# Cucumber
-cucumber-report/
-
-# Selenium
-selenium.log
 
 # General
 .DS_Store
-Thumbs.db
+.editorconfig
+.eslintcache
+.gitattributes
+.gitignore
+.jshintrc
+.lintrc
+.npmrc
+.prettierrc
+.travis.yml
+.vscode/
+/.idea/
+*.log
+*.sqlite3
+
+# Selenium, WebdriverIO
+*.json
+*.xml
+*.dll
+*.exe
+*.dat
+wdio.conf.js
+webdriver.log
+webdriver.sessions.json
+
+# Allure Report, TestNG, Cucumber
+allure-results/
+test-output/
+testng-failed.xml
+features/
+steps/
+target/
+
+# Gradle, Maven
+.gradle/
+.mvn/
+*.ser
+*.lck
+*.bin
+*.properties
+
+# Others
 *.swp
-*.swo
 *.bak
 *.tmp
-*.log
-*.out
-
-# Temporary files
-tmp/
-temp/
+*.pid
+*.old
+*.sync
