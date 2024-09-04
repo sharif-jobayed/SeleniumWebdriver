@@ -1,8 +1,13 @@
 package darazBD.framework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 import static darazBD.framework.DriverTools.getWDriver;
+import static darazBD.framework.DriverTools.getXWait;
 
 public class BaseElement {
     private final By EL_LOCATOR;
@@ -13,22 +18,39 @@ public class BaseElement {
         this.EL_NAME = elementName;
     }
 
+    public WebElement getEl() {
+        return getWDriver().findElement(this.EL_LOCATOR);
+    }
+
+    public List<WebElement> getEls() {
+        return getWDriver().findElements(this.EL_LOCATOR);
+    }
+
     public BaseElement doClick() {
-        getWDriver().findElement(this.EL_LOCATOR).click();
+        getEl().click();
         return this;
     }
 
     public BaseElement clearAndType(String text) {
-        getWDriver().findElement(this.EL_LOCATOR).clear();
-        getWDriver().findElement(this.EL_LOCATOR).sendKeys(text);
+        getEl().clear();
+        getEl().sendKeys(text);
         return this;
     }
 
     public String getElText() {
-        return getWDriver().findElement(this.EL_LOCATOR).getText();
+        return getEl().getText();
     }
 
     public Boolean isChecked() {
-        return getWDriver().findElement(this.EL_LOCATOR).isSelected();
+        return getEl().isSelected();
+    }
+
+    public Boolean isVisible() {
+        return getEl().isDisplayed();
+    }
+
+    public BaseElement waitTillVisible(Integer timeout) {
+        getXWait(timeout).until(ExpectedConditions.visibilityOf(getEl()));
+        return this;
     }
 }
