@@ -14,13 +14,7 @@ public class ConvertedData {
         this.BaseURL = baseURL;
     }
 
-    public Map<String, User> getUsers() {
-        return Users;
-    }
-
-    public void setUsers(Map<String, User> users) {
-        this.Users = users;
-    }
+/*================================= User starts =================================*/
 
     public static class User {
         private String UserEmail;
@@ -42,4 +36,36 @@ public class ConvertedData {
             this.UserPassword = userPassword;
         }
     }
+
+    public void setUsers(Map<String, User> users) {
+        this.Users = users;
+    }
+
+    public Map<String, User> getUsers() {
+        return Users;
+    }
+
+/*================================= User ends =================================*/
+
+/*================================= Timeouts start =================================*/
+
+    public static class Timeouts {
+        private Integer Minimum;
+        private Integer Medium;
+        private Integer Maximum;
+
+        public Integer getMinimum() {
+            return this.Minimum;
+        }
+
+        public Integer getMedium() {
+            return this.Medium;
+        }
+
+        public Integer getMaximum() {
+            return this.Maximum;
+        }
+    }
+
+/*================================= Timeouts end =================================*/
 }
