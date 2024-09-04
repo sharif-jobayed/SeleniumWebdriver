@@ -26,6 +26,10 @@ public class BaseElement {
         return getWDriver().findElements(this.EL_LOCATOR);
     }
 
+    public String getElName() {
+        return this.EL_NAME;
+    }
+
     public BaseElement doClick() {
         getEl().click();
         return this;
