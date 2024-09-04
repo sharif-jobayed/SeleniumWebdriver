@@ -1,4 +1,4 @@
 package darazBD.framework;
 
-public class BasePage {
+public abstract class BasePage {
 }
