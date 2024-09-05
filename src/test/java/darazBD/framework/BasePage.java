@@ -21,7 +21,7 @@ public abstract class BasePage {
         return this.pName;
     }
 
-    public String getPTitile() {
+    public String getPTitle() {
         return getWDriver().getTitle();
     }
 
