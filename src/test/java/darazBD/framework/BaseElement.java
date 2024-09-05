@@ -53,8 +53,22 @@ public class BaseElement {
         return getEl().isDisplayed();
     }
 
+    public Boolean isEnable() {
+        return getEl().isEnabled();
+    }
+
     public BaseElement waitTillVisible(Integer timeout) {
         getXWait(timeout).until(ExpectedConditions.visibilityOf(getEl()));
+        return this;
+    }
+
+    public BaseElement waitTillDisappear(Integer timeout) {
+        getXWait(timeout).until(ExpectedConditions.invisibilityOf(getEl()));
+        return this;
+    }
+
+    public BaseElement waitTillClickable(Integer timeout) {
+        getXWait(timeout).until(ExpectedConditions.elementToBeClickable(getEl()));
         return this;
     }
 }
