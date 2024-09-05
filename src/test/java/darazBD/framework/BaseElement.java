@@ -57,6 +57,11 @@ public class BaseElement {
         return getEl().isEnabled();
     }
 
+    public BaseElement waitTillElementIsPresent(Integer timeout) {
+        getXWait(timeout).until(ExpectedConditions.presenceOfElementLocated(this.EL_LOCATOR));
+        return this;
+    }
+
     public BaseElement waitTillVisible(Integer timeout) {
         getXWait(timeout).until(ExpectedConditions.visibilityOf(getEl()));
         return this;

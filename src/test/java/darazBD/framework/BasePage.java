@@ -1,5 +1,7 @@
 package darazBD.framework;
 
+import java.util.Objects;
+
 import static darazBD.framework.DriverTools.getWDriver;
 
 public abstract class BasePage {
@@ -21,5 +23,9 @@ public abstract class BasePage {
 
     public String getPTitile() {
         return getWDriver().getTitle();
+    }
+
+    public boolean isPageReady() {
+        return Objects.requireNonNull(getWDriver().getPageSource()).isEmpty();
     }
 }
