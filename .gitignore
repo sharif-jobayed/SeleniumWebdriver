@@ -1,5 +1,187 @@
-/.gradle/
-/.idea/
-/build/
-/target/
-/settings.gradle
+# =========================
+# System Files
+# =========================
+.DS_Store
+Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+*.bak
+*.swp
+*.swo
+
+# Linux
+*~
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.local
+.env.*.local
+*.env
+
+# =========================
+# Package Managers and Dependencies
+# =========================
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.npm/
+
+# =========================
+# Build Directories (Common for Java, JavaScript, etc.)
+# =========================
+dist/
+build/
+target/
+out/
+tmp/
+logs/
+
+# =========================
+# IDEs and Editors
+# =========================
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+nbproject/private/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VSCode
+.vscode/
+.history/
+
+# =========================
+# Java (Maven, Gradle, and General)
+# =========================
+*.class
+*.jar
+*.war
+*.ear
+*.jcache
+*.jfr
+
+# Maven-specific
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Gradle-specific
+/gradle/
+.gradle/
+gradle-app.setting
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
+
+# =========================
+# JavaScript and Frameworks (React, Vite, etc.)
+# =========================
+*.js
+*.jsx
+*.ts
+*.tsx
+*.map
+
+# Babel
+.babelrc
+.babelrc.js
+.babelrc.json
+.babelignore
+babel.config.js
+babel.config.json
+
+# Vite
+.vite/
+
+# Webpack and Parcel (optional, depending on your bundler)
+.cache/
+.parcel-cache/
+*.webpack/
+
+# Tailwind CSS
+tailwind.config.js
+tailwind.config.ts
+
+# =========================
+# Selenium and WebdriverIO
+# =========================
+selenium-server-standalone-*.jar
+selenium.log
+webdriverio-report/
+
+# =========================
+# TestNG, Cucumber, and Testing Tools
+# =========================
+test-output/
+.cucumber/
+rerun.txt
+
+# =========================
+# Jenkins
+# =========================
+*.lastStable
+*.lastSuccessful
+*.lastUnstable
+*.lastUnsuccessful
+*.buildNumbers
+*.fingerprint
+*.jenkins/
+workspace/
+builds/
+config.xml
+jobs/*/config.xml
+
+# =========================
+# Allure and Extent Report
+# =========================
+allure-results/
+allure-report/
+extent-report/
+extent-results/
+
+# =========================
+# Coverage Reports
+# =========================
+coverage/
+*.lcov
+.nyc_output/
+
+# =========================
+# Miscellaneous
+# =========================
+# Ignore private files
+secrets.yml
+secret-key.txt
+
+# Temporary files and backups
+*.tmp
