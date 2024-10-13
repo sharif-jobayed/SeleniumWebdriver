@@ -56,4 +56,23 @@ public class ConvertedData {
             return VisualUser;
         }
     }
+
+    // timeOuts
+    public static class TimeOuts {
+        private Integer MIN;
+        private Integer MED;
+        private Integer MAX;
+
+        public Integer getMINTimeout() {
+            return MIN;
+        }
+
+        public Integer getMEDTimeout() {
+            return MED;
+        }
+
+        public Integer getMAXTimeout() {
+            return MAX;
+        }
+    }
 }
