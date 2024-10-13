@@ -1,63 +1,53 @@
 package saucedemo.framework.utils;
 
-import com.google.gson.annotations.SerializedName;
-
 public class ConvertedData {
-    // Users
-    @SerializedName("Users")
-    private Users users = new Users();
+    // appData
+    public static class AppData {
+        private String BaseURL;
 
-    public static class Users {
-        // StandardUser
-        @SerializedName("StandardUser")
-        private StandardUser standardUser = new StandardUser();
-
-        public static class StandardUser {
-            @SerializedName("UserName")
-            private String userName;
-
-            @SerializedName("Password")
-            private String password;
-
-            public String getUserName() {
-                return this.userName;
-            }
-
-            public String getPassword() {
-                return this.password;
-            }
-        }
-
-        public StandardUser getStandardUser() {
-            return standardUser;
-        }
-
-        // LockedOutUser
-        @SerializedName("LockedOutUser")
-        private LockedOutUser lockedOutUser = new LockedOutUser();
-
-        public static class LockedOutUser {
-            @SerializedName("UserName")
-            private String userName;
-
-            @SerializedName("Password")
-            private String password;
-
-            public String getUserName() {
-                return this.userName;
-            }
-
-            public String getPassword() {
-                return this.password;
-            }
-        }
-
-        public LockedOutUser getLockedOutUser() {
-            return lockedOutUser;
+        public String getBaseURL() {
+            return BaseURL;
         }
     }
 
-    public Users getUsers() {
-        return users;
+    // userCreds
+    public static class UserCreds {
+        public static class User {
+            private String UserName;
+            private String Password;
+
+            public String getUserName() {
+                return UserName;
+            }
+            public String getPassword() {
+                return Password;
+            }
+        }
+
+        private User StandardUser = new User();
+        private User LockedOutUser = new User();
+        private User ProblemUser = new User();
+        private User PerformanceGlitchUser = new User();
+        private User ErrorUser = new User();
+        private User VisualUser = new User();
+
+        public User getStandardUser() {
+            return StandardUser;
+        }
+        public User getLockedOutUser() {
+            return LockedOutUser;
+        }
+        public User getProblemUser() {
+            return ProblemUser;
+        }
+        public User getPerformanceGlitchUser() {
+            return PerformanceGlitchUser;
+        }
+        public User getErrorUser() {
+            return ErrorUser;
+        }
+        public User getVisualUser() {
+            return VisualUser;
+        }
     }
 }
