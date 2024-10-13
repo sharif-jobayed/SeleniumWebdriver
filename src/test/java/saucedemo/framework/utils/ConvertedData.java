@@ -19,6 +19,7 @@ public class ConvertedData {
             public String getUserName() {
                 return UserName;
             }
+
             public String getPassword() {
                 return Password;
             }
@@ -34,18 +35,23 @@ public class ConvertedData {
         public User getStandardUser() {
             return StandardUser;
         }
+
         public User getLockedOutUser() {
             return LockedOutUser;
         }
+
         public User getProblemUser() {
             return ProblemUser;
         }
+
         public User getPerformanceGlitchUser() {
             return PerformanceGlitchUser;
         }
+
         public User getErrorUser() {
             return ErrorUser;
         }
+
         public User getVisualUser() {
             return VisualUser;
         }
