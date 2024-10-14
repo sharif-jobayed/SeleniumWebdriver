@@ -23,7 +23,7 @@ public class BaseTest {
 
         PageBuilder<LoginPage> loginPagePageBuilder = new PageBuilder<>();
         LoginPage loginPage = loginPagePageBuilder.getPage("login");
-        Assert.assertTrue(loginPage.isPageOpen(), "The " + loginPage.pageName + " isn't yet open.");
+        Assert.assertTrue(loginPage.isLoginPageOpen(), "The " + loginPage.pageName + " isn't yet open.");
 
         Assert.assertTrue(loginPage.isLoginPageLoaded(), "The " + loginPage.pageName + " isn't yet loaded");
     }
