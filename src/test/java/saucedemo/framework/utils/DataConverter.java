@@ -23,8 +23,7 @@ public class DataConverter {
         try (FileReader reader = new FileReader(this.APP_DATA)) {
             return this.GSON.fromJson(reader, ConvertedData.AppData.class);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException(e.getCause());
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -32,8 +31,7 @@ public class DataConverter {
         try (FileReader reader = new FileReader(this.USER_CREDS)) {
             return this.GSON.fromJson(reader, ConvertedData.UserCreds.class);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException(e.getCause());
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -41,8 +39,7 @@ public class DataConverter {
         try (FileReader reader = new FileReader(this.TIMEOUTS)) {
             return this.GSON.fromJson(reader, ConvertedData.TimeOuts.class);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException(e.getCause());
+            throw new RuntimeException(e.getMessage());
         }
     }
 }
