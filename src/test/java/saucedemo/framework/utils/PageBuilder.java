@@ -4,10 +4,10 @@ import saucedemo.pages.LoginPage;
 
 import java.util.Locale;
 
-public class PageBuilder<T> {
+public class PageBuilder {
     private DataConverter dataConverter = new DataConverter();
 
-    public T getPage(String pageName) {
+    public <T> T getPage(String pageName) {
         if (pageName.toLowerCase(Locale.ROOT).contains("login")) {
             return (T) new LoginPage(
                     dataConverter.getAppData().getBaseURL(),

@@ -14,6 +14,7 @@ import static saucedemo.framework.utils.DriverTools.getDriver;
 
 public class BaseTest {
     private DataConverter dataConverter = new DataConverter();
+    PageBuilder pageBuilder = new PageBuilder();
 
     @BeforeClass
     public void setUp() {
@@ -21,12 +22,14 @@ public class BaseTest {
         getDriver().manage().window().setSize(new Dimension(1440, 900));
         getDriver().get(dataConverter.getAppData().getBaseURL());
 
-        PageBuilder<LoginPage> loginPagePageBuilder = new PageBuilder<>();
-        LoginPage loginPage = loginPagePageBuilder.getPage("login");
+        LoginPage loginPage = pageBuilder.getPage("login");
         Assert.assertTrue(loginPage.isLoginPageOpen(), "The " + loginPage.pageName + " isn't yet open.");
 
         Assert.assertTrue(loginPage.isLoginPageLoaded(), "The " + loginPage.pageName + " isn't yet loaded");
     }
+
+    @Test
+    void test() {}
 
     @AfterClass
     public void tearDown() {
