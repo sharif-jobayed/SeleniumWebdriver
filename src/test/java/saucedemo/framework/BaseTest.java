@@ -28,9 +28,6 @@ public class BaseTest {
         Assert.assertTrue(loginPage.isLoginPageLoaded(), "The " + loginPage.pageName + " isn't yet loaded");
     }
 
-    @Test
-    void test() {}
-
     @AfterClass
     public void tearDown() {
         getDriver().quit();
