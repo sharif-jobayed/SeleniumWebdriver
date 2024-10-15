@@ -18,6 +18,4 @@ public abstract class Page {
     public abstract Boolean isPageOpen();
 
     public abstract Boolean isPageLoaded(Integer milliSeconds, By locator);
-
-    public abstract  <T extends BasePage> T getInstance(Class<T> tClass);
 }

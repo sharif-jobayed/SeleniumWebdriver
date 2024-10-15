@@ -22,7 +22,7 @@ public class BaseTest {
         getDriver().manage().window().setSize(new Dimension(1440, 900));
         getDriver().get(dataConverter.getAppData().getBaseURL());
 
-        LoginPage loginPage = pageBuilder.getPage("login");
+        LoginPage loginPage = pageBuilder.getPage("Login");
         Assert.assertTrue(loginPage.isLoginPageOpen(), "The " + loginPage.pageName + " isn't yet open.");
 
         Assert.assertTrue(loginPage.isLoginPageLoaded(), "The " + loginPage.pageName + " isn't yet loaded");

@@ -48,14 +48,4 @@ public class BasePage extends Page {
             return false;
         }
     }
-
-    @Override
-    public <T extends BasePage> T getInstance(Class<T> tClass) {
-        try {
-            return tClass.getDeclaredConstructor(WebDriver.class).newInstance(getDriver());
-        } catch (InvocationTargetException | InstantiationException | IllegalAccessException |
-                 NoSuchMethodException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-    }
 }

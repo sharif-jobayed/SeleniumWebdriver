@@ -32,8 +32,12 @@ public class BaseElement {
         return getElement().isDisplayed();
     }
 
-    public BaseElement doClick() {
+    public void doClick() {
         getElement().click();
-        return this;
+    }
+
+    public void clearAndType(String text) {
+        getElement().clear();
+        getElement().sendKeys(text);
     }
 }
