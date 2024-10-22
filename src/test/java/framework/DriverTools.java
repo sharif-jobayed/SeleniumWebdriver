@@ -13,6 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Locale;
 
 public class DriverTools {
     private static WebDriver driver;
@@ -22,7 +23,7 @@ public class DriverTools {
     }
 
     private void setDriver(String driverTitle) {
-        switch (driverTitle.toLowerCase()) {
+        switch (driverTitle.toLowerCase(Locale.ROOT)) {
             case "chrome" -> driver = new ChromeDriver();
             case "firefox" -> driver = new FirefoxDriver();
             case "edge" -> driver = new EdgeDriver();

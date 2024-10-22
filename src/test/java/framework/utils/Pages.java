@@ -1,9 +1,7 @@
 package framework.utils;
 
 import org.openqa.selenium.By;
-import pages.ABTestingPage;
-import pages.AddRemoveElementsPage;
-import pages.HomePage;
+import pages.*;
 
 public class Pages {
     private final String BASE_URL;
@@ -33,6 +31,22 @@ public class Pages {
                 this.BASE_URL+"add_remove_elements/",
                 By.xpath("//h3[normalize-space()='Add/Remove Elements']"),
                 "Add Remove Elements page"
+        );
+    }
+
+    public DropdownPage getDropdownPage() {
+        return new DropdownPage(
+                BASE_URL+"dropdown",
+                By.xpath("//h3[text()='Dropdown List']"),
+                "Dropdown List page"
+        );
+    }
+
+    public JSAlertPage getJSAlertPage() {
+        return new JSAlertPage(
+                BASE_URL+"javascript_alerts",
+                By.xpath("//h3[text()='JavaScript Alerts']"),
+                "JS Alert page"
         );
     }
 }

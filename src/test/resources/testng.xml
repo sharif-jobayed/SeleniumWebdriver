@@ -5,6 +5,7 @@
         <classes>
             <class name="tests.HomePageTest"></class>
             <class name="tests.ABTestingPageTest"></class>
+            <class name="tests.DropdownPageTest"></class>
         </classes>
     </test>
 </suite>

@@ -8,7 +8,7 @@ public class ABTestingPageTest extends HomePageTest {
             description = "Check if the word 'split testing' exists in the paragraph",
             groups = {"ABTestingPage"},
             dependsOnMethods = {"testOpenABTestingPage"},
-            priority = 2
+            priority = 1
     )
     void testTargetTextExistence() {
         Assert.assertTrue(getPages().getABTestingPage().hasTargetText());

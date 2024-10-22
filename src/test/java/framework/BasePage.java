@@ -1,8 +1,10 @@
 package framework;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import static framework.DriverTools.getDriver;
 import static framework.DriverTools.getXWait;
@@ -53,5 +55,15 @@ public class BasePage {
                 By.xpath("//a[contains(text(),'"+text+"')]"),
                 text+" element"
         );
+    }
+
+    public BasePage navigateBack() {
+        getDriver().navigate().back();
+        return this;
+    }
+
+    public Alert selectOpenAlert() {
+        Alert alert = getDriver().switchTo().alert();
+        return alert;
     }
 }

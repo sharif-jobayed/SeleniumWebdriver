@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -63,5 +64,10 @@ public class BaseElement {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    public BaseElement selectFromDropdown(Integer listItem) {
+        new Select(this.getElement()).selectByIndex(listItem);
+        return this;
     }
 }
