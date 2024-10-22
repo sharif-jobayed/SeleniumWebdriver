@@ -113,6 +113,11 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    public HomePage openIFramePage() {
+        this.getByText("iFrame").doClick();
+        return this;
+    }
+
     public HomePage openGeolocationPage() {
         this.getByText("Geolocation").doClick();
         return this;

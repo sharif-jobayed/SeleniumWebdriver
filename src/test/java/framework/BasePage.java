@@ -3,6 +3,7 @@ package framework;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.devtools.v127.page.model.Frame;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -65,5 +66,10 @@ public class BasePage {
     public Alert selectOpenAlert() {
         Alert alert = getDriver().switchTo().alert();
         return alert;
+    }
+
+    public BasePage getIFrame() {
+        getDriver().switchTo().frame("mce_0_ifr");
+        return this;
     }
 }

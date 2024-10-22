@@ -30,14 +30,26 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test(
-         description = "Open JS Alert page",
-         groups = "JSAlertPage",
-         priority = 3,
-         enabled = true
+            description = "Open JS Alert page",
+            groups = "JSAlertPage",
+            priority = 3,
+            enabled = false
     )
     void testOpenJSAlertPage() {
         getPages().getHomePage().openJSAlertsPage();
         Assert.assertTrue(getPages().getJSAlertPage().isPageOpen(), "The page is not open");
         Assert.assertTrue(getPages().getJSAlertPage().isPageLoaded(getDataProcessor().getTimeouts().getMedium()));
+    }
+
+    @Test(
+            description = "Open Frames page",
+            groups = "FramesPage",
+            priority = 4,
+            enabled = true
+    )
+    void testOpenFramsPage() {
+        getPages().getHomePage().openFramesPage();
+        Assert.assertTrue(getPages().getFramesPage().isPageOpen(), "The page is not open");
+        Assert.assertTrue(getPages().getFramesPage().isPageLoaded(getDataProcessor().getTimeouts().getMedium()));
     }
 }

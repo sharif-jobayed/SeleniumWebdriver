@@ -49,4 +49,20 @@ public class Pages {
                 "JS Alert page"
         );
     }
+
+    public FramesPage getFramesPage() {
+        return new FramesPage(
+                BASE_URL+"frames",
+                By.xpath("//h3[normalize-space()='Frames']"),
+                "Frames page"
+        );
+    }
+
+    public IFramePage getIFramePage() {
+        return new IFramePage(
+                BASE_URL+"iframe",
+                By.xpath("//h3[contains(normalize-space(),'An iFrame containing')]"),
+                "iFrame page"
+        );
+    }
 }

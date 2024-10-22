@@ -3,8 +3,12 @@ package framework;
 import framework.utils.DataProcessor;
 import framework.utils.Pages;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.io.File;
 
 import static framework.DriverTools.*;
 
