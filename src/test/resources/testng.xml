@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="Regression suite" parallel="classes" thread-count="2">
+    <test verbose="2" preserve-order="true" name="The Internet Heroku App Test" parallel="tests">
         <classes>
             <class name="tests.HomePageTest"></class>
-            <class name="tests.ABTestingPageTest"></class>
-            <class name="tests.DropdownPageTest"></class>
         </classes>
     </test>
 </suite>

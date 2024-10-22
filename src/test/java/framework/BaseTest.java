@@ -21,7 +21,7 @@ public class BaseTest {
         return new Pages();
     }
 
-    @BeforeClass
+    @BeforeMethod
     protected void setUp() {
         new DriverTools("Edge");
         getDriver().manage().window().setSize(new Dimension(1440, 900));
@@ -30,7 +30,7 @@ public class BaseTest {
         Assert.assertTrue(getPages().getHomePage().isPageLoaded(getDataProcessor().getTimeouts().getMedium()), "The page is not loaded");
     }
 
-    @AfterClass
+    @AfterMethod
     protected void tearDown() {
         getDriver().close();
     }

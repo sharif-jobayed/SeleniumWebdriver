@@ -9,7 +9,7 @@ public class HomePageTest extends BaseTest {
             description = "Open AB Testing page",
             groups = {"ABTestingPage"},
             priority = 1,
-            enabled = false
+            enabled = true
     )
     void testOpenABTestingPage() {
         getPages().getHomePage().openABTestingPage();
@@ -21,7 +21,7 @@ public class HomePageTest extends BaseTest {
             description = "Open Dropdown page",
             groups = "DropdownPage",
             priority = 2,
-            enabled = false
+            enabled = true
     )
     void testOpenDropdownPage() {
         getPages().getHomePage().openDropdownPage();
@@ -33,7 +33,7 @@ public class HomePageTest extends BaseTest {
             description = "Open JS Alert page",
             groups = "JSAlertPage",
             priority = 3,
-            enabled = false
+            enabled = true
     )
     void testOpenJSAlertPage() {
         getPages().getHomePage().openJSAlertsPage();
@@ -51,5 +51,15 @@ public class HomePageTest extends BaseTest {
         getPages().getHomePage().openFramesPage();
         Assert.assertTrue(getPages().getFramesPage().isPageOpen(), "The page is not open");
         Assert.assertTrue(getPages().getFramesPage().isPageLoaded(getDataProcessor().getTimeouts().getMedium()));
+    }
+
+    @Test(
+            description = "Scroll to 'Typos' link",
+            groups = "",
+            priority = 5,
+            enabled = true
+    )
+    void testScrollToTyposLink() {
+        getPages().getHomePage().getTyposLink().scrollToElement();
     }
 }

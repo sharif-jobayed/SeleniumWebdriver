@@ -3,12 +3,10 @@ package framework;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.devtools.v127.page.model.Frame;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 
-import static framework.DriverTools.getDriver;
-import static framework.DriverTools.getXWait;
+import static framework.DriverTools.*;
 
 public class BasePage {
     private final String PAGE_URL;
@@ -75,6 +73,16 @@ public class BasePage {
 
     public BasePage returnToDefaultContent() {
         getDriver().switchTo().defaultContent();
+        return this;
+    }
+
+    public BasePage openInNewTab(By link) {
+        getJS().executeScript("window.open(argument[0], '_blank')", link);
+        return this;
+    }
+
+    public BasePage scrollBackToTop() {
+        getJS().executeScript("window.scrollTo(0, 0)");
         return this;
     }
 }

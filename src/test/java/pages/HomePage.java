@@ -1,11 +1,23 @@
 package pages;
 
+import framework.BaseElement;
 import framework.BasePage;
 import org.openqa.selenium.By;
 
 public class HomePage extends BasePage {
+    private BaseElement typosLink;
+
     public HomePage(String PAGE_URL, By PAGE_IDENTIFIER, String PAGE_NAME) {
         super(PAGE_URL, PAGE_IDENTIFIER, PAGE_NAME);
+
+        this.typosLink = new BaseElement(
+                By.xpath("//a[normalize-space()='Typos']"),
+                "Typos link"
+        );
+    }
+
+    public BaseElement getTyposLink() {
+        return this.typosLink;
     }
 
     public HomePage openABTestingPage() {
