@@ -5,5 +5,11 @@
         <classes>
             <class name="tests.HomePageTest"></class>
         </classes>
+
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="testOpenABTestingPage" />-->
+<!--            </run>-->
+<!--        </groups>-->
     </test>
 </suite>
