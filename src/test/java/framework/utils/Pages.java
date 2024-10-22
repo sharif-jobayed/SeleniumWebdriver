@@ -14,7 +14,7 @@ public class Pages {
 
     public HomePage getHomePage() {
         return new HomePage(
-                this.BASE_URL+"",
+                this.BASE_URL,
                 By.xpath("//h1[@class='heading']"),
                 "Home page"
         );
