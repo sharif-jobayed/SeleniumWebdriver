@@ -72,4 +72,9 @@ public class BasePage {
         getDriver().switchTo().frame("mce_0_ifr");
         return this;
     }
+
+    public BasePage returnToDefaultContent() {
+        getDriver().switchTo().defaultContent();
+        return this;
+    }
 }
