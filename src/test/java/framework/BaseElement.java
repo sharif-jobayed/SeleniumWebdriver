@@ -51,8 +51,13 @@ public class BaseElement {
         return getElement().isDisplayed();
     }
 
+//    public BaseElement scrollToElement() {
+//        getActions().scrollToElement(getElement());
+//        return this;
+//    }
+
     public BaseElement scrollToElement() {
-        getActions().scrollToElement(getElement());
+        getJS().executeScript("arguments[0].scrollIntoView()", getElement());
         return this;
     }
 
