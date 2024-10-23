@@ -57,7 +57,8 @@ public class BaseElement {
 //    }
 
     public BaseElement scrollToElement() {
-        getJS().executeScript("arguments[0].scrollIntoView()", getElement());
+        String jsScroll = "arguments[0].scrollIntoView()";
+        getJS().executeScript(jsScroll, getElement());
         return this;
     }
 
@@ -71,8 +72,13 @@ public class BaseElement {
         }
     }
 
-    public BaseElement selectFromDropdown(Integer listItem) {
-        new Select(this.getElement()).selectByIndex(listItem);
+    public BaseElement selectFromDropdown(Integer item) {
+        new Select(this.getElement()).selectByIndex(item);
+        return this;
+    }
+
+    public BaseElement hoverOnIt() {
+        getActions().moveToElement(getElement());
         return this;
     }
 }

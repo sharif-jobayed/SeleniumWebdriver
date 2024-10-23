@@ -77,12 +77,14 @@ public class BasePage {
     }
 
     public BasePage openInNewTab(By link) {
-        getJS().executeScript("window.open(argument[0], '_blank')", link);
+        String jsNewTab = "window.open(arguments[0], '_blank')";
+        getJS().executeScript(jsNewTab, link);
         return this;
     }
 
     public BasePage scrollBackToTop() {
-        getJS().executeScript("window.scrollTo(0, 0)");
+        String jsToTop = "window.scrollTo(0, 0)";
+        getJS().executeScript(jsToTop);
         return this;
     }
 }
