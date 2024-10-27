@@ -85,6 +85,7 @@ nbproject/private/
 *.ear
 *.jcache
 *.jfr
+gradle.properties
 
 # Maven-specific
 pom.xml.tag
