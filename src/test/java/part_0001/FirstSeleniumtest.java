@@ -1,4 +1,4 @@
-package part1;
+package part_0001;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class FirstSeleniumtest {
-    WebDriver driver;
+    private WebDriver driver;
 
     @BeforeClass
     protected void setUp() {
