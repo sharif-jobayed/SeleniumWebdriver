@@ -15,7 +15,7 @@ public class ReliSource_Test {
 
     WebDriver driver = new ChromeDriver();
     WebDriverWait xWait = new WebDriverWait(driver, Duration.ofMillis(5000));
-    JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
     @BeforeMethod
     protected void setUp() {
@@ -34,7 +34,7 @@ public class ReliSource_Test {
 
         WebElement itemBD = driver.findElement(By.xpath("//a[@tabindex='-1'][normalize-space()='Bangladesh']"));
         itemBD.click();
-        String inputText = (String) jsExecutor.executeScript("return arguments[0].value", countrySearchField);
+        String inputText = (String) js.executeScript("return arguments[0].value;", countrySearchField);
         Assert.assertEquals(inputText, "Bangladesh", "The country input is not correct.");
     }
 
