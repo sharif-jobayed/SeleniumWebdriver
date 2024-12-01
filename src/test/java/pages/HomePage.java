@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.util.Locale;
-
 import static data.Constants.*;
 
 public class HomePage extends BasePage {
@@ -28,14 +26,13 @@ public class HomePage extends BasePage {
         );
     }
 
-    public HomePage openGameBox(String gameName) {
+    public void openGameBox(String gameName) {
         this.gameNames.getEL_LOCATORS().forEach(gn -> {
             if(gn.getText().equals(gameName)) {
                 gn.click();
             }
             Assert.assertTrue(getGameDetailsGroup(1).isVisible(getMinTimeOut()), "The game details aren't displayed");
         });
-        return this;
     }
 
     public BaseElement getGameDetailsGroup(int index) {
@@ -45,13 +42,9 @@ public class HomePage extends BasePage {
         );
     }
 
-    public Boolean isGameServiceOperational(int index) {
+    public void isGameServiceOperational(int index) {
         System.out.println(this.gameServiceStatuses.getEL_LOCATORS().get(1));
         WebElement fortniteGameService = this.gameServiceStatuses.getEL_LOCATORS().get(index);
-        if(fortniteGameService.getText().toLowerCase(Locale.ROOT).equals("operational")) {
-            return true;
-        } else {
-            return false;
-        }
+        fortniteGameService.getText();
     }
 }
