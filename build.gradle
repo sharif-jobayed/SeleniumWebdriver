@@ -24,11 +24,11 @@ configurations {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
     // https://mvnrepository.com/artifact/org.testng/testng
     testImplementation 'org.testng:testng:7.10.2'
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
-    testImplementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.google.code.gson:gson:2.11.0'
 
     // Import allure-bom to ensure correct versions of all the dependencies are used
     testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
@@ -39,6 +39,6 @@ dependencies {
 }
 
 test {
-    useTestNG()
+    useJUnitPlatform()
     jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
 }
