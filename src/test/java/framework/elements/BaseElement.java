@@ -42,7 +42,23 @@ public class BaseElement {
         return this.getElement().isEnabled();
     }
 
-    public void waitTillVisible(Integer timeout) {
+    public Boolean isElementChecked() {
+        return this.getElement().isSelected();
+    }
+
+    public BaseElement waitTillElementIsVisible(Integer timeout) {
         new WebDriverWait(this.driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.visibilityOfElementLocated(this.locator));
+        return this;
+    }
+
+    public BaseElement clickElement() {
+        this.getElement().click();
+        return this;
+    }
+
+    public BaseElement clearAndTypeInElement(String text) {
+        this.getElement().clear();
+        this.getElement().sendKeys(text);
+        return this;
     }
 }
