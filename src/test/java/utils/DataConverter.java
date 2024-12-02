@@ -13,8 +13,8 @@ public class DataConverter {
 
     public DataConverter() {
         this.GSON = new Gson();
-        this.AppData = new File("./src/java/test/data/appData.json");
-        this.TestData = new File("./src/java/test/data/testData.json");
+        this.AppData = new File("./src/test/java/data/appData.json");
+        this.TestData = new File("./src/test/java/data/testData.json");
     }
 
     public ConvertedData.AppData getAppData() {

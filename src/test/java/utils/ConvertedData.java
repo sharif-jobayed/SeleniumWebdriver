@@ -1,7 +1,6 @@
 package utils;
 
 public class ConvertedData {
-
     // AppData
     public static class AppData {
         private String BaseURL;
@@ -26,14 +25,17 @@ public class ConvertedData {
             private Integer Max;
 
             public Integer getMin() {
+                System.out.println("In the Min Timeout");
                 return this.Min;
             }
 
             public Integer getMed() {
+                System.out.println("In the Med Timeout");
                 return this.Med;
             }
 
             public Integer getMax() {
+                System.out.println("In the Max Timeout");
                 return this.Max;
             }
         }
