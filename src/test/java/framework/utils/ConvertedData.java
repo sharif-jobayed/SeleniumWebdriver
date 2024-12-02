@@ -1,12 +1,39 @@
-package utils;
+package framework.utils;
 
 public class ConvertedData {
     // AppData
     public static class AppData {
-        private String BaseURL;
 
-        public String getBaseURL() {
-            return this.BaseURL;
+        public static class AppDataBody {
+            private String BaseURL;
+            private Browsers Browsers;
+
+            public String getBaseURL() {
+                return this.BaseURL;
+            }
+
+            public Browsers getBrowsers() {
+                return this.Browsers;
+            }
+        }
+
+        // Browsers
+        public static class Browsers {
+            private String Firefox;
+            private String Edge;
+            private String Chrome;
+
+            public String getFirefox() {
+                return this.Firefox;
+            }
+
+            public String getEdge() {
+                return this.Edge;
+            }
+
+            public String getChrome() {
+                return this.Chrome;
+            }
         }
     }
 

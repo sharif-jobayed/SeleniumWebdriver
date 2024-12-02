@@ -1,3 +1,9 @@
 {
-  "BaseURL": "https://www.wikipedia.org/"
+  "BaseURL": "https://www.wikipedia.org/",
+
+  "Browsers": {
+    "Firefox": "firefox",
+    "Edge": "edge",
+    "Chrome": "chrome"
+  }
 }

@@ -1,4 +1,4 @@
-package utils;
+package framework.utils;
 
 import com.google.gson.Gson;
 
@@ -17,9 +17,9 @@ public class DataConverter {
         this.TestData = new File("./src/test/java/data/testData.json");
     }
 
-    public ConvertedData.AppData getAppData() {
+    public ConvertedData.AppData.AppDataBody getAppData() {
         try (FileReader reader = new FileReader(this.AppData)) {
-            return this.GSON.fromJson(reader, ConvertedData.AppData.class);
+            return this.GSON.fromJson(reader, ConvertedData.AppData.AppDataBody.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
