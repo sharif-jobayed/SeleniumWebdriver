@@ -15,7 +15,7 @@ public class FileActions {
     public static File getDOWNLOADED_FILE(){return DOWNLOADED_FILE;}
     public static boolean doesFileExists(File file){
         try{
-            DriverTools.getiConWait().waitFor(() -> file.exists());
+            DriverTools.getiConWait().waitFor(file::exists);
         }catch(Exception err){
             AqualityServices.getLogger().error(err.getMessage());
             return false;
