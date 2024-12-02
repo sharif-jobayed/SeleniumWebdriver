@@ -12,30 +12,36 @@ public class ConvertedData {
 
     // TestData
     public static class TestData {
-        private String SearchTitle;
 
-        public String getSearchTitle() {
-            return this.SearchTitle;
+        // TestDataBody
+        public static class TestDataBody {
+            private Timeouts Timeouts;
+            private String SearchTitle;
+
+            public Timeouts getTimeouts() {
+                return this.Timeouts;
+            }
+
+            public String getSearchTitle() {
+                return this.SearchTitle;
+            }
         }
 
         // Timeouts
         public static class Timeouts {
-            private Integer Min;
-            private Integer Med;
-            private Integer Max;
+            private int Min;
+            private int Med;
+            private int Max;
 
-            public Integer getMin() {
-                System.out.println("In the Min Timeout");
+            public int getMin() {
                 return this.Min;
             }
 
-            public Integer getMed() {
-                System.out.println("In the Med Timeout");
+            public int getMed() {
                 return this.Med;
             }
 
-            public Integer getMax() {
-                System.out.println("In the Max Timeout");
+            public int getMax() {
                 return this.Max;
             }
         }

@@ -18,8 +18,6 @@ public class DataConverter {
     }
 
     public ConvertedData.AppData getAppData() {
-        System.out.println("In the ConvertedData.AppData");
-
         try (FileReader reader = new FileReader(this.AppData)) {
             return this.GSON.fromJson(reader, ConvertedData.AppData.class);
         } catch (IOException e) {
@@ -27,21 +25,9 @@ public class DataConverter {
         }
     }
 
-    public ConvertedData.TestData getTestData() {
-        System.out.println("In the ConvertedData.TestData");
-
+    public ConvertedData.TestData.TestDataBody getTestData() {
         try (FileReader reader = new FileReader(this.TestData)) {
-            return this.GSON.fromJson(reader, ConvertedData.TestData.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public ConvertedData.TestData.Timeouts getTimeouts() {
-        System.out.println("In the ConvertedData.TestData.Timeouts");
-
-        try (FileReader reader = new FileReader(this.TestData)) {
-            return this.GSON.fromJson(reader, ConvertedData.TestData.Timeouts.class);
+            return this.GSON.fromJson(reader, ConvertedData.TestData.TestDataBody.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

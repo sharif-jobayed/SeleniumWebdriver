@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
         DataConverter dc = new DataConverter();
 
-        System.out.println(dc.getAppData().getBaseURL());
-        System.out.println(dc.getTestData().getSearchTitle());
-        System.out.println(dc.getTimeouts().getMin());
+        System.out.println("From AppData: " + dc.getAppData().getBaseURL());
+        System.out.println("From TestData: " + dc.getTestData().getSearchTitle());
+        System.out.println("From Timeouts: " + dc.getTestData().getTimeouts().getMax());
     }
 }
