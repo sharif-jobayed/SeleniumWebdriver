@@ -1,9 +1,9 @@
 package framework.elements;
 
-import framework.utils.DataConverter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,10 +14,9 @@ import java.util.List;
 public class BaseElement {
     private WebDriver driver;
     private By locator;
-    private DataConverter dataConverter;
 
-    public BaseElement(By locator) {
-        this.dataConverter = new DataConverter();
+    public BaseElement(WebDriver driver, By locator) {
+        this.driver = driver;
         this.locator = locator;
     }
 
@@ -27,6 +26,10 @@ public class BaseElement {
 
     public List<WebElement> getElements() {
         return this.driver.findElements(this.locator);
+    }
+
+    public String getElementText() {
+        return this.getElement().getText();
     }
 
     public Boolean doElementsExist() {
@@ -59,6 +62,11 @@ public class BaseElement {
     public BaseElement clearAndTypeInElement(String text) {
         this.getElement().clear();
         this.getElement().sendKeys(text);
+        return this;
+    }
+
+    public BaseElement scrollToElement() {
+        Actions actions = new Actions(this.driver).scrollToElement(this.getElement());
         return this;
     }
 }
