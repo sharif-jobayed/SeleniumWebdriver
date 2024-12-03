@@ -1,5 +1,6 @@
 package framework.utils;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.SearchPage;
@@ -13,6 +14,7 @@ public class Pages {
         this.baseURL = new DataConverter().getAppData().getBaseURL();
     }
 
+    @Step("Call the Search Page")
     public SearchPage getSearchPage() {
         return new SearchPage(
                 this.driver,

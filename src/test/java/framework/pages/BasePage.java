@@ -1,5 +1,6 @@
 package framework.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,22 +18,26 @@ public class BasePage extends Page {
     }
 
     @Override
-    protected String getPageURL() {
+    @Step("Get this page's URL")
+    public String getPageURL() {
         return this.pageURL;
     }
 
     @Override
-    protected String getCurrentPageURL() {
+    @Step("Get current page's URL")
+    public String getCurrentPageURL() {
         return this.driver.getCurrentUrl();
     }
 
     @Override
-    protected String getPageTitle() {
+    @Step("Get current page's title")
+    public String getPageTitle() {
         return this.driver.getTitle();
     }
 
     @Override
-    protected Boolean isPageOpen() {
+    @Step("Check if the page is open")
+    public Boolean isPageOpen() {
         try {
             return this.pageIdentifier.isElementVisible();
         } catch (Exception e) {
@@ -41,7 +46,8 @@ public class BasePage extends Page {
     }
 
     @Override
-    protected Boolean isPageLoaded(Integer timeout) {
+    @Step("Check if the page is loaded")
+    public Boolean isPageLoaded(Integer timeout) {
         try {
             this.pageIdentifier.scrollToElement();
             this.pageIdentifier.waitTillElementIsVisible(timeout);
@@ -52,7 +58,8 @@ public class BasePage extends Page {
     }
 
     @Override
-    protected Boolean isAlertOpen(Integer timeout) {
+    @Step("Check if the alert is open")
+    public Boolean isAlertOpen(Integer timeout) {
         try {
             new WebDriverWait(this.driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.alertIsPresent());
             return true;
@@ -62,31 +69,36 @@ public class BasePage extends Page {
     }
 
     @Override
-    protected Page acceptAlert() {
+    @Step("Accept current alert")
+    public Page acceptAlert() {
         this.driver.switchTo().alert().accept();
         return this;
     }
 
     @Override
-    protected Page denyAlert() {
+    @Step("Deny current alert")
+    public Page denyAlert() {
         this.driver.switchTo().alert().dismiss();
         return this;
     }
 
     @Override
-    protected Page typeInAlert(String text) {
+    @Step("Type in currently open alert")
+    public Page typeInAlert(String text) {
         this.driver.switchTo().alert().sendKeys(text);
         return this;
     }
 
     @Override
-    protected Page toDefaultContent() {
+    @Step("Get back to the default content")
+    public Page toDefaultContent() {
         this.driver.switchTo().defaultContent();
         return this;
     }
 
     @Override
-    protected Page openInNewTab() {
+    @Step("Open the URL in a new tab/window")
+    public Page openInNewTab() {
         ((JavascriptExecutor) this.driver).executeScript("window.open('" + this.getPageURL() + "', '_blank');");
 
         for (String handle : this.driver.getWindowHandles()) {
@@ -96,7 +108,8 @@ public class BasePage extends Page {
     }
 
     @Override
-    protected Page closeCurrentTab() {
+    @Step("Close currently open tab/window")
+    public Page closeCurrentTab() {
         this.driver.close();
 
         if (!this.driver.getWindowHandles().isEmpty()) {
@@ -107,7 +120,8 @@ public class BasePage extends Page {
     }
 
     @Override
-    protected Page switchToTab(Integer tabIndex) {
+    @Step("Switch to the target tab/window")
+    public Page switchToTab(Integer tabIndex) {
         Set<String> windowHandles = this.driver.getWindowHandles();
         List<String> handlesList = new ArrayList<>(windowHandles);
 
