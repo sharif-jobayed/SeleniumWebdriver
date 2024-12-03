@@ -39,6 +39,6 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useTestNG()
     jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
 }
