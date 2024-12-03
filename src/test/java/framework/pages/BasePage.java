@@ -1,6 +1,5 @@
 package framework.pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,25 +17,21 @@ public class BasePage extends Page {
     }
 
     @Override
-    @Step("Get this page's URL")
     public String getPageURL() {
         return this.pageURL;
     }
 
     @Override
-    @Step("Get current page's URL")
     public String getCurrentPageURL() {
         return this.driver.getCurrentUrl();
     }
 
     @Override
-    @Step("Get current page's title")
     public String getPageTitle() {
         return this.driver.getTitle();
     }
 
     @Override
-    @Step("Check if the page is open")
     public Boolean isPageOpen() {
         try {
             return this.pageIdentifier.isElementVisible();
@@ -46,7 +41,6 @@ public class BasePage extends Page {
     }
 
     @Override
-    @Step("Check if the page is loaded")
     public Boolean isPageLoaded(Integer timeout) {
         try {
             this.pageIdentifier.scrollToElement();
@@ -58,7 +52,6 @@ public class BasePage extends Page {
     }
 
     @Override
-    @Step("Check if the alert is open")
     public Boolean isAlertOpen(Integer timeout) {
         try {
             new WebDriverWait(this.driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.alertIsPresent());
@@ -69,35 +62,30 @@ public class BasePage extends Page {
     }
 
     @Override
-    @Step("Accept current alert")
     public Page acceptAlert() {
         this.driver.switchTo().alert().accept();
         return this;
     }
 
     @Override
-    @Step("Deny current alert")
     public Page denyAlert() {
         this.driver.switchTo().alert().dismiss();
         return this;
     }
 
     @Override
-    @Step("Type in currently open alert")
     public Page typeInAlert(String text) {
         this.driver.switchTo().alert().sendKeys(text);
         return this;
     }
 
     @Override
-    @Step("Get back to the default content")
     public Page toDefaultContent() {
         this.driver.switchTo().defaultContent();
         return this;
     }
 
     @Override
-    @Step("Open the URL in a new tab/window")
     public Page openInNewTab() {
         ((JavascriptExecutor) this.driver).executeScript("window.open('" + this.getPageURL() + "', '_blank');");
 
@@ -108,7 +96,6 @@ public class BasePage extends Page {
     }
 
     @Override
-    @Step("Close currently open tab/window")
     public Page closeCurrentTab() {
         this.driver.close();
 
@@ -120,7 +107,6 @@ public class BasePage extends Page {
     }
 
     @Override
-    @Step("Switch to the target tab/window")
     public Page switchToTab(Integer tabIndex) {
         Set<String> windowHandles = this.driver.getWindowHandles();
         List<String> handlesList = new ArrayList<>(windowHandles);
