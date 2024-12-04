@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import static framework.tests.BaseTest.getDriver;
+
 public class BasePage extends Page {
     public BasePage(WebDriver driver, String pageURL, By pageIdentifier) {
         super(driver, pageURL, pageIdentifier);
@@ -23,12 +25,12 @@ public class BasePage extends Page {
 
     @Override
     public String getCurrentPageURL() {
-        return this.driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     @Override
     public String getPageTitle() {
-        return this.driver.getTitle();
+        return getDriver().getTitle();
     }
 
     @Override
@@ -54,7 +56,7 @@ public class BasePage extends Page {
     @Override
     public Boolean isAlertOpen(Integer timeout) {
         try {
-            new WebDriverWait(this.driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.alertIsPresent());
+            new WebDriverWait(getDriver(), Duration.ofSeconds(timeout)).until(ExpectedConditions.alertIsPresent());
             return true;
         } catch (Exception e) {
             return false;
@@ -63,59 +65,59 @@ public class BasePage extends Page {
 
     @Override
     public Page acceptAlert() {
-        this.driver.switchTo().alert().accept();
+        getDriver().switchTo().alert().accept();
         return this;
     }
 
     @Override
     public Page denyAlert() {
-        this.driver.switchTo().alert().dismiss();
+        getDriver().switchTo().alert().dismiss();
         return this;
     }
 
     @Override
     public Page typeInAlert(String text) {
-        this.driver.switchTo().alert().sendKeys(text);
+        getDriver().switchTo().alert().sendKeys(text);
         return this;
     }
 
     @Override
     public Page toDefaultContent() {
-        this.driver.switchTo().defaultContent();
+        getDriver().switchTo().defaultContent();
         return this;
     }
 
     @Override
     public Page openInNewTab() {
-        ((JavascriptExecutor) this.driver).executeScript("window.open('" + this.getPageURL() + "', '_blank');");
+        ((JavascriptExecutor) getDriver()).executeScript("window.open('" + this.getPageURL() + "', '_blank');");
 
-        for (String handle : this.driver.getWindowHandles()) {
-            this.driver.switchTo().window(handle);
+        for (String handle : getDriver().getWindowHandles()) {
+            getDriver().switchTo().window(handle);
         }
         return this; // Return the current instance
     }
 
     @Override
     public Page closeCurrentTab() {
-        this.driver.close();
+        getDriver().close();
 
-        if (!this.driver.getWindowHandles().isEmpty()) {
-            String prevTab = this.driver.getWindowHandles().iterator().next();
-            this.driver.switchTo().window(prevTab);
+        if (!getDriver().getWindowHandles().isEmpty()) {
+            String prevTab = getDriver().getWindowHandles().iterator().next();
+            getDriver().switchTo().window(prevTab);
         }
         return this;
     }
 
     @Override
     public Page switchToTab(Integer tabIndex) {
-        Set<String> windowHandles = this.driver.getWindowHandles();
+        Set<String> windowHandles = getDriver().getWindowHandles();
         List<String> handlesList = new ArrayList<>(windowHandles);
 
         if (tabIndex < 0 || tabIndex >= handlesList.size()) {
             throw new IllegalArgumentException("Invalid tab index: " + tabIndex);
         }
 
-        this.driver.switchTo().window(handlesList.get(tabIndex));
+        getDriver().switchTo().window(handlesList.get(tabIndex));
         return this;
     }
 }

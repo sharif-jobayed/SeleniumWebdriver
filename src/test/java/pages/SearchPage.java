@@ -14,18 +14,9 @@ public class SearchPage extends BasePage {
     public SearchPage(WebDriver driver, String pageURL, By pageIdentifier) {
         super(driver, pageURL, pageIdentifier);
 
-        this.searchField = new BaseElement(
-                this.driver,
-                By.xpath("//input[@id='searchInput']")
-        );
-        this.searchListDropdown = new BaseElement(
-                this.driver,
-                By.xpath("//div[contains(@class,'suggestions-dropdown')]")
-        );
-        this.firstResultItem = new BaseElement(
-                this.driver,
-                By.xpath("//a[contains(@class,'suggestion-link')][1]")
-        );
+        this.searchField = new BaseElement(By.xpath("//input[@id='searchInput']"));
+        this.searchListDropdown = new BaseElement(By.xpath("//div[contains(@class,'suggestions-dropdown')]"));
+        this.firstResultItem = new BaseElement(By.xpath("//a[contains(@class,'suggestion-link')][1]"));
     }
 
     public void inputSearchContext() {

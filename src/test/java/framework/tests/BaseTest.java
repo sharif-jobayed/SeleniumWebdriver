@@ -4,54 +4,62 @@ import framework.utils.DataConverter;
 import framework.utils.Pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import java.util.Locale;
 
 public class BaseTest {
-    protected WebDriver driver;
+    private static WebDriver driver;
     protected DataConverter dataConverter;
     protected Pages pages;
 
     protected BaseTest() {
         this.dataConverter = new DataConverter();
-        this.setDriver(this.dataConverter.getAppData().getBrowsers().getEdge());
-        this.pages = new Pages(this.driver);
+        this.pages = new Pages(getDriver());
     }
 
-    private void setDriver(String driverTitle) {
+    private static void setDriver(String driverTitle) {
         String dt = driverTitle.toLowerCase(Locale.ROOT);
-        if (dt.contains(this.dataConverter.getAppData().getBrowsers().getFirefox())) {
-            this.driver = new FirefoxDriver();
-        } else if (dt.contains(this.dataConverter.getAppData().getBrowsers().getEdge())) {
-            this.driver = new EdgeDriver();
-        } else if (dt.contains(this.dataConverter.getAppData().getBrowsers().getChrome())) {
-            this.driver = new ChromeDriver();
+        if (dt.contains("firefox")) {
+            driver = new FirefoxDriver();
+        } else if (dt.contains("edge")) {
+            driver = new EdgeDriver();
+        } else if (dt.contains("chrome")) {
+            driver = new ChromeDriver();
         } else {
-            throw new InvalidArgumentException("Invalid driver request");
+            throw new IllegalArgumentException("Invalid driver request");
         }
-
     }
 
-    @BeforeMethod
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            String browser = new DataConverter().getAppData().getBrowsers().getEdge(); // Default browser
+            setDriver(browser);
+        }
+        return driver;
+    }
+
+    @BeforeSuite
     @Step("Initiate the session, resize the browser & go to 'https://www.wikipedia.org/'")
-    protected void setUP() {
-        this.driver.manage().window().setSize(new Dimension(1440, 900));
-        this.driver.get(this.dataConverter.getAppData().getBaseURL());
+    protected void setUp() {
+        getDriver().manage().window().setSize(new Dimension(1440, 900));
+        getDriver().get(dataConverter.getAppData().getBaseURL());
         Assert.assertTrue(this.pages.getSearchPage().isPageOpen(), "The page is not open");
-        Assert.assertTrue(this.pages.getSearchPage().isPageLoaded(this.dataConverter.getTestData().getTimeouts().getMed()), "The page is not loaded");
+        Assert.assertTrue(this.pages.getSearchPage().isPageLoaded(dataConverter.getTestData().getTimeouts().getMed()), "The page is not loaded");
     }
 
-    @AfterMethod
+    @AfterSuite
     @Step("Quit the test session")
     protected void tearDown() {
-        this.driver.quit();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

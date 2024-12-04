@@ -39,6 +39,8 @@ dependencies {
 }
 
 test {
-    useTestNG()
-    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+    useTestNG {
+        suites './src/test/resources/testng.xml'
+    }
+    jvmArgs = ["-javaagent:${configurations.agent.singleFile}"]
 }

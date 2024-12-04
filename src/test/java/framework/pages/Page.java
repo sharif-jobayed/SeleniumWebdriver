@@ -5,14 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public abstract class Page {
-    protected WebDriver driver;
     protected String pageURL;
     protected BaseElement pageIdentifier;
 
     public Page(WebDriver driver, String pageURL, By pageIdentifier) {
-        this.driver = driver;
         this.pageURL = pageURL;
-        this.pageIdentifier = new BaseElement(this.driver, pageIdentifier);
+        this.pageIdentifier = new BaseElement(pageIdentifier);
     }
 
     protected abstract String getPageURL();
