@@ -46,7 +46,7 @@ public class BaseTest {
     }
 
     @BeforeSuite
-    @Step("Initiate the session, resize the browser & go to 'https://www.wikipedia.org/'")
+    @Step("Initiate the session, resize the browser & go to the Base URL")
     protected void setUp() {
         getDriver().manage().window().setSize(new Dimension(1440, 900));
         getDriver().get(dataConverter.getAppData().getBaseURL());
