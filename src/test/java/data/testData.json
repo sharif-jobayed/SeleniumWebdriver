@@ -1,0 +1,9 @@
+{
+  "SearchTitle": "Imran Khan",
+
+  "Timeouts": {
+    "Min": 5,
+    "Med": 30,
+    "Max": 60
+  }
+}
