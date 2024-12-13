@@ -1,8 +1,9 @@
 package wikipedia_0001.steps;
 
 import io.cucumber.java.en.*;
+import wikipedia_0001.framework.BaseTest;
 
-public class SearchPageSteps {
+public class SearchPageSteps extends BaseTest {
     @Given("I'm on the {string} page")
     public void iAmOnPage(String pageName) {
         System.out.println("Step executed!");
