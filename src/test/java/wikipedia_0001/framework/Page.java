@@ -7,16 +7,9 @@ public abstract class Page {
     protected String pageURL;
     protected String pageName;
 
-    protected Page(WebDriver driver, String pageURL, String pageName) {
+    public Page(WebDriver driver, String pageURL, String pageName) {
         this.driver = driver;
-        this.pageURL = pageURL;
+        this.pageURL= pageURL;
         this.pageName = pageName;
     }
-
-    protected abstract String getPageURL();
-    protected abstract String getPageName();
-    protected abstract String getCurrentURL();
-    protected abstract Boolean isPageOpen(Integer timeout);
-    protected abstract Boolean isPageLoaded(Integer timeout);
-    protected abstract Boolean isAlertOpen(Integer timeout);
 }

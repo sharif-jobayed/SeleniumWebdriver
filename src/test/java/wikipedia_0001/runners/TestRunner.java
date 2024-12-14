@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/java/wikipedia_0001/features",
-        glue = "src/test/java/wikipedia_0001/steps"
+        glue = {"wikipedia_0001.runners", "wikipedia_0001.steps"}
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
     @DataProvider
