@@ -6,7 +6,7 @@ Feature: Search page
     And The "Search" page is loaded
 
     Scenario: Search for the context
-      When I type "Wasim Akram" in the search field
+      When I type "Wasim Akram" in the "Search" field
       Then The "Results" dropdown list is displayed
 
       When I click the first result from the search dropdown
