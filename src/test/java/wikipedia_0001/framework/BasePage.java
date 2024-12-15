@@ -103,6 +103,12 @@ public class BasePage extends Page {
     }
 
     @Override
+    public Page goToPage() {
+        this.driver.navigate().to(this.pageURL);
+        return this;
+    }
+
+    @Override
     public Page waitTillElementVisibility(By locator, Integer timeout) {
         try {
             new WebDriverWait(this.driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.visibilityOfElementLocated(locator));

@@ -5,9 +5,9 @@ Feature: Search page
     Then The "Search" page is open
     And The "Search" page is loaded
 
-    Scenario: Search for the context
-      When I type "Wasim Akram" in the "Search" field
-      Then The "Results" dropdown list is displayed
+  Scenario: Search for the context
+    When I type "Wasim Akram" in the "Search" field
+    Then The "Results" dropdown list is displayed
 
       When I click the first result from the search dropdown
       Then The "Details" page opens up

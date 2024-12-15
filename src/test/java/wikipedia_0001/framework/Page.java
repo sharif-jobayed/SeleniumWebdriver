@@ -41,6 +41,8 @@ public abstract class Page {
 
     protected abstract Boolean isElementChecked(By locator, Integer timeout);
 
+    protected abstract Page goToPage();
+
     protected abstract Page waitTillElementVisibility(By locator, Integer timeout);
 
     protected abstract Page clickElement(By locator);
