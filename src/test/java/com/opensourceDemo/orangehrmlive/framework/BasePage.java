@@ -9,8 +9,6 @@ import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.getDr
 import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.getXWait;
 
 public class BasePage extends Page {
-    private static final int DEFAULT_TIMEOUT = 10;
-
     protected BasePage() {
     }
 
@@ -27,10 +25,11 @@ public class BasePage extends Page {
 
     @Override
     public Page clearAndType(String text, By locator) {
-        this.isEnabled(locator, 10);
-        WebElement element = getDriver().findElement(locator);
-        element.clear();
-        element.sendKeys(text);
+        if(this.isEnabled(locator, 10)) {
+            WebElement element = getDriver().findElement(locator);
+            element.clear();
+            element.sendKeys(text);
+        }
         return this;
     }
 
