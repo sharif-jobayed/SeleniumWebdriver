@@ -25,7 +25,7 @@ public class BasePage extends Page {
 
     @Override
     public Page clearAndType(String text, By locator) {
-        if(this.isEnabled(locator, 10)) {
+        if (this.isEnabled(locator, 10)) {
             WebElement element = getDriver().findElement(locator);
             element.clear();
             element.sendKeys(text);
@@ -71,18 +71,6 @@ public class BasePage extends Page {
         } catch (Exception e) {
             System.err.println("Page title did not match within " + timeout + " seconds. Expected: " + pageURL);
             System.err.println("Exception: " + e.getMessage());
-            return false;
-        }
-    }
-
-
-    @Override
-    public Boolean isPageLoaded(By locator, Integer timeout) {
-        try {
-            getXWait(timeout).until(ExpectedConditions.presenceOfElementLocated(locator));
-            getXWait(timeout).until(ExpectedConditions.visibilityOfElementLocated(locator));
-            return true;
-        } catch (Exception e) {
             return false;
         }
     }

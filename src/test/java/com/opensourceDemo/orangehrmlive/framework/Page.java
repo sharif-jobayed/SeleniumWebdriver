@@ -22,7 +22,5 @@ public abstract class Page {
 
     protected abstract Boolean isPageOpen(String pageTitle, Integer timeout);
 
-    protected abstract Boolean isPageLoaded(By locator, Integer timeout);
-
     protected abstract <P extends BasePage> P getPageInstance(Class<P> pClass);
 }
