@@ -11,8 +11,8 @@ public class ApplyLeavePage extends BasePage {
     private By leaveTypeField;
     private By leaveTypeDropdownList;
     private By leaveTypes;
-    private By fromDate;
-    private By toDate;
+    private By fromDateFld;
+    private By toDateFld;
     private By commentsArea;
     private By applyBtn;
 
@@ -24,8 +24,8 @@ public class ApplyLeavePage extends BasePage {
         this.leaveTypeDropdownList = By.xpath("//div[@role='listbox']");
         this.leaveTypes = By.xpath("//div[@role='option']/span");
 
-        this.fromDate = By.xpath("//label[normalize-space()='From Date']/following::input[@placeholder='yyyy-dd-mm'][1]");
-        this.toDate = By.xpath("//label[normalize-space()='To Date']/following::input[@placeholder='yyyy-dd-mm'][1]");
+        this.fromDateFld = By.xpath("//label[normalize-space()='From Date']/following::input[@placeholder='yyyy-dd-mm'][1]");
+        this.toDateFld = By.xpath("//label[normalize-space()='To Date']/following::input[@placeholder='yyyy-dd-mm'][1]");
 
         this.commentsArea = By.xpath("//textarea[@spellcheck='false']");
 
@@ -57,25 +57,19 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public void selectFromDate() {
-        this.clearAndType("2025-11-06", this.fromDate);
+        this.clearAndType("2025-11-06", this.fromDateFld);
     }
 
-    public String getFromDate() {
-        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.fromDate));
+    public String getFromDateFld() {
+        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.fromDateFld));
     }
 
     public void selectToDate() {
-        System.out.println("To Date (Before Typing): " + this.getElement(this.toDate).getAttribute("value"));
-
-
-        this.clearAndType("2025-17-06", this.toDate);
-
-        System.out.println("To Date (After Typing): " + this.getElement(this.toDate).getAttribute("value"));
-
+        this.clearAndType("2025-17-06", this.toDateFld);
     }
 
-    public String getToDate() {
-        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.toDate));
+    public String getToDateFld() {
+        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.toDateFld));
     }
 
     public void writeComments() {
