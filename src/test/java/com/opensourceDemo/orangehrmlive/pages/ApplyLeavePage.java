@@ -22,7 +22,7 @@ public class ApplyLeavePage extends BasePage {
         this.toDateField = By.xpath("//input[@class='oxd-input oxd-input--focus']");
     }
 
-    public Boolean isNoLeavesAvailable() {
+    public Boolean isNoLeaveApplicable() {
         this.isVisible(this.noAvailableLeave, 5);
         return this.textOf(this.noAvailableLeave).equals("No Leave Types with Leave Balance");
     }

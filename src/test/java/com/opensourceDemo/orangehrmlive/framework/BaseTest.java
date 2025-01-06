@@ -12,7 +12,7 @@ public class BaseTest {
     protected final String BASE_URL = "https://opensource-demo.orangehrmlive.com/web/index.php/";
 
     @BeforeTest
-    @Step("I go to the \"https://opensource-demo.orangehrmlive.com/web/index.php/auth/login\"")
+    @Step("I go to the target URL")
     public void setUp() {
         new DriverTools("Edge");
         getDriver()
