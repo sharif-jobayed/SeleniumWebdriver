@@ -23,7 +23,8 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public Boolean isNoLeavesAvailable() {
-        return this.isVisible(this.noAvailableLeave, 5);
+        this.isVisible(this.noAvailableLeave, 5);
+        return this.textOf(this.noAvailableLeave).equals("No Leave Types with Leave Balance");
     }
 
     public ApplyLeavePage selectLeaveType() {
@@ -41,7 +42,7 @@ public class ApplyLeavePage extends BasePage {
 
     public String getSelectedLeaveType() {
         this.isVisible(this.leaveTypeField, 5);
-        return this.getText(this.leaveTypeField);
+        return this.textOf(this.leaveTypeField);
     }
 
     public ApplyLeavePage selectFromDate() {
@@ -53,7 +54,7 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public String getFromDate() {
-        return this.getText(this.fromDateField);
+        return this.textOf(this.fromDateField);
     }
 
     public ApplyLeavePage selectToDate() {
@@ -65,6 +66,6 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public String getToDate() {
-        return this.getText(this.toDateField);
+        return this.textOf(this.toDateField);
     }
 }

@@ -2,10 +2,12 @@ package com.opensourceDemo.orangehrmlive.tests;
 
 import com.opensourceDemo.orangehrmlive.framework.BaseTest;
 import com.opensourceDemo.orangehrmlive.pages.LeaveListPage;
+import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 
 public class LeaveListPageTest extends BaseTest {
     @Test
+    @Step("I am on the 'Apply Leave' page")
     public void goToApplyForLeavePage() {
         if (new LeaveListPage().isPageOpen(this.BASE_URL + "leave/viewLeaveList")) {
             new LeaveListPage()

@@ -15,7 +15,7 @@ public abstract class Page {
 
     protected abstract void clearAndType(String text, By locator);
 
-    protected abstract String getText(By locator);
+    protected abstract String textOf(By locator);
 
     protected abstract Boolean isChecked(By locator, Integer timeout);
 

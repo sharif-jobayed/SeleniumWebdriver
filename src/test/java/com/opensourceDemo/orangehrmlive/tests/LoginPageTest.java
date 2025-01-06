@@ -2,10 +2,12 @@ package com.opensourceDemo.orangehrmlive.tests;
 
 import com.opensourceDemo.orangehrmlive.framework.BaseTest;
 import com.opensourceDemo.orangehrmlive.pages.LoginPage;
+import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends BaseTest {
     @Test
+    @Step("I am on the Dashboard page")
     public void loginToTheDashboard() {
         LoginPage loginPage = new LoginPage();
         loginPage

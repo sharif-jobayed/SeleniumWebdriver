@@ -36,7 +36,7 @@ public class BasePage extends Page {
     }
 
     @Override
-    public String getText(By locator) {
+    public String textOf(By locator) {
         return this.getElement(locator).getText();
     }
 
