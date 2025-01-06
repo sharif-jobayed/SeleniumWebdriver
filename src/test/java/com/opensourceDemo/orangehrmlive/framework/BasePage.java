@@ -23,18 +23,16 @@ public class BasePage extends Page {
     }
 
     @Override
-    public Page doClick(By locator) {
+    public void doClick(By locator) {
         this.getElement(locator).click();
-        return this;
     }
 
     @Override
-    public Page clearAndType(String text, By locator) {
-        if (this.isEnabled(locator, 10)) {
+    public void clearAndType(String text, By locator) {
+        if (this.isEnabled(locator)) {
             this.getElement(locator).clear();
             this.getElement(locator).sendKeys(text);
         }
-        return this;
     }
 
     @Override
@@ -59,9 +57,9 @@ public class BasePage extends Page {
     }
 
     @Override
-    public Boolean isEnabled(By locator, Integer timeout) {
+    public Boolean isEnabled(By locator) {
         try {
-            WebElement element = getXWait(timeout).until(ExpectedConditions.presenceOfElementLocated(locator));
+            WebElement element = getXWait(10).until(ExpectedConditions.presenceOfElementLocated(locator));
             return element.isEnabled();
         } catch (Exception e) {
             return false;
@@ -69,20 +67,20 @@ public class BasePage extends Page {
     }
 
     @Override
-    public Boolean isPageOpen(String pageURL, Integer timeout) {
+    public Boolean isPageOpen(String pageURL) {
         try {
             return this.getPageURL().equals(pageURL);
         } catch (Exception e) {
-            System.err.println("Page title did not match within " + timeout + " seconds. Expected: " + pageURL);
+            System.err.println("Page title did not match within " + 5 + " seconds. Expected: " + pageURL);
             System.err.println("Exception: " + e.getMessage());
             return false;
         }
     }
 
     @Override
-    public Boolean isPageLoaded(Integer timeout) {
+    public Boolean isPageLoaded() {
         try {
-            return getXWait(timeout).until((ExpectedCondition<Boolean>) driver -> {
+            return getXWait(10).until((ExpectedCondition<Boolean>) driver -> {
                 String readyState = getJS().executeScript("return document.readyState").toString();
                 return readyState.equals("complete");
             });

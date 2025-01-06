@@ -10,7 +10,7 @@ public class DashboardPageTest extends BaseTest {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage
                 .clickLeaveListLink()
-                .isPageOpen(this.BASE_URL+"leave/viewLeaveList", 5)
+                .isPageOpen(this.BASE_URL + "leave/viewLeaveList")
         ;
     }
 }

@@ -2,9 +2,6 @@ package com.opensourceDemo.orangehrmlive.pages;
 
 import com.opensourceDemo.orangehrmlive.framework.BasePage;
 import org.openqa.selenium.By;
-import org.testng.Assert;
-
-import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.getActions;
 
 public class ApplyLeavePage extends BasePage {
     private By leaveTypeDropdownArrow;
@@ -20,7 +17,7 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public ApplyLeavePage selectLeaveType() {
-        if(this.isVisible(this.leaveTypeDropdownArrow, 5)) {
+        if (this.isVisible(this.leaveTypeDropdownArrow, 5)) {
             try {
                 this.doClick(this.leaveTypeDropdownArrow);
                 this.isVisible(this.leaveTypeDropdownList, 5);

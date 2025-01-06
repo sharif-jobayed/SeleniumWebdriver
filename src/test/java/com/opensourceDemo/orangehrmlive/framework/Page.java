@@ -11,9 +11,9 @@ public abstract class Page {
 
     protected abstract WebElement getElement(By locator);
 
-    protected abstract Page doClick(By locator);
+    protected abstract void doClick(By locator);
 
-    protected abstract Page clearAndType(String text, By locator);
+    protected abstract void clearAndType(String text, By locator);
 
     protected abstract String getText(By locator);
 
@@ -21,11 +21,11 @@ public abstract class Page {
 
     protected abstract Boolean isVisible(By locator, Integer timeout);
 
-    protected abstract Boolean isEnabled(By locator, Integer timeout);
+    protected abstract Boolean isEnabled(By locator);
 
-    protected abstract Boolean isPageOpen(String pageURL, Integer timeout);
+    protected abstract Boolean isPageOpen(String pageURL);
 
-    protected abstract Boolean isPageLoaded(Integer timeout);
+    protected abstract Boolean isPageLoaded();
 
     protected abstract <P extends BasePage> P getPageInstance(Class<P> pClass);
 }

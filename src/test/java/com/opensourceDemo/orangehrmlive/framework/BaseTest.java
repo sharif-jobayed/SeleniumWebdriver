@@ -9,6 +9,7 @@ import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.getDr
 
 public class BaseTest {
     protected final String BASE_URL = "https://opensource-demo.orangehrmlive.com/web/index.php/";
+
     @BeforeTest
     public void setUp() {
         new DriverTools("Edge");
@@ -21,7 +22,7 @@ public class BaseTest {
 
     @AfterTest
     public void tearDown() {
-        if(getDriver() != null) {
+        if (getDriver() != null) {
             getDriver().quit();
         }
     }

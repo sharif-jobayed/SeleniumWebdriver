@@ -12,8 +12,8 @@ public class ApplyLeavePageTest extends BaseTest {
     public void applyForALeave() {
         applyLeavePage = new ApplyLeavePage();
 
-        if(this.applyLeavePage.isPageLoaded(10)) {
-            try{
+        if (this.applyLeavePage.isPageLoaded()) {
+            try {
                 this.applyLeavePage.selectLeaveType();
                 Assert.assertEquals(this.applyLeavePage.getSelectedLeaveType(), "CAN - Vacation", "Selected leave type does't match");
             } catch (Exception e) {

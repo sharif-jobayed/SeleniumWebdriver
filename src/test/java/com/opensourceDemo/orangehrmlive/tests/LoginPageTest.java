@@ -10,7 +10,7 @@ public class LoginPageTest extends BaseTest {
         LoginPage loginPage = new LoginPage();
         loginPage
                 .login()
-                .isPageOpen(this.BASE_URL+"dashboard/index", 5)
+                .isPageOpen(this.BASE_URL + "dashboard/index")
         ;
     }
 }
