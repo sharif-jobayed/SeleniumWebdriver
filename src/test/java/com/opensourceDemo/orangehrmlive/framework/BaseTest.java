@@ -11,8 +11,11 @@ public class BaseTest {
     protected final String BASE_URL = "https://opensource-demo.orangehrmlive.com/web/index.php/";
     @BeforeTest
     public void setUp() {
-        new DriverTools("Firefox");
-        getDriver().manage().window().setSize(new Dimension(1440, 900));
+        new DriverTools("Edge");
+        getDriver()
+                .manage()
+                .window()
+                .setSize(new Dimension(1440, 900));
         getDriver().get(this.BASE_URL);
     }
 

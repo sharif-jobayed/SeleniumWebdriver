@@ -8,7 +8,8 @@ public class DashboardPageTest extends BaseTest {
     @Test
     public void navigateToLeavePage() {
         DashboardPage dashboardPage = new DashboardPage();
-        dashboardPage.clickLeaveListLink()
+        dashboardPage
+                .clickLeaveListLink()
                 .isPageOpen(this.BASE_URL+"leave/viewLeaveList", 5)
         ;
     }

@@ -2,22 +2,38 @@ package com.opensourceDemo.orangehrmlive.pages;
 
 import com.opensourceDemo.orangehrmlive.framework.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
-import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.getDriver;
+import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.getActions;
 
 public class ApplyLeavePage extends BasePage {
-    private By leaveTypeArrow;
-    private Select leaveTypeSelection;
-    private By leaveTypeDropdown;
-    private By leaveTypeItem;
-    private By fromDate;
-    private By toDate;
-    private By applyBtn;
+    private By leaveTypeDropdownArrow;
+    private By leaveTypeField;
+    private By leaveTypeDropdownList;
+    private By leaveType;
 
     public ApplyLeavePage() {
-        this.leaveTypeArrow = By.xpath("//div[@class='oxd-select-text-input']");
-        this.leaveTypeSelection = new Select(getDriver().findElement(By.xpath("//div[@class='oxd-select-text-input']")));
-        this.leaveTypeDropdown = By.xpath("");
+        this.leaveTypeDropdownArrow = By.xpath("//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']");
+        this.leaveTypeField = By.xpath("//div[@class='oxd-select-text-input']");
+        this.leaveTypeDropdownList = By.xpath("//div[@role='listbox']");
+        this.leaveType = By.xpath("//div[@role='option'][2]");
+    }
+
+    public ApplyLeavePage selectLeaveType() {
+        if(this.isVisible(this.leaveTypeDropdownArrow, 5)) {
+            try {
+                this.doClick(this.leaveTypeDropdownArrow);
+                this.isVisible(this.leaveTypeDropdownList, 5);
+                this.doClick(this.leaveType);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return this;
+    }
+
+    public String getSelectedLeaveType() {
+        this.isVisible(this.leaveTypeField, 5);
+        return this.getText(this.leaveTypeField);
     }
 }

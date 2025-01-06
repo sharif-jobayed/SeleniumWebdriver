@@ -49,7 +49,7 @@ public class DriverTools {
         return new Actions(getDriver());
     }
 
-    public static JavascriptExecutor JS() {
+    public static JavascriptExecutor getJS() {
         return (JavascriptExecutor) getDriver();
     }
 }

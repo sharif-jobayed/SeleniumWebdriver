@@ -5,6 +5,7 @@
             <class name="com.opensourceDemo.orangehrmlive.tests.LoginPageTest" />
             <class name="com.opensourceDemo.orangehrmlive.tests.DashboardPageTest" />
             <class name="com.opensourceDemo.orangehrmlive.tests.LeaveListPageTest" />
+            <class name="com.opensourceDemo.orangehrmlive.tests.ApplyLeavePageTest" />
         </classes>
     </test>
 </suite>

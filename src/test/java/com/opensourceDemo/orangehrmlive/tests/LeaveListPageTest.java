@@ -8,7 +8,8 @@ public class LeaveListPageTest extends BaseTest {
     @Test
     public void goToApplyForLeavePage() {
         if(new LeaveListPage().isPageOpen(this.BASE_URL+"leave/viewLeaveList", 5)) {
-            new LeaveListPage().clickApplyBtn()
+            new LeaveListPage()
+                    .clickApplyBtn()
                     .isPageOpen(this.BASE_URL+"leave/applyLeave", 5)
             ;
         }

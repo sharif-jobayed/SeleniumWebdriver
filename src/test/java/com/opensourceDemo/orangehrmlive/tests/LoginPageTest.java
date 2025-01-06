@@ -8,7 +8,8 @@ public class LoginPageTest extends BaseTest {
     @Test
     public void loginToTheDashboard() {
         LoginPage loginPage = new LoginPage();
-        loginPage.login()
+        loginPage
+                .login()
                 .isPageOpen(this.BASE_URL+"dashboard/index", 5)
         ;
     }
