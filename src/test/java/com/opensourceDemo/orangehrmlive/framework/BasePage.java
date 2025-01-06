@@ -37,9 +37,9 @@ public class BasePage extends Page {
     @Override
     public void clickByText(String text, By locator) {
         this.getElements(locator);
-        for(int i = 0; i <this.getElements(locator).size(); i++) {
-            if(this.textOf(locator).equals(text)) {
-                this.doClick(locator);
+        for (int i = 0; i < this.getElements(locator).size(); i++) {
+            if (this.getElements(locator).get(i).getText().equals(text)) {
+                this.getElements(locator).get(i).click();
                 break;
             }
         }
@@ -56,19 +56,15 @@ public class BasePage extends Page {
     @Override
     protected void typeInFirstFld(String text, By locator) {
         this.isVisible(locator, 5);
-        if(this.getElements(locator).getFirst().isEnabled()) {
-            this.getElements(locator).getFirst().clear();
-            this.getElements(locator).getFirst().sendKeys(text);
-        }
+        this.getElements(locator).getFirst().clear();
+        this.getElements(locator).getFirst().sendKeys(text);
     }
 
     @Override
     protected void typeInLastFld(String text, By locator) {
         this.isVisible(locator, 5);
-        if(this.getElements(locator).getLast().isEnabled()) {
-            this.getElements(locator).getLast().clear();
-            this.getElements(locator).getLast().sendKeys(text);
-        }
+        this.getElements(locator).getLast().clear();
+        this.getElements(locator).getLast().sendKeys(text);
     }
 
     @Override

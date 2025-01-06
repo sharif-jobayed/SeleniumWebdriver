@@ -24,7 +24,7 @@ public class ApplyLeavePage extends BasePage {
         this.leaveTypeDropdownList = By.xpath("//div[@role='listbox']");
         this.leaveTypes = By.xpath("//div[@role='option']/span");
 
-        this.dates = By.xpath("//input[@placeholder='dd-mm-yyyy']");
+        this.dates = By.xpath("//input[@placeholder='yyyy-mm-dd']");
 
         this.commentsArea = By.xpath("//textarea[@spellcheck='false']");
 
