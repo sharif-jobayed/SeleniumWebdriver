@@ -4,16 +4,26 @@ import com.opensourceDemo.orangehrmlive.framework.BasePage;
 import org.openqa.selenium.By;
 
 public class ApplyLeavePage extends BasePage {
+    private By noAvailableLeave;
     private By leaveTypeDropdownArrow;
     private By leaveTypeField;
     private By leaveTypeDropdownList;
     private By leaveType;
+    private By fromDateField;
+    private By toDateField;
 
     public ApplyLeavePage() {
+        this.noAvailableLeave = By.xpath("//p[normalize-space()='No Leave Types with Leave Balance']");
         this.leaveTypeDropdownArrow = By.xpath("//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']");
         this.leaveTypeField = By.xpath("//div[@class='oxd-select-text-input']");
         this.leaveTypeDropdownList = By.xpath("//div[@role='listbox']");
         this.leaveType = By.xpath("//div[@role='option'][2]");
+        this.fromDateField = By.xpath("//input[@class='oxd-input oxd-input--focus']");
+        this.toDateField = By.xpath("//input[@class='oxd-input oxd-input--focus']");
+    }
+
+    public Boolean isNoLeavesAvailable() {
+        return this.isVisible(this.noAvailableLeave, 5);
     }
 
     public ApplyLeavePage selectLeaveType() {
@@ -32,5 +42,29 @@ public class ApplyLeavePage extends BasePage {
     public String getSelectedLeaveType() {
         this.isVisible(this.leaveTypeField, 5);
         return this.getText(this.leaveTypeField);
+    }
+
+    public ApplyLeavePage selectFromDate() {
+        if (this.isEnabled(this.fromDateField)) {
+            this.doClick(this.fromDateField);
+            this.clearAndType("2025-31-05", this.fromDateField);
+        }
+        return this;
+    }
+
+    public String getFromDate() {
+        return this.getText(this.fromDateField);
+    }
+
+    public ApplyLeavePage selectToDate() {
+        if (this.isEnabled(this.toDateField)) {
+            this.doClick(this.toDateField);
+            this.clearAndType("2025-05-06", this.toDateField);
+        }
+        return this;
+    }
+
+    public String getToDate() {
+        return this.getText(this.toDateField);
     }
 }

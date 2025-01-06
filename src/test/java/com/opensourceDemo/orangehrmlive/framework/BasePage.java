@@ -59,8 +59,7 @@ public class BasePage extends Page {
     @Override
     public Boolean isEnabled(By locator) {
         try {
-            WebElement element = getXWait(10).until(ExpectedConditions.presenceOfElementLocated(locator));
-            return element.isEnabled();
+            return getXWait(10).until(ExpectedConditions.presenceOfElementLocated(locator)).isEnabled();
         } catch (Exception e) {
             return false;
         }

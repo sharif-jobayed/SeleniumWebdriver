@@ -12,10 +12,15 @@ public class ApplyLeavePageTest extends BaseTest {
     public void applyForALeave() {
         applyLeavePage = new ApplyLeavePage();
 
-        if (this.applyLeavePage.isPageLoaded()) {
+        if (this.applyLeavePage.isPageLoaded() && !this.applyLeavePage.isNoLeavesAvailable()) {
             try {
                 this.applyLeavePage.selectLeaveType();
                 Assert.assertEquals(this.applyLeavePage.getSelectedLeaveType(), "CAN - Vacation", "Selected leave type does't match");
+
+                this.applyLeavePage.selectFromDate();
+                Assert.assertEquals(this.applyLeavePage.getFromDate(),"2025-31-05", "From date does not match");
+                this.applyLeavePage.selectToDate();
+                Assert.assertEquals(this.applyLeavePage.getToDate(), "2025-05-06", "To date does not match");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
