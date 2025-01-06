@@ -2,7 +2,6 @@ package com.opensourceDemo.orangehrmlive.pages;
 
 import com.opensourceDemo.orangehrmlive.framework.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.getJS;
 
@@ -12,7 +11,8 @@ public class ApplyLeavePage extends BasePage {
     private By leaveTypeField;
     private By leaveTypeDropdownList;
     private By leaveTypes;
-    private By dates;
+    private By fromDate;
+    private By toDate;
     private By commentsArea;
     private By applyBtn;
 
@@ -24,7 +24,8 @@ public class ApplyLeavePage extends BasePage {
         this.leaveTypeDropdownList = By.xpath("//div[@role='listbox']");
         this.leaveTypes = By.xpath("//div[@role='option']/span");
 
-        this.dates = By.xpath("//input[@placeholder='yyyy-mm-dd']");
+        this.fromDate = By.xpath("//label[normalize-space()='From Date']/following::input[@placeholder='yyyy-dd-mm'][1]");
+        this.toDate = By.xpath("//label[normalize-space()='To Date']/following::input[@placeholder='yyyy-dd-mm'][1]");
 
         this.commentsArea = By.xpath("//textarea[@spellcheck='false']");
 
@@ -56,21 +57,25 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public void selectFromDate() {
-        this.typeInFirstFld("31-05-2025", this.dates);
+        this.clearAndType("2025-11-06", this.fromDate);
     }
 
     public String getFromDate() {
-        WebElement fromDate = this.getElements(this.dates).getFirst();
-        return (String) getJS().executeScript("return arguments[0].value;", fromDate);
+        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.fromDate));
     }
 
     public void selectToDate() {
-        this.typeInLastFld("06-10-2025", this.dates);
+        System.out.println("To Date (Before Typing): " + this.getElement(this.toDate).getAttribute("value"));
+
+
+        this.clearAndType("2025-17-06", this.toDate);
+
+        System.out.println("To Date (After Typing): " + this.getElement(this.toDate).getAttribute("value"));
+
     }
 
     public String getToDate() {
-        WebElement fromDate = this.getElements(this.dates).getLast();
-        return (String) getJS().executeScript("return arguments[0].value;", fromDate);
+        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.toDate));
     }
 
     public void writeComments() {

@@ -49,6 +49,7 @@ public class BasePage extends Page {
     public void clearAndType(String text, By locator) {
         if (this.isEnabled(locator)) {
             this.getElement(locator).clear();
+            this.getElement(locator).sendKeys("");
             this.getElement(locator).sendKeys(text);
         }
     }
