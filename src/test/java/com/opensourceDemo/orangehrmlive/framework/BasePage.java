@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+
 import static com.opensourceDemo.orangehrmlive.framework.utils.DriverTools.*;
 
 public class BasePage extends Page {
@@ -23,8 +25,24 @@ public class BasePage extends Page {
     }
 
     @Override
+    protected List<WebElement> getElements(By locator) {
+        return getDriver().findElements(locator);
+    }
+
+    @Override
     public void doClick(By locator) {
         this.getElement(locator).click();
+    }
+
+    @Override
+    public void clickByText(String text, By locator) {
+        this.getElements(locator);
+        for(int i = 0; i <this.getElements(locator).size(); i++) {
+            if(this.textOf(locator).equals(text)) {
+                this.doClick(locator);
+                break;
+            }
+        }
     }
 
     @Override
@@ -36,8 +54,31 @@ public class BasePage extends Page {
     }
 
     @Override
+    protected void typeInFirstFld(String text, By locator) {
+        this.isVisible(locator, 5);
+        if(this.getElements(locator).getFirst().isEnabled()) {
+            this.getElements(locator).getFirst().clear();
+            this.getElements(locator).getFirst().sendKeys(text);
+        }
+    }
+
+    @Override
+    protected void typeInLastFld(String text, By locator) {
+        this.isVisible(locator, 5);
+        if(this.getElements(locator).getLast().isEnabled()) {
+            this.getElements(locator).getLast().clear();
+            this.getElements(locator).getLast().sendKeys(text);
+        }
+    }
+
+    @Override
     public String textOf(By locator) {
         return this.getElement(locator).getText();
+    }
+
+    @Override
+    protected Boolean isThere(By locator) {
+        return !this.getElements(locator).isEmpty();
     }
 
     @Override
@@ -54,6 +95,11 @@ public class BasePage extends Page {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public void waitTillInvisible(By locator, Integer timeout) {
+        getXWait(timeout).until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
     @Override

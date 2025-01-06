@@ -16,12 +16,17 @@ public class ApplyLeavePageTest extends BaseTest {
         if (this.applyLeavePage.isPageLoaded() && !this.applyLeavePage.isNoLeaveApplicable()) {
             try {
                 this.applyLeavePage.selectLeaveType();
-                Assert.assertEquals(this.applyLeavePage.getSelectedLeaveType(), "CAN - Vacation", "Selected leave type does't match");
+                Assert.assertEquals(this.applyLeavePage.getSelectedLeaveType(), "US - Vacation", "Selected leave type does't match");
 
                 this.applyLeavePage.selectFromDate();
-                Assert.assertEquals(this.applyLeavePage.getFromDate(), "2025-31-05", "From date does not match");
+                Assert.assertEquals(this.applyLeavePage.getFromDate(), "31-05-2025", "From date does not match");
+
                 this.applyLeavePage.selectToDate();
-                Assert.assertEquals(this.applyLeavePage.getToDate(), "2025-05-06", "To date does not match");
+                Assert.assertEquals(this.applyLeavePage.getToDate(), "06-10-2025", "To date does not match");
+
+                this.applyLeavePage.writeComments();
+
+                this.applyLeavePage.clickApply();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
