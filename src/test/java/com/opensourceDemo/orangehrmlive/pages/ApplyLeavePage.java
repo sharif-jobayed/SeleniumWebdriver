@@ -57,19 +57,25 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public void selectFromDate() {
-        this.clearAndType("2025-11-06", this.fromDateFld);
+        this.clearAndType("2025-11-02", this.fromDateFld);
     }
 
     public String getFromDateFld() {
-        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.fromDateFld));
+        if(this.isEnabled(this.fromDateFld)) {
+            return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.fromDateFld));
+        }
+        return null;
     }
 
     public void selectToDate() {
-        this.clearAndType("2025-17-06", this.toDateFld);
+        this.clearAndType("2025-17-02", this.toDateFld);
     }
 
     public String getToDateFld() {
-        return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.toDateFld));
+        if(this.isEnabled(this.toDateFld)) {
+            return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.toDateFld));
+        }
+        return null;
     }
 
     public void writeComments() {
