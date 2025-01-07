@@ -13,7 +13,7 @@ public class ApplyLeavePageTest extends BaseTest {
     public void applyForALeave() {
         applyLeavePage = new ApplyLeavePage();
 
-        if (this.applyLeavePage.isPageLoaded() && !this.applyLeavePage.isNoLeaveApplicable()) {
+        if (this.applyLeavePage.isPageLoaded(10) && !this.applyLeavePage.isNoLeaveApplicable()) {
             try {
                 this.applyLeavePage.selectLeaveType();
                 Assert.assertEquals(this.applyLeavePage.getSelectedLeaveType(), "US - Vacation", "Selected leave type does't match");

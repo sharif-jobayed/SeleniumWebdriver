@@ -33,7 +33,6 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public Boolean isNoLeaveApplicable() {
-        this.isVisible(this.noAvailableLeave, 2);
         return this.isThere(this.noAvailableLeave);
     }
 
@@ -43,7 +42,7 @@ public class ApplyLeavePage extends BasePage {
                 this.doClick(this.leaveTypeDropdownArrow);
                 this.isVisible(this.leaveTypeDropdownList, 5);
                 this.clickByText("US - Vacation", this.leaveTypes);
-                this.waitTillInvisible(this.leaveTypeDropdownList, 10);
+                this.isVisible(this.leaveTypeDropdownList, 10);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -61,7 +60,7 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public String getFromDateFld() {
-        if(this.isEnabled(this.fromDateFld)) {
+        if (this.isEnabled(this.fromDateFld)) {
             return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.fromDateFld));
         }
         return null;
@@ -72,7 +71,7 @@ public class ApplyLeavePage extends BasePage {
     }
 
     public String getToDateFld() {
-        if(this.isEnabled(this.toDateFld)) {
+        if (this.isEnabled(this.toDateFld)) {
             return (String) getJS().executeScript("return arguments[0].value;", this.getElement(this.toDateFld));
         }
         return null;

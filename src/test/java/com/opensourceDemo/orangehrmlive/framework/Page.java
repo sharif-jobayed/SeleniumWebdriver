@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public abstract class Page {
+
     protected Page() {
     }
 
@@ -33,13 +34,9 @@ public abstract class Page {
 
     protected abstract Boolean isVisible(By locator, Integer timeout);
 
-    protected abstract void waitTillInvisible(By locator, Integer timeout);
-
     protected abstract Boolean isEnabled(By locator);
 
     protected abstract Boolean isPageOpen(String pageURL);
 
-    protected abstract Boolean isPageLoaded();
-
-    protected abstract <P extends BasePage> P getPageInstance(Class<P> pClass);
+    protected abstract Boolean isPageLoaded(Integer timeout);
 }
