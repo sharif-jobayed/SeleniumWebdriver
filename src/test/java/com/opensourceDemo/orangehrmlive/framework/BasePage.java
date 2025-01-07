@@ -67,7 +67,7 @@ public class BasePage extends Page {
 
     @Override
     public Boolean isThere(By locator) {
-        getXWait(10).until(ExpectedConditions.presenceOfElementLocated(locator));
+        getXWait(30).until(ExpectedConditions.presenceOfElementLocated(locator));
         return true;
     }
 
