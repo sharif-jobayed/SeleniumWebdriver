@@ -3,6 +3,7 @@
 
     <!-- Login Page Tests -->
     <test name="Login Page Tests">
+
         <classes>
             <class name="tests.LoginPageTest">
                 <methods>
@@ -14,6 +15,7 @@
                 </methods>
             </class>
         </classes>
+
     </test>
 
 </suite>
