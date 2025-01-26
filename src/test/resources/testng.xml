@@ -10,6 +10,7 @@
                     <include name="loginWithInvalidUsername" />
                     <include name="loginWithInvalidPassword" />
                     <include name="loginWithInvalidUserNameAndPassword"/>
+                    <include name="isBannerDisplayed" />
                 </methods>
             </class>
         </classes>

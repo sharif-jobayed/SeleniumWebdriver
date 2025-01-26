@@ -58,4 +58,11 @@ public class LoginPageTest extends BaseTest {
 
         Assert.assertTrue(loginPage.isInputWrong(), "The credential isn't correct");
     }
+
+    @Test(priority = 5)
+    public void isBannerDisplayed() {
+        LoginPage loginPage = new LoginPage(this.driver);
+
+        Assert.assertTrue(loginPage.isBannerVisible(), "The banner isn't displayed");
+    }
 }

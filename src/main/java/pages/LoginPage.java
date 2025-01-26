@@ -10,6 +10,7 @@ public class LoginPage extends BasePage {
     private final By PASSWORD_FIELD;
     private final By LOGIN_BTN;
     private final By WRONG_INPUT_ALERT;
+    private final By BANNER_LOGO;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -19,6 +20,7 @@ public class LoginPage extends BasePage {
         this.PASSWORD_FIELD = By.xpath("//input[@name='password']");
         this.LOGIN_BTN = By.xpath("//button[@type='submit']");
         this.WRONG_INPUT_ALERT = By.xpath("//div[@role='alert']//p[normalize-space()='Invalid credentials']");
+        this.BANNER_LOGO = By.xpath("//img[@alt='company-branding']");
     }
 
     public LoginPage inputUsername(String text) {
@@ -43,5 +45,10 @@ public class LoginPage extends BasePage {
     public Boolean isInputWrong() {
         this.waitTillExist(5, this.WRONG_INPUT_ALERT);
         return this.isItVisible(this.WRONG_INPUT_ALERT, 10);
+    }
+
+    public Boolean isBannerVisible() {
+        this.waitTillExist(2, this.BANNER_LOGO);
+        return this.isItVisible(this.BANNER_LOGO, 3);
     }
 }
