@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Dashboard page tests" parallel="false">
+    <test name="">
+        <classes>
+            <class name="tests.DashboardPageTest">
+                <methods>
+                    <include name="" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

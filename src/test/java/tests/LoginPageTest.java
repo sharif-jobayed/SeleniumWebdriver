@@ -7,7 +7,8 @@ import pages.DashboardPage;
 import pages.LoginPage;
 
 public class LoginPageTest extends BaseTest {
-    @Test(priority = 1)
+
+    @Test(priority = 1, description = "Login using valid credentials", suiteName = "SU_0001")
     public void loginWithValidCredentials() {
         LoginPage loginPage = new LoginPage(this.driver);
         DashboardPage dashboardPage = new DashboardPage(this.driver);
@@ -20,7 +21,7 @@ public class LoginPageTest extends BaseTest {
 
         Assert.assertTrue(dashboardPage.isPageOpen(5), "The "+DashboardPage.class.getName()+" isn't open");
     }
-    @Test(priority = 2)
+    @Test(priority = 2, description = "Login using invalid username & valid password", suiteName = "SU_0001")
     public void loginWithInvalidUsername() {
         LoginPage loginPage = new LoginPage(this.driver);
 
@@ -33,7 +34,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(loginPage.isInputWrong(), "The credential isn't correct");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Login using valid username & invalid password", suiteName = "SU_0001")
     public void loginWithInvalidPassword() {
         LoginPage loginPage = new LoginPage(this.driver);
 
@@ -46,7 +47,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(loginPage.isInputWrong(), "The credential isn't correct");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, description = "Login using invalid username & invalid password", suiteName = "SU_0001")
     public void loginWithInvalidUserNameAndPassword() {
         LoginPage loginPage = new LoginPage(this.driver);
 
@@ -59,10 +60,11 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(loginPage.isInputWrong(), "The credential isn't correct");
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, description = "Validate that, the application banner is visible", suiteName = "SU_0001")
     public void isBannerDisplayed() {
         LoginPage loginPage = new LoginPage(this.driver);
 
         Assert.assertTrue(loginPage.isBannerVisible(), "The banner isn't displayed");
     }
+
 }
