@@ -4,6 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Hooks {
@@ -13,8 +14,7 @@ public class Hooks {
         this.driver = new FirefoxDriver();
     }
 
-    private void setDriver(String driverTitile) {
-    }
+    private void setDriver(String driverTitile) {}
 
     public WebDriver getDriver() {
         return this.driver;
