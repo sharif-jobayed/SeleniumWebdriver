@@ -3,6 +3,7 @@ package tests;
 import framework.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.DashboardPage;
 import pages.LoginPage;
 
 public class LoginPageTest extends BaseTest {
@@ -25,6 +26,9 @@ public class LoginPageTest extends BaseTest {
         loginPage
                 .login("Admin", "admin123")
                 .isPageOpen(5);
+
+        DashboardPage dashboardPage = this.getPages().getDashboardPage();
+        Assert.assertTrue(dashboardPage.isPageOpen(3), "The Dashboard page isn't open");
     }
 
     @Test(

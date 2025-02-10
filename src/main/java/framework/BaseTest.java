@@ -5,11 +5,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-    protected DriverTools driverTools;
-    protected Pages pages;
+    private DriverTools driverTools;
+    private Pages pages;
 
-    public BaseTest() {
-    }
+    public BaseTest() {}
 
     protected DriverTools getDriverTools() {
         return this.driverTools;
