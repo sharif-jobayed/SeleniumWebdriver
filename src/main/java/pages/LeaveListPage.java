@@ -9,8 +9,8 @@ public class LeaveListPage extends BasePage {
     private final BaseElement LEAVE_RECORD_HEADER;
     private final BaseElement APPLY_BTN;
 
-    public LeaveListPage(DriverTools driverTools) {
-        super(driverTools);
+    public LeaveListPage(DriverTools driverTools, String path) {
+        super(driverTools, path);
 
         this.LEAVE_RECORD_HEADER = new BaseElement(
                 this.driverTools,

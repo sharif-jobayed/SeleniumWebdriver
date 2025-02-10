@@ -3,10 +3,10 @@ package framework;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.LoginPage;
 
 public class BaseTest {
     protected DriverTools driverTools;
+    protected Pages pages;
     protected String baseURL;
 
     public BaseTest() {
@@ -17,13 +17,17 @@ public class BaseTest {
         return this.driverTools;
     }
 
+    protected Pages getPages() {
+        return new Pages(this.getDriverTools());
+    }
+
     @BeforeMethod()
     public void setUp() {
         this.driverTools = new DriverTools("firefox");
-        this.driverTools.getDriver().manage().window().setSize(new Dimension(1440, 900));
-        this.driverTools.getDriver().get(this.baseURL);
-        new LoginPage(this.driverTools).isPageOpen(5);
-        new LoginPage(this.driverTools).isPageLoaded(5);
+        this.getDriverTools().getDriver().manage().window().setSize(new Dimension(1440, 900));
+        this.getDriverTools().getDriver().get(this.baseURL);
+        this.getPages().getLoginPage().isPageOpen(5);
+        this.getPages().getLoginPage().isPageLoaded(5);
     }
 
     @AfterMethod()

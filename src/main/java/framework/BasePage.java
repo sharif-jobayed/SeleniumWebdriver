@@ -3,14 +3,22 @@ package framework;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Properties;
 import java.util.Set;
 
 public class BasePage extends Page {
-    public BasePage(DriverTools driverTools) {
-        super(driverTools);
+    public BasePage(DriverTools driverTools, String path) {
+        super(driverTools, path);
+    }
+
+    @Override
+    public String getPath() {
+        return this.path;
     }
 
     @Override
@@ -103,6 +111,20 @@ public class BasePage extends Page {
     public Page closeCurrentWindow() {
         driverTools.getDriver().close();
         return this;
+    }
+
+    @Override
+    public <P extends BasePage> P getPageInstance(Class<P> pClass) {
+        try {
+            return pClass.getDeclaredConstructor(WebDriver.class).newInstance(this.driverTools.getDriver());
+        } catch (InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Pages getPages() {
+        return new Pages(this.driverTools);
     }
 
 }

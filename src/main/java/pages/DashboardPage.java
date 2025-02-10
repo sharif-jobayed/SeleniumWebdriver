@@ -9,8 +9,8 @@ public class DashboardPage extends BasePage {
     private final BaseElement HEADER_TITLE;
     private final BaseElement LEAVE_MENU_ITEM;
 
-    public DashboardPage(DriverTools driverTools) {
-        super(driverTools);
+    public DashboardPage(DriverTools driverTools, String path) {
+        super(driverTools, path);
 
         this.HEADER_TITLE = new BaseElement(
                 this.driverTools,

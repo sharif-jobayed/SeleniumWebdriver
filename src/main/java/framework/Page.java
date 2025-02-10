@@ -2,10 +2,14 @@ package framework;
 
 public abstract class Page {
     protected DriverTools driverTools;
+    protected String path;
 
-    protected Page(DriverTools driverTools) {
+    protected Page(DriverTools driverTools, String path) {
         this.driverTools = driverTools;
+        this.path = path;
     }
+
+    protected abstract String getPath();
 
     protected abstract String getPageTitle();
 
@@ -30,4 +34,8 @@ public abstract class Page {
     protected abstract Page getWindow(Integer index);
 
     protected abstract Page closeCurrentWindow();
+
+    protected abstract <P extends BasePage> P getPageInstance(Class<P> pClass);
+
+    protected abstract Pages getPages();
 }

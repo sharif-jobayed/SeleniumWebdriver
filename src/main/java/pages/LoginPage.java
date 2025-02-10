@@ -13,8 +13,8 @@ public class LoginPage extends BasePage {
     private final BaseElement WRONG_INPUT_ERROR;
     private final BaseElement BANNER_LOGO;
 
-    public LoginPage(DriverTools driverTools) {
-        super(driverTools);
+    public LoginPage(DriverTools driverTools, String path) {
+        super(driverTools, path);
 
 
         this.LOGIN_FORM = new BaseElement(
@@ -52,11 +52,11 @@ public class LoginPage extends BasePage {
     }
 
     public DashboardPage login(String username, String password) {
-        if (this.LOGIN_FORM.isVisible(3)) {
+        if (this.LOGIN_FORM.isVisible(3) && this.USERNAME_FIELD.isActive(2) && this.PASSWORD_FIELD.isActive(2)) {
             this.USERNAME_FIELD.clearAndType(username);
             this.PASSWORD_FIELD.clearAndType(password);
             this.LOGIN_BTN.doClick();
-            return new DashboardPage(this.driverTools);
+            return this.getPages().getDashboardPage();
         } else {
             throw new RuntimeException("The login form is not present");
         }
