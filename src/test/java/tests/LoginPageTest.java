@@ -22,7 +22,9 @@ public class LoginPageTest extends BaseTest {
     )
     public void loginToAppWithValidCredentials() {
         LoginPage loginPage = this.getPages().getLoginPage();
-        loginPage.login("Admin", "admin123").isPageOpen(5);
+        loginPage
+                .login("Admin", "admin123")
+                .isPageOpen(5);
     }
 
     @Test(

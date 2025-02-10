@@ -7,10 +7,8 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
     protected DriverTools driverTools;
     protected Pages pages;
-    protected String baseURL;
 
     public BaseTest() {
-        this.baseURL = "https://opensource-demo.orangehrmlive.com/web/index.php/";
     }
 
     protected DriverTools getDriverTools() {
@@ -25,7 +23,7 @@ public class BaseTest {
     public void setUp() {
         this.driverTools = new DriverTools("firefox");
         this.getDriverTools().getDriver().manage().window().setSize(new Dimension(1440, 900));
-        this.getDriverTools().getDriver().get(this.baseURL);
+        this.getDriverTools().getDriver().get(this.getPages().getLoginPage().getBaseURL());
         this.getPages().getLoginPage().isPageOpen(5);
         this.getPages().getLoginPage().isPageLoaded(5);
     }

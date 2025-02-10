@@ -8,12 +8,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Properties;
 import java.util.Set;
 
 public class BasePage extends Page {
     public BasePage(DriverTools driverTools, String path) {
         super(driverTools, path);
+    }
+
+    @Override
+    public String getBaseURL() {
+        return this.baseURL;
     }
 
     @Override
@@ -33,12 +37,7 @@ public class BasePage extends Page {
 
     @Override
     public Boolean isPageOpen(Integer timeout) {
-        try {
-            WebDriverWait wait = driverTools.getXWait(timeout);
-            return wait.until(d -> d.getTitle().equals(this.getPageTitle()));
-        } catch (TimeoutException e) {
-            return false;
-        }
+        return this.driverTools.getXWait(timeout).until(ExpectedConditions.urlToBe(this.baseURL + this.getPath()));
     }
 
     @Override
