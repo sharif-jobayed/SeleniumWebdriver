@@ -22,4 +22,9 @@ public class DashboardPage extends BasePage {
         );
     }
 
+    public String getApplicationHeaderTitle() {
+        this.HEADER_TITLE.waitTillPresence(5);
+        return this.HEADER_TITLE.text();
+    }
+
 }
