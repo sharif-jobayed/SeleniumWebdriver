@@ -7,16 +7,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class BaseElement {
     private DriverTools driverTools;
     private By locator;
-    private String elementName;
 
-    public BaseElement(DriverTools driverTools, By locator, String elementName) {
+    public BaseElement(DriverTools driverTools, By locator) {
         this.driverTools = driverTools;
         this.locator = locator;
-        this.elementName = elementName;
-    }
-
-    public String getName() {
-        return this.elementName;
     }
 
     public Boolean isVisible(Integer timeout) {

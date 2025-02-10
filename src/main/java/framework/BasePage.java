@@ -9,13 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Set;
 
 public class BasePage extends Page {
-    public BasePage(DriverTools driverTools, String path) {
-        super(driverTools, path);
-    }
-
-    @Override
-    protected String getPagePath() {
-        return this.path;
+    public BasePage(DriverTools driverTools) {
+        super(driverTools);
     }
 
     @Override

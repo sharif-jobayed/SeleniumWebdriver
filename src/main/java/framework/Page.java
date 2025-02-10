@@ -2,15 +2,10 @@ package framework;
 
 public abstract class Page {
     protected DriverTools driverTools;
-    protected String path;
-    protected PageBuilder pageBuilder;
 
-    protected Page(DriverTools driverTools, String path) {
+    protected Page(DriverTools driverTools) {
         this.driverTools = driverTools;
-        this.path = path;
     }
-
-    protected abstract String getPagePath();
 
     protected abstract String getPageTitle();
 

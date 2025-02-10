@@ -3,7 +3,6 @@ package pages;
 import framework.BaseElement;
 import framework.BasePage;
 import framework.DriverTools;
-import framework.PageBuilder;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage {
@@ -14,39 +13,33 @@ public class LoginPage extends BasePage {
     private final BaseElement WRONG_INPUT_ERROR;
     private final BaseElement BANNER_LOGO;
 
-    public LoginPage(DriverTools driverTools, String path) {
-        super(driverTools, path);
+    public LoginPage(DriverTools driverTools) {
+        super(driverTools);
 
 
         this.LOGIN_FORM = new BaseElement(
                 this.driverTools,
-                By.xpath("//form[@method='post']"),
-                "Login form"
+                By.xpath("//form[@method='post']")
         );
         this.USERNAME_FIELD = new BaseElement(
                 this.driverTools,
-                By.xpath("//input[@name='username']"),
-                "Username field"
+                By.xpath("//input[@name='username']")
         );
         this.PASSWORD_FIELD = new BaseElement(
                 this.driverTools,
-                By.xpath("//input[@name='password']"),
-                "Password field"
+                By.xpath("//input[@name='password']")
         );
         this.LOGIN_BTN = new BaseElement(
                 this.driverTools,
-                By.xpath("//button[@type='submit']"),
-                "Login button"
+                By.xpath("//button[@type='submit']")
         );
         this.WRONG_INPUT_ERROR = new BaseElement(
                 this.driverTools,
-                By.xpath("//div[@role='alert']//p[normalize-space()='Invalid credentials']"),
-                "Wrong Input error"
+                By.xpath("//div[@role='alert']//p[normalize-space()='Invalid credentials']")
         );
         this.BANNER_LOGO = new BaseElement(
                 this.driverTools,
-                By.xpath("//img[@alt='company-branding']"),
-                "Banner logo"
+                By.xpath("//img[@alt='company-branding']")
         );
     }
 
@@ -63,7 +56,7 @@ public class LoginPage extends BasePage {
             this.USERNAME_FIELD.clearAndType(username);
             this.PASSWORD_FIELD.clearAndType(password);
             this.LOGIN_BTN.doClick();
-            return new PageBuilder(this.driverTools).getPage("Dashboard");
+            return new DashboardPage(this.driverTools);
         } else {
             throw new RuntimeException("The login form is not present");
         }
