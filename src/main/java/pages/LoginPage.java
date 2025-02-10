@@ -1,54 +1,72 @@
 package pages;
 
+import framework.BaseElement;
 import framework.BasePage;
+import framework.DriverTools;
+import framework.PageBuilder;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
-    private final By LOGIN_FORM;
-    private final By USERNAME_FIELD;
-    private final By PASSWORD_FIELD;
-    private final By LOGIN_BTN;
-    private final By WRONG_INPUT_ALERT;
-    private final By BANNER_LOGO;
+    private final BaseElement LOGIN_FORM;
+    private final BaseElement USERNAME_FIELD;
+    private final BaseElement PASSWORD_FIELD;
+    private final BaseElement LOGIN_BTN;
+    private final BaseElement WRONG_INPUT_ERROR;
+    private final BaseElement BANNER_LOGO;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(DriverTools driverTools, String path) {
+        super(driverTools, path);
 
-        this.LOGIN_FORM = By.xpath("//form[@method='post']");
-        this.USERNAME_FIELD = By.xpath("//input[@name='username']");
-        this.PASSWORD_FIELD = By.xpath("//input[@name='password']");
-        this.LOGIN_BTN = By.xpath("//button[@type='submit']");
-        this.WRONG_INPUT_ALERT = By.xpath("//div[@role='alert']//p[normalize-space()='Invalid credentials']");
-        this.BANNER_LOGO = By.xpath("//img[@alt='company-branding']");
+
+        this.LOGIN_FORM = new BaseElement(
+                this.driverTools,
+                By.xpath("//form[@method='post']"),
+                "Login form"
+        );
+        this.USERNAME_FIELD = new BaseElement(
+                this.driverTools,
+                By.xpath("//input[@name='username']"),
+                "Username field"
+        );
+        this.PASSWORD_FIELD = new BaseElement(
+                this.driverTools,
+                By.xpath("//input[@name='password']"),
+                "Password field"
+        );
+        this.LOGIN_BTN = new BaseElement(
+                this.driverTools,
+                By.xpath("//button[@type='submit']"),
+                "Login button"
+        );
+        this.WRONG_INPUT_ERROR = new BaseElement(
+                this.driverTools,
+                By.xpath("//div[@role='alert']//p[normalize-space()='Invalid credentials']"),
+                "Wrong Input error"
+        );
+        this.BANNER_LOGO = new BaseElement(
+                this.driverTools,
+                By.xpath("//img[@alt='company-branding']"),
+                "Banner logo"
+        );
     }
 
-    public LoginPage inputUsername(String text) {
-        if(this.doesItExist(this.LOGIN_FORM, 5)) {
-            this.clearAndType(5, text, this.USERNAME_FIELD);
-        }
-        return this;
-    }
-
-    public LoginPage inputPassword(String text) {
-        if(this.doesItExist(this.PASSWORD_FIELD, 5)) {
-            this.clearAndType(5, text, this.PASSWORD_FIELD);
-        }
-        return this;
-    }
-
-    public DashboardPage clickLoginBtn() {
-        this.doClick(this.LOGIN_BTN);
-        return this.getPageInstance(DashboardPage.class);
+    public Boolean isBannerLogoVisible() {
+        return this.BANNER_LOGO.isVisible(5);
     }
 
     public Boolean isInputWrong() {
-        this.waitTillExist(5, this.WRONG_INPUT_ALERT);
-        return this.isItVisible(this.WRONG_INPUT_ALERT, 10);
+        return this.WRONG_INPUT_ERROR.isVisible(2);
     }
 
-    public Boolean isBannerVisible() {
-        this.waitTillExist(2, this.BANNER_LOGO);
-        return this.isItVisible(this.BANNER_LOGO, 3);
+    public DashboardPage login(String username, String password) {
+        if (this.LOGIN_FORM.isVisible(3)) {
+            this.USERNAME_FIELD.clearAndType(username);
+            this.PASSWORD_FIELD.clearAndType(password);
+            this.LOGIN_BTN.doClick();
+            return new PageBuilder(this.driverTools).getPage("Dashboard");
+        } else {
+            throw new RuntimeException("The login form is not present");
+        }
     }
+
 }

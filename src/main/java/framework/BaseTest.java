@@ -1,35 +1,41 @@
 package framework;
 
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
+    protected DriverTools driverTools;
     protected String baseURL;
-    protected WebDriver driver;
+    protected PageBuilder pageBuilder;
 
-    protected BaseTest() {
-        this.baseURL = "https://opensource-demo.orangehrmlive.com/";
+    public BaseTest() {
+        this.baseURL = "https://opensource-demo.orangehrmlive.com/web/index.php/";
     }
 
-    @BeforeMethod(description = "Open the browser & hit the target URL")
+    protected DriverTools getDriverTools() {
+        return this.driverTools;
+    }
+
+    protected PageBuilder getPageBuilder() {
+        return new PageBuilder(this.getDriverTools());
+    }
+
+    @BeforeMethod()
     public void setUp() {
-        this.driver = new EdgeDriver();
-        driver.manage().window().setSize(new Dimension(1440, 900));
-        driver.get(this.baseURL);
+        this.driverTools = new DriverTools("firefox");
+        this.driverTools.getDriver().manage().window().setSize(new Dimension(1440, 900));
+        this.driverTools.getDriver().get(this.baseURL);
+        this.getPageBuilder().getPage("login").isPageOpen(5);
+        this.getPageBuilder().getPage("login").isPageLoaded(5);
     }
 
-    @AfterMethod(description = "End the test session")
+    @AfterMethod()
     public void tearDown() {
-        if (driver != null) {
-            try {
-                driver.close();
-                driver.quit();
-            } catch (Exception e) {
-                System.err.println("Error during driver cleanup: " + e.getMessage());
-            }
+        if (this.driverTools.getDriver() != null) {
+            this.driverTools.getDriver().quit();
         }
     }
 }

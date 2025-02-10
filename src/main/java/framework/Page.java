@@ -1,16 +1,20 @@
 package framework;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 public abstract class Page {
-    protected WebDriver driver;
+    protected DriverTools driverTools;
+    protected String path;
+    protected PageBuilder pageBuilder;
 
-    protected Page(WebDriver driver) {
-        this.driver = driver;
+    protected Page(DriverTools driverTools, String path) {
+        this.driverTools = driverTools;
+        this.path = path;
     }
+
+    protected abstract String getPagePath();
+
+    protected abstract String getPageTitle();
+
+    protected abstract String getPageURL();
 
     protected abstract Boolean isPageOpen(Integer timeout);
 
@@ -18,37 +22,17 @@ public abstract class Page {
 
     protected abstract Boolean isAlertOpen(Integer timeout);
 
-    protected abstract Boolean doesItExist(By locator, Integer timeout);
+    protected abstract Page typeInAlert(String text);
 
-    protected abstract Boolean isItVisible(By locator, Integer timeout);
+    protected abstract Page acceptAlert();
 
-    protected abstract Boolean isItActive(By locator, Integer timeout);
+    protected abstract Page rejectAlert();
 
-    protected abstract String getPageURL(Integer timeout);
-
-    protected abstract String getPageTitle(Integer timeout);
-
-    protected abstract String itsText(By locator);
+    protected abstract Page backToDefaultPage();
 
     protected abstract Page openInNewWindow(String url);
 
+    protected abstract Page getWindow(Integer index);
+
     protected abstract Page closeCurrentWindow();
-
-    protected abstract Page goToDefaultContent();
-
-    protected abstract Page doClick(By locator);
-
-    protected abstract Page clearAndType(Integer timeout, String text, By locator);
-
-    protected abstract Page waitTillExist(Integer timeout, By locator);
-
-    protected abstract Page scrollTo(By locator);
-
-    protected abstract Alert typeInAlert(String text);
-
-    protected abstract Alert acceptIt();
-
-    protected abstract Alert denyIt();
-
-    protected abstract <P extends BasePage> P getPageInstance(Class<P> pClass);
 }
