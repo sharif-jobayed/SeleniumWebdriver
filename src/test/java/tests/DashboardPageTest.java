@@ -1,4 +1,6 @@
 package tests;
 
-public class DashboardPageTest {
+import framework.BaseTest;
+
+public class DashboardPageTest extends BaseTest {
 }
