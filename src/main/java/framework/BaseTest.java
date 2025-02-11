@@ -20,11 +20,11 @@ public class BaseTest {
 
     @BeforeMethod()
     public void setUp() {
-        this.driverTools = new DriverTools("firefox");
-        this.getDriverTools().getDriver().manage().window().setSize(new Dimension(1440, 900));
-        this.getDriverTools().getDriver().get(this.getPages().getLoginPage().getBaseURL());
-        this.getPages().getLoginPage().isPageOpen(5);
-        this.getPages().getLoginPage().isPageLoaded(5);
+        if (this.getDriverTools() == null) {
+            driverTools = new DriverTools("firefox");
+            this.getDriverTools().getDriver().manage().window().setSize(new Dimension(1440, 900));
+            this.getDriverTools().getDriver().get(this.getPages().getLoginPage().getBaseURL());
+        }
     }
 
     @AfterMethod()

@@ -29,6 +29,8 @@ public class LoginPageTest extends BaseTest {
 
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
         Assert.assertTrue(dashboardPage.isPageOpen(3), "The Dashboard page isn't open");
+
+
     }
 
     @Test(

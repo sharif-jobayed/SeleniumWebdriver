@@ -15,28 +15,28 @@ public class Pages {
     public LoginPage getLoginPage() {
         return new LoginPage(
                 this.driverTools,
-                "auth/login"
+                "/auth/login"
         );
     }
 
     public DashboardPage getDashboardPage() {
         return new DashboardPage(
                 this.driverTools,
-                "dashboard/index"
+                "/dashboard/index"
         );
     }
 
     public LeaveListPage getLeaveListPage() {
         return new LeaveListPage(
                 this.driverTools,
-                "leave/viewLeaveList"
+                "/leave/viewLeaveList"
         );
     }
 
     public ApplyLeavePage getApplyLeavePage() {
         return new ApplyLeavePage(
                 this.driverTools,
-                "leave/applyLeave"
+                "/leave/applyLeave"
         );
     }
 

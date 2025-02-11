@@ -7,7 +7,7 @@ public abstract class Page {
 
     protected Page(DriverTools driverTools, String path) {
         this.driverTools = driverTools;
-        this.baseURL = "https://opensource-demo.orangehrmlive.com/web/index.php/";
+        this.baseURL = "https://opensource-demo.orangehrmlive.com/web/index.php";
         this.path = path;
     }
 

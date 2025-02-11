@@ -35,6 +35,7 @@ dependencies {
     testImplementation "io.qameta.allure:allure-testng"
     // Add aspectjweaver dependency
     agent "org.aspectj:aspectjweaver:$aspectJVersion"
+    implementation 'ch.qos.logback:logback-classic:1.4.12'
 
 }
 

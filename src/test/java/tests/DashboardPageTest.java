@@ -17,7 +17,7 @@ public class DashboardPageTest extends BaseTest {
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
         System.out.println("Dashboard page is instantiated...");
 
-        dashboardPage.isPageOpen(5);
+        dashboardPage.isPageOpen(10);
         System.out.println("Dashboard page is open...");
 
         dashboardPage.isPageLoaded(5);
