@@ -31,8 +31,12 @@ public class BaseTest {
 
     @AfterMethod()
     public void tearDown() {
-        if (this.driverTools.getDriver() != null) {
-            this.driverTools.getDriver().quit();
+        try {
+            if (this.driverTools.getDriver() != null) {
+                this.driverTools.getDriver().quit();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
