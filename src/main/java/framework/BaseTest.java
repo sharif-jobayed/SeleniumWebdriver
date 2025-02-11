@@ -20,10 +20,12 @@ public class BaseTest {
 
     @BeforeMethod()
     public void setUp() {
-        if (this.getDriverTools() == null) {
-            driverTools = new DriverTools("firefox");
+        try {
+            this.driverTools = new DriverTools("firefox");
             this.getDriverTools().getDriver().manage().window().setSize(new Dimension(1440, 900));
             this.getDriverTools().getDriver().get(this.getPages().getLoginPage().getBaseURL());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
