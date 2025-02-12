@@ -14,6 +14,7 @@ public class DashboardPageTest extends BaseTest {
     )
     public void appLanguageIsEnglish() {
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
+
         dashboardPage.isPageOpen(1);
         dashboardPage.isPageLoaded(3);
 
