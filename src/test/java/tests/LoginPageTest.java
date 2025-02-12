@@ -1,7 +1,6 @@
 package tests;
 
 import framework.BaseTest;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
@@ -15,7 +14,12 @@ public class LoginPageTest extends BaseTest {
     )
     public void bannerLogoIsVisible() {
         LoginPage loginPage = this.getPages().getLoginPage();
-        Assert.assertTrue(loginPage.isBannerLogoVisible(), "The banner logo isn't visible");
+
+        try {
+            Assert.assertTrue(loginPage.isBannerLogoVisible(), "The banner logo isn't visible");
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     // CRUCIAL for next pages!! This method logs in to the app to navigate to other pages.
@@ -27,9 +31,9 @@ public class LoginPageTest extends BaseTest {
         LoginPage loginPage = this.getPages().getLoginPage();
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
 
-        if (!loginPage.isPageOpen(2)) {
+        if (!loginPage.isPageOpen(1)) {
             dashboardPage.logout();
-            loginPage.isPageOpen(2);
+            loginPage.isPageOpen(1);
         }
         try {
             loginPage.isPageLoaded(3);
@@ -48,9 +52,9 @@ public class LoginPageTest extends BaseTest {
         LoginPage loginPage = this.getPages().getLoginPage();
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
 
-        if (!loginPage.isPageOpen(2)) {
+        if (!loginPage.isPageOpen(1)) {
             dashboardPage.logout();
-            loginPage.isPageOpen(2);
+            loginPage.isPageOpen(1);
         }
         try {
             loginPage.isPageLoaded(3);
