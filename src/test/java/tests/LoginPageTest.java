@@ -38,6 +38,8 @@ public class LoginPageTest extends BaseTest {
     )
     public void loginToAppWithInValidCredentials() {
         LoginPage loginPage = this.getPages().getLoginPage();
+        loginPage.isPageOpen(2);
+        loginPage.isPageLoaded(2);
         loginPage.login("Invalid", "Invalid");
         Assert.assertTrue(loginPage.isInputWrong(), "Invalid credentials entered");
     }

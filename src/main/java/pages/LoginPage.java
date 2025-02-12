@@ -51,14 +51,28 @@ public class LoginPage extends BasePage {
         return this.WRONG_INPUT_ERROR.isVisible(2);
     }
 
+    public LoginPage enterUsername(String text) {
+        this.USERNAME_FIELD.clearAndType(text);
+        return this;
+    }
+
+    public LoginPage enterPassword(String text) {
+        this.PASSWORD_FIELD.clearAndType(text);
+        return this;
+    }
+
+    public DashboardPage clickLoginBtn() {
+        this.LOGIN_BTN.doClick();
+        return this.getPages().getDashboardPage();
+    }
+
     public DashboardPage login(String username, String password) {
         if (this.LOGIN_FORM.isVisible(3) && this.USERNAME_FIELD.isActive(2) && this.PASSWORD_FIELD.isActive(2)) {
-            this.USERNAME_FIELD.clearAndType(username);
-            this.PASSWORD_FIELD.clearAndType(password);
-            this.LOGIN_BTN.doClick();
-            return this.getPages().getDashboardPage();
+            this.enterUsername(username);
+            this.enterPassword(password);
+            return this.clickLoginBtn();
         } else {
-            throw new RuntimeException("The login form is not present");
+            throw new RuntimeException("The login is not successful");
         }
     }
 
