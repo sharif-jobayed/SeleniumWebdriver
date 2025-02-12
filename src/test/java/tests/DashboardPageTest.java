@@ -17,10 +17,10 @@ public class DashboardPageTest extends BaseTest {
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
         System.out.println("Dashboard page is instantiated...");
 
-        dashboardPage.isPageOpen(10);
+        dashboardPage.isPageOpen(1);
         System.out.println("Dashboard page is open...");
 
-        dashboardPage.isPageLoaded(5);
+        dashboardPage.isPageLoaded(3);
         System.out.println("Dashboard page is loaded...");
 
         Assert.assertEquals(dashboardPage.getApplicationHeaderTitle(), "Dashboard", "The application isn't in English");

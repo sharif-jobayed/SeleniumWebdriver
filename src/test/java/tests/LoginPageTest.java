@@ -17,20 +17,19 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(loginPage.isBannerLogoVisible(), "The banner logo isn't visible");
     }
 
+    // CRUCIAL for next pages!! This method logs in to the app to navigate to other pages.
     @Test(
             priority = 2,
             description = "Verify login with valid credentials"
     )
     public void loginToAppWithValidCredentials() {
         LoginPage loginPage = this.getPages().getLoginPage();
-        loginPage
-                .login("Admin", "admin123")
-                .isPageOpen(5);
+        loginPage.isPageOpen(1);
+        loginPage.isPageLoaded(2);
+        loginPage.login("Admin", "admin123");
 
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
-        Assert.assertTrue(dashboardPage.isPageOpen(3), "The Dashboard page isn't open");
-
-
+        Assert.assertTrue(dashboardPage.isPageOpen(2), "The Dashboard page isn't open");
     }
 
     @Test(
