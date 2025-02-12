@@ -1,6 +1,7 @@
 package tests;
 
 import framework.BaseTest;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
@@ -24,11 +25,14 @@ public class LoginPageTest extends BaseTest {
     )
     public void loginToAppWithValidCredentials() {
         LoginPage loginPage = this.getPages().getLoginPage();
-        loginPage.isPageOpen(1);
-        loginPage.isPageLoaded(2);
-        loginPage.login("Admin", "admin123");
-
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
+
+        if (!loginPage.isPageOpen(2)) {
+            dashboardPage.logout();
+            loginPage.isPageOpen(2);
+        }
+        loginPage.isPageLoaded(3);
+        loginPage.login("Admin", "admin123");
         Assert.assertTrue(dashboardPage.isPageOpen(2), "The Dashboard page isn't open");
     }
 
@@ -38,10 +42,15 @@ public class LoginPageTest extends BaseTest {
     )
     public void loginToAppWithInValidCredentials() {
         LoginPage loginPage = this.getPages().getLoginPage();
-        loginPage.isPageOpen(2);
-        loginPage.isPageLoaded(2);
+        DashboardPage dashboardPage = this.getPages().getDashboardPage();
+
+        if (!loginPage.isPageOpen(2)) {
+            dashboardPage.logout();
+            loginPage.isPageOpen(2);
+        }
+        loginPage.isPageLoaded(3);
         loginPage.login("Invalid", "Invalid");
-        Assert.assertTrue(loginPage.isInputWrong(), "Invalid credentials entered");
+        Assert.assertTrue(loginPage.isInputWrong(), "Entered valid credentials");
     }
 
 }
