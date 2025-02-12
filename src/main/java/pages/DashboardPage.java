@@ -60,11 +60,11 @@ public class DashboardPage extends BasePage {
     public LoginPage logout() {
         LoginPage loginPage = this.getPages().getLoginPage();
 
-        if(!loginPage.isPageOpen(3)) {
-           this.clickProfileDropdownArrow();
-           if(this.isProfileDropdownMenuVisible()) {
-               this.clickLogoutLink();
-           }
+        if (!loginPage.isPageOpen(3)) {
+            this.clickProfileDropdownArrow();
+            if (this.isProfileDropdownMenuVisible()) {
+                this.clickLogoutLink();
+            }
         }
 
         return null;
