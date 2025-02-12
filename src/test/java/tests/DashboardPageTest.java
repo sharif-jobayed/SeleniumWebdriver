@@ -15,10 +15,14 @@ public class DashboardPageTest extends BaseTest {
     public void appLanguageIsEnglish() {
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
 
-        dashboardPage.isPageOpen(1);
-        dashboardPage.isPageLoaded(3);
+        try {
+            dashboardPage.isPageOpen(1);
+            dashboardPage.isPageLoaded(3);
 
-        Assert.assertEquals(dashboardPage.getApplicationHeaderTitle(), "Dashboard", "The application isn't in English");
+            Assert.assertEquals(dashboardPage.getApplicationHeaderTitle(), "Dashboard", "The application isn't in English");
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
 }

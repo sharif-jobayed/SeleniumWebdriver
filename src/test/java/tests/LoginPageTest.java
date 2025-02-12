@@ -31,9 +31,13 @@ public class LoginPageTest extends BaseTest {
             dashboardPage.logout();
             loginPage.isPageOpen(2);
         }
-        loginPage.isPageLoaded(3);
-        loginPage.login("Admin", "admin123");
-        Assert.assertTrue(dashboardPage.isPageOpen(2), "The Dashboard page isn't open");
+        try {
+            loginPage.isPageLoaded(3);
+            loginPage.login("Admin", "admin123");
+            Assert.assertTrue(dashboardPage.isPageOpen(2), "The Dashboard page isn't open");
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Test(
@@ -48,9 +52,13 @@ public class LoginPageTest extends BaseTest {
             dashboardPage.logout();
             loginPage.isPageOpen(2);
         }
-        loginPage.isPageLoaded(3);
-        loginPage.login("Invalid", "Invalid");
-        Assert.assertTrue(loginPage.isInputWrong(), "Entered valid credentials");
+        try {
+            loginPage.isPageLoaded(3);
+            loginPage.login("Invalid", "Invalid");
+            Assert.assertTrue(loginPage.isInputWrong(), "Entered valid credentials");
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
 }
