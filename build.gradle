@@ -9,12 +9,9 @@ repositories {
     mavenCentral()
 }
 
-// Define the version of Allure you want to use via the allureVersion property
 def allureVersion = "2.24.0"
-// Define the version of AspectJ
 def aspectJVersion = "1.9.20.1"
 
-// Define configuration for AspectJ agent
 configurations {
     agent {
         canBeResolved = true
@@ -23,20 +20,20 @@ configurations {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    // Selenium
     implementation 'org.seleniumhq.selenium:selenium-java:4.28.1'
-    // https://mvnrepository.com/artifact/org.testng/testng
+    // TestNG
     implementation 'org.testng:testng:7.10.2'
-    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    // Gson
     testImplementation 'com.google.code.gson:gson:2.12.1'
-    // Import allure-bom to ensure correct versions of all the dependencies are used
+    // Allure BOM
     testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
-    // Add necessary Allure dependencies to dependencies section
+    // Allure TestNG
     testImplementation "io.qameta.allure:allure-testng"
-    // Add aspectjweaver dependency
+    // AspectJ
     agent "org.aspectj:aspectjweaver:$aspectJVersion"
+    // SLF4J API for Logback
     implementation 'ch.qos.logback:logback-classic:1.4.12'
-
 }
 
 test {
