@@ -70,4 +70,9 @@ public class DashboardPage extends BasePage {
         return null;
     }
 
+    public LeaveListPage clickLeaveMenuItm() {
+        this.LEAVE_MENU_ITEM.doClick();
+        return this.getPages().getLeaveListPage();
+    }
+
 }

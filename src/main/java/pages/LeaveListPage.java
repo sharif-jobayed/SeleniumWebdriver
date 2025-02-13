@@ -22,4 +22,8 @@ public class LeaveListPage extends BasePage {
         );
     }
 
+    public Boolean isLeaveRecordHeaderVisible() {
+        return this.LEAVE_RECORD_HEADER.isVisible(2);
+    }
+
 }

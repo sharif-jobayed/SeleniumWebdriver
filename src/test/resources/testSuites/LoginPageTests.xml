@@ -1,11 +1,11 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
 <suite name="Login page test suite" verbose="2" parallel="methods" thread-count="1">
 
     <!-- Login Page Tests -->
     <test name="Login Page Tests">
-
         <!-- Login Page Tests -->
         <classes>
+
             <class name="tests.LoginPageTest">
                 <methods>
                     <include name="bannerLogoIsVisible" />
@@ -13,8 +13,8 @@
                     <include name="loginToAppWithInValidCredentials" />
                 </methods>
             </class>
-        </classes>
 
+        </classes>
     </test>
 
 </suite>
