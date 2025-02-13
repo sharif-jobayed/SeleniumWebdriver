@@ -4,11 +4,11 @@
         <classes>
 
             <!-- Login Page Tests -->
-<!--            <class name="tests.LoginPageTest">-->
-<!--                <methods>-->
-<!--                    <include name="loginToAppWithValidCredentials"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="loginToAppWithValidCredentials"/>
+                </methods>
+            </class>
 
             <!-- Dashboard Page Tests -->
             <class name="tests.DashboardPageTest">
