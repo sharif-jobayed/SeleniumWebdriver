@@ -10,19 +10,20 @@
                 </methods>
             </class>
 
-            <!-- Dashboard Page Tests -->
-            <class name="tests.DashboardPageTest">
-                <methods>
-                    <include name="appLanguageIsEnglish"/>
-                </methods>
-            </class>
-
             <!-- Leave List Page Tests -->
             <class name="tests.LeaveListPageTest">
                 <methods>
-                    <include name="areLeaveRecordsAvailable"/>
+                    <include name="isNoLeaveBalanceAvailable"/>
                 </methods>
             </class>
+
+            <!-- Apply Leave Page Tests -->
+            <class name="tests.ApplyLeavePageTest">
+                <methods>
+                    <include name=""/>
+                </methods>
+            </class>
+
 
         </classes>
     </test>

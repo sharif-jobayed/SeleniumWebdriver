@@ -1,6 +1,7 @@
 package tests;
 
 import framework.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LeaveListPage;
@@ -12,7 +13,7 @@ public class LeaveListPageTest extends BaseTest {
             description = "Verify that a leave application can not be made as no leave balance is available",
             dependsOnMethods = {"tests.DashboardPageTest.appLanguageIsEnglish"}
     )
-    public void isNoLeaveBalanceAvailable() {
+    public void areLeaveRecordsAvailable() {
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
         LeaveListPage leaveListPage = this.getPages().getLeaveListPage();
 
@@ -22,7 +23,9 @@ public class LeaveListPageTest extends BaseTest {
 
             leaveListPage.isPageOpen(1);
             leaveListPage.isPageLoaded(3);
+            Assert.assertTrue(leaveListPage.areLeaveRecordsVisible(), "Leave list header is not displayed");
         }
     }
 
 }
+
