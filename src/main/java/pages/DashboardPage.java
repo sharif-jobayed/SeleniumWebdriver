@@ -13,8 +13,8 @@ public class DashboardPage extends BasePage {
     private final BaseElement LOGOUT_LINK;
 
 
-    public DashboardPage(DriverTools driverTools, String path) {
-        super(driverTools, path);
+    public DashboardPage(DriverTools driverTools, String path, String pageName) {
+        super(driverTools, path, pageName);
 
         this.HEADER_TITLE = new BaseElement(
                 this.driverTools,

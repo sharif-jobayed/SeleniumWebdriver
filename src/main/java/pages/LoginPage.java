@@ -13,8 +13,8 @@ public class LoginPage extends BasePage {
     private final BaseElement WRONG_INPUT_ERROR;
     private final BaseElement BANNER_LOGO;
 
-    public LoginPage(DriverTools driverTools, String path) {
-        super(driverTools, path);
+    public LoginPage(DriverTools driverTools, String path, String pageName) {
+        super(driverTools, path, pageName);
 
 
         this.LOGIN_FORM = new BaseElement(

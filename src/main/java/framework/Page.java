@@ -4,16 +4,20 @@ public abstract class Page {
     protected DriverTools driverTools;
     protected String baseURL;
     protected String path;
+    protected String pageName;
 
-    protected Page(DriverTools driverTools, String path) {
+    protected Page(DriverTools driverTools, String path, String pageName) {
         this.driverTools = driverTools;
         this.baseURL = "https://opensource-demo.orangehrmlive.com/web/index.php";
         this.path = path;
+        this.pageName = pageName;
     }
 
     protected abstract String getBaseURL();
 
     protected abstract String getPath();
+
+    protected abstract String getPageName();
 
     protected abstract String getPageTitle();
 

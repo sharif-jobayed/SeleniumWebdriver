@@ -48,7 +48,7 @@ public class LoginPageTest extends BaseTest {
             priority = 3,
             description = "Verify login failure with invalid credentials"
     )
-    public void loginToAppWithInValidCredentials() {
+    public void loginToAppWithInvalidCredentials() {
         LoginPage loginPage = this.getPages().getLoginPage();
         DashboardPage dashboardPage = this.getPages().getDashboardPage();
 

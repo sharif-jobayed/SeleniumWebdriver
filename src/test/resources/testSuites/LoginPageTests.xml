@@ -10,7 +10,7 @@
                 <methods>
                     <include name="bannerLogoIsVisible" />
                     <include name="loginToAppWithValidCredentials" />
-                    <include name="loginToAppWithInValidCredentials" />
+                    <include name="loginToAppWithInvalidCredentials" />
                 </methods>
             </class>
 

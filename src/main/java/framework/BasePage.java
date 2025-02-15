@@ -6,13 +6,14 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 public class BasePage extends Page {
-    public BasePage(DriverTools driverTools, String path) {
-        super(driverTools, path);
+    public BasePage(DriverTools driverTools, String path, String pageName) {
+        super(driverTools, path, pageName);
     }
 
     @Override
@@ -23,6 +24,11 @@ public class BasePage extends Page {
     @Override
     public String getPath() {
         return this.path;
+    }
+
+    @Override
+    public String getPageName() {
+        return this.pageName;
     }
 
     @Override
@@ -37,7 +43,12 @@ public class BasePage extends Page {
 
     @Override
     public Boolean isPageOpen(Integer timeout) {
-        return this.driverTools.getXWait(timeout).until(ExpectedConditions.urlToBe(this.baseURL + this.getPath()));
+        try {
+            return this.driverTools.getXWait(timeout).until(ExpectedConditions.urlToBe(this.baseURL + this.getPath()));
+        } catch (Exception e) {
+            Assert.assertFalse(false, "The " + this.pageName + " is not open");
+        }
+        return false;
     }
 
     @Override
@@ -116,7 +127,8 @@ public class BasePage extends Page {
     public <P extends BasePage> P getPageInstance(Class<P> pClass) {
         try {
             return pClass.getDeclaredConstructor(WebDriver.class).newInstance(this.driverTools.getDriver());
-        } catch (InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+        } catch (InstantiationException | NoSuchMethodException | InvocationTargetException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
