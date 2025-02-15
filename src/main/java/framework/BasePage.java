@@ -54,8 +54,7 @@ public class BasePage extends Page {
     @Override
     public Boolean isPageLoaded(Integer timeout) {
         try {
-            WebDriverWait wait = driverTools.getXWait(timeout);
-            return wait.until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
+            return this.driverTools.getXWait(timeout).until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
         } catch (TimeoutException e) {
             return false;
         }
