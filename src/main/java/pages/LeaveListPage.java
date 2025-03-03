@@ -3,6 +3,7 @@ package pages;
 import framework.BaseElement;
 import framework.BasePage;
 import framework.DriverTools;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LeaveListPage extends BasePage {
@@ -22,10 +23,12 @@ public class LeaveListPage extends BasePage {
         );
     }
 
+    @Step("Verify that the leave records are visible")
     public Boolean areLeaveRecordsVisible() {
         return this.LEAVE_RECORDS.isVisible(2);
     }
 
+    @Step(value = "Click the apply tab")
     public ApplyLeavePage clickApplyTab() {
         this.APPLY_TAB.doClick();
         return this.getPages().getApplyLeavePage();

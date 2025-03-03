@@ -3,6 +3,7 @@ package pages;
 import framework.BaseElement;
 import framework.BasePage;
 import framework.DriverTools;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class DashboardPage extends BasePage {
@@ -38,25 +39,30 @@ public class DashboardPage extends BasePage {
         );
     }
 
+    @Step("Get the application header title")
     public String getApplicationHeaderTitle() {
         this.HEADER_TITLE.waitTillPresence(5);
         return this.HEADER_TITLE.text();
     }
 
+    @Step("Click the profile dropdown arrow")
     public DashboardPage clickProfileDropdownArrow() {
         this.PROFILE_DROPDOWN_ARROW.doClick();
         return this;
     }
 
+    @Step("Verify that the profile dropdown menu is visible")
     public Boolean isProfileDropdownMenuVisible() {
         return this.PROFILE_DROPDOWN_MENU.isVisible(3);
     }
 
+    @Step("Click the logout link")
     public LoginPage clickLogoutLink() {
         this.LOGOUT_LINK.doClick();
         return this.getPages().getLoginPage();
     }
 
+    @Step(value = "Logout from the application")
     public LoginPage logout() {
         LoginPage loginPage = this.getPages().getLoginPage();
 
@@ -70,6 +76,7 @@ public class DashboardPage extends BasePage {
         return null;
     }
 
+    @Step("Click the leave menu item on the left-sidebar")
     public LeaveListPage clickLeaveMenuItm() {
         this.LEAVE_MENU_ITEM.doClick();
         return this.getPages().getLeaveListPage();

@@ -1,5 +1,6 @@
 package framework;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -17,6 +18,7 @@ public class BaseTest {
         return new Pages(this.getDriverTools());
     }
 
+    @Step("Set up the driver and navigate to the login page")
     @BeforeMethod
     public void setUp() {
         if (driverTools == null) {
@@ -26,6 +28,7 @@ public class BaseTest {
         }
     }
 
+    @Step("Tear down the driver")
     @AfterSuite
     public void tearDown() {
         if (driverTools != null && driverTools.getDriver() != null) {

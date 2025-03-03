@@ -3,6 +3,7 @@ package pages;
 import framework.BaseElement;
 import framework.BasePage;
 import framework.DriverTools;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage {
@@ -43,29 +44,35 @@ public class LoginPage extends BasePage {
         );
     }
 
+    @Step("Verify the banner logo is visible")
     public Boolean isBannerLogoVisible() {
         return this.BANNER_LOGO.isVisible(5);
     }
 
+    @Step("Verify that the invalid credentials error is displayed")
     public Boolean isInputWrong() {
         return this.WRONG_INPUT_ERROR.isVisible(2);
     }
 
+    @Step("Enter username")
     public LoginPage enterUsername(String text) {
         this.USERNAME_FIELD.clearAndType(text);
         return this;
     }
 
+    @Step("Enter password")
     public LoginPage enterPassword(String text) {
         this.PASSWORD_FIELD.clearAndType(text);
         return this;
     }
 
+    @Step("Click login button")
     public DashboardPage clickLoginBtn() {
         this.LOGIN_BTN.doClick();
         return this.getPages().getDashboardPage();
     }
 
+    @Step("Login to the application entering credentials")
     public DashboardPage login(String username, String password) {
         if (this.LOGIN_FORM.isVisible(3) && this.USERNAME_FIELD.isActive(2) && this.PASSWORD_FIELD.isActive(2)) {
             this.enterUsername(username);
