@@ -20,7 +20,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         if (driverTools == null) {
-            driverTools = new DriverTools("firefox");
+            driverTools = new DriverTools("Chrome");
             driverTools.getDriver().manage().window().setSize(new Dimension(1440, 900));
             driverTools.getDriver().get(getPages().getLoginPage().getBaseURL());
         }

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.11.2' // Add the Allure Gradle plugin
 }
 
 group = 'SeleniumWebdriver'
@@ -39,4 +40,5 @@ dependencies {
 test {
     useTestNG()
     jvmArgs = ["-javaagent:${configurations.agent.singleFile}"]
+    systemProperty 'allure.results.directory', 'build/allure-results' // Specify Allure results directory
 }
