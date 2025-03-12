@@ -1,9 +1,17 @@
 package framework;
 
 import io.qameta.allure.Step;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+
+import java.io.File;
+import java.io.IOException;
 
 public class BaseTest {
 
@@ -33,6 +41,22 @@ public class BaseTest {
     public void tearDown() {
         if (driverTools != null && driverTools.getDriver() != null) {
             driverTools.getDriver().quit();
+        }
+    }
+
+    @AfterMethod(enabled = false)
+    public void takeScreenshotOnFailure(ITestResult result) {
+        File screenshotFile = ((TakesScreenshot) this.getDriverTools().getDriver()).getScreenshotAs(OutputType.FILE);
+
+        try {
+            String screenshotName = result.getName() + "-" + System.currentTimeMillis() + ".png";
+            File destination = new File("./src/test/resources/screenShots/" + screenshotName);
+            FileUtils.copyFile(screenshotFile, destination);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (result.getStatus() == ITestResult.FAILURE) {
+            this.getDriverTools().saveScreenshot();
         }
     }
 }

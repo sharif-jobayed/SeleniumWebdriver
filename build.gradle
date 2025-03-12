@@ -35,6 +35,9 @@ dependencies {
     agent "org.aspectj:aspectjweaver:$aspectJVersion"
     // SLF4J API for Logback
     implementation 'ch.qos.logback:logback-classic:1.4.12'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation 'commons-io:commons-io:2.18.0'
+
 }
 
 test {

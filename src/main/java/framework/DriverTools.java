@@ -1,8 +1,6 @@
 package framework;
 
-import org.openqa.selenium.InvalidArgumentException;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -45,6 +43,10 @@ public class DriverTools {
 
     public JavascriptExecutor getJS() {
         return (JavascriptExecutor) this.getDriver();
+    }
+
+    public void saveScreenshot() {
+        ((TakesScreenshot) this.getDriver()).getScreenshotAs(OutputType.FILE);
     }
 
 }
