@@ -26,7 +26,6 @@ public class DriverTools {
             case "chrome" -> this.driver = new ChromeDriver();
             default -> throw new InvalidArgumentException("Invalid WebDriver request");
         }
-        ;
     }
 
     public WebDriver getDriver() {
@@ -48,5 +47,4 @@ public class DriverTools {
     public void saveScreenshot() {
         ((TakesScreenshot) this.getDriver()).getScreenshotAs(OutputType.FILE);
     }
-
 }

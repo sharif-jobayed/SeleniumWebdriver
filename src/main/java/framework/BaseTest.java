@@ -36,27 +36,27 @@ public class BaseTest {
         }
     }
 
-    @Step("Tear down the driver")
-    @AfterSuite
-    public void tearDown() {
-        if (driverTools != null && driverTools.getDriver() != null) {
-            driverTools.getDriver().quit();
-        }
-    }
-
     @AfterMethod(enabled = false)
     public void takeScreenshotOnFailure(ITestResult result) {
         File screenshotFile = ((TakesScreenshot) this.getDriverTools().getDriver()).getScreenshotAs(OutputType.FILE);
 
         try {
             String screenshotName = result.getName() + "-" + System.currentTimeMillis() + ".png";
-            File destination = new File("./src/test/resources/screenShots/" + screenshotName);
-            FileUtils.copyFile(screenshotFile, destination);
+            File fileDestination = new File("./src/test/resources/screenShots/" + screenshotName);
+            FileUtils.copyFile(screenshotFile, fileDestination);
         } catch (IOException e) {
             e.printStackTrace();
         }
         if (result.getStatus() == ITestResult.FAILURE) {
             this.getDriverTools().saveScreenshot();
+        }
+    }
+
+    @Step("Tear down the driver")
+    @AfterSuite
+    public void tearDown() {
+        if (driverTools != null && driverTools.getDriver() != null) {
+            driverTools.getDriver().quit();
         }
     }
 }
