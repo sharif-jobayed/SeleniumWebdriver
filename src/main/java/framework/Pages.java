@@ -1,9 +1,6 @@
 package framework;
 
-import pages.ApplyLeavePage;
-import pages.DashboardPage;
-import pages.LeaveListPage;
-import pages.LoginPage;
+import pages.*;
 
 public class Pages {
     DriverTools driverTools;
@@ -17,6 +14,14 @@ public class Pages {
                 this.driverTools,
                 "/auth/login",
                 "Login page"
+        );
+    }
+
+    public ForgotPasswordPage getForgotPasswordPage() {
+        return new ForgotPasswordPage(
+                this.driverTools,
+                "/auth/requestPasswordResetCode",
+                "Forgot password page"
         );
     }
 
@@ -44,4 +49,11 @@ public class Pages {
         );
     }
 
+    public SentPWResetPage getSentPWResetPage() {
+        return new SentPWResetPage(
+                this.driverTools,
+                "/auth/sendPasswordReset",
+                "Sent password reset page"
+        );
+    }
 }

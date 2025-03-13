@@ -33,12 +33,12 @@ public class BasePage extends Page {
 
     @Override
     public String getPageTitle() {
-        return driverTools.getDriver().getTitle();
+        return this.driverTools.getDriver().getTitle();
     }
 
     @Override
     public String getPageURL() {
-        return driverTools.getDriver().getCurrentUrl();
+        return this.driverTools.getDriver().getCurrentUrl();
     }
 
     @Override
@@ -63,7 +63,7 @@ public class BasePage extends Page {
     @Override
     public Boolean isAlertOpen(Integer timeout) {
         try {
-            WebDriverWait wait = driverTools.getXWait(timeout);
+            WebDriverWait wait = this.driverTools.getXWait(timeout);
             wait.until(ExpectedConditions.alertIsPresent());
             return true;
         } catch (TimeoutException e) {
@@ -73,43 +73,43 @@ public class BasePage extends Page {
 
     @Override
     public Page typeInAlert(String text) {
-        Alert alert = driverTools.getDriver().switchTo().alert();
+        Alert alert = this.driverTools.getDriver().switchTo().alert();
         alert.sendKeys(text);
         return this;
     }
 
     @Override
     public Page acceptAlert() {
-        Alert alert = driverTools.getDriver().switchTo().alert();
+        Alert alert = this.driverTools.getDriver().switchTo().alert();
         alert.accept();
         return this;
     }
 
     @Override
     public Page rejectAlert() {
-        Alert alert = driverTools.getDriver().switchTo().alert();
+        Alert alert = this.driverTools.getDriver().switchTo().alert();
         alert.dismiss();
         return this;
     }
 
     @Override
     public Page backToDefaultPage() {
-        driverTools.getDriver().switchTo().defaultContent();
+        this.driverTools.getDriver().switchTo().defaultContent();
         return this;
     }
 
     @Override
     public Page openInNewWindow(String url) {
-        driverTools.getJS().executeScript("window.open(arguments[0]);", url);
+        this.driverTools.getJS().executeScript("window.open(arguments[0]);", url);
         return this;
     }
 
     @Override
     public Page getWindow(Integer index) {
-        Set<String> windowHandles = driverTools.getDriver().getWindowHandles();
+        Set<String> windowHandles = this.driverTools.getDriver().getWindowHandles();
         String[] handles = windowHandles.toArray(new String[0]);
         if (index >= 0 && index < handles.length) {
-            driverTools.getDriver().switchTo().window(handles[index]);
+            this.driverTools.getDriver().switchTo().window(handles[index]);
         } else {
             throw new IllegalArgumentException("Invalid window index: " + index);
         }
@@ -118,7 +118,7 @@ public class BasePage extends Page {
 
     @Override
     public Page closeCurrentWindow() {
-        driverTools.getDriver().close();
+        this.driverTools.getDriver().close();
         return this;
     }
 
@@ -136,5 +136,4 @@ public class BasePage extends Page {
     public Pages getPages() {
         return new Pages(this.driverTools);
     }
-
 }

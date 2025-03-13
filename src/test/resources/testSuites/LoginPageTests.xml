@@ -8,9 +8,12 @@
 
             <class name="tests.LoginPageTest">
                 <methods>
-                    <include name="bannerLogoIsVisible" />
-                    <include name="loginToAppWithValidCredentials" />
-                    <include name="loginToAppWithInvalidCredentials" />
+                    <method name="loginUsingValidCredentials"/>
+                    <method name="loginUsingInvalidUsernameAndValidPassword"/>
+                    <method name="loginUsingValidUsernameAndInvalidPassword"/>
+                    <method name="loginUsingInvalidUsernameAndInvalidPassword"/>
+                    <method name="validateThatTheApplicationBannerIsVisible"/>
+                    <method name="resetPasswordWithValidUsername"/>
                 </methods>
             </class>
 

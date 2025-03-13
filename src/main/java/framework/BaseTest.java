@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -16,7 +17,6 @@ import java.io.IOException;
 public class BaseTest {
 
     private static DriverTools driverTools;
-    private Pages pages;
 
     protected DriverTools getDriverTools() {
         return driverTools;
@@ -33,6 +33,7 @@ public class BaseTest {
             driverTools = new DriverTools("Chrome");
             driverTools.getDriver().manage().window().setSize(new Dimension(1440, 900));
             driverTools.getDriver().get(getPages().getLoginPage().getBaseURL());
+            Assert.assertTrue(this.getPages().getLoginPage().isPageOpen(5), "The login page is not open");
         }
     }
 

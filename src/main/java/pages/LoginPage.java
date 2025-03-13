@@ -13,6 +13,7 @@ public class LoginPage extends BasePage {
     private final BaseElement LOGIN_BTN;
     private final BaseElement WRONG_INPUT_ERROR;
     private final BaseElement BANNER_LOGO;
+    private final BaseElement FORGOT_PW_LINK;
 
     public LoginPage(DriverTools driverTools, String path, String pageName) {
         super(driverTools, path, pageName);
@@ -41,6 +42,10 @@ public class LoginPage extends BasePage {
         this.BANNER_LOGO = new BaseElement(
                 this.driverTools,
                 By.xpath("//img[@alt='company-branding']")
+        );
+        this.FORGOT_PW_LINK = new BaseElement(
+                this.driverTools,
+                By.xpath("//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']")
         );
     }
 
@@ -81,6 +86,12 @@ public class LoginPage extends BasePage {
         } else {
             throw new RuntimeException("The login is not successful");
         }
+    }
+
+    @Step("Click the forgot password link on the login page")
+    public ForgotPasswordPage clickForgotPwLink() {
+        this.FORGOT_PW_LINK.doClick();
+        return this.getPages().getForgotPasswordPage();
     }
 
 }
