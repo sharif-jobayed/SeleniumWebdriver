@@ -1,7 +1,6 @@
 package framework;
 
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -54,7 +53,8 @@ public class BasePage extends Page {
     @Override
     public Boolean isPageLoaded(Integer timeout) {
         try {
-            return this.driverTools.getXWait(timeout).until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
+            return this.driverTools.getXWait(timeout).until(d -> this.driverTools.getJS().executeScript("return document.readyState").equals("complete"));
+
         } catch (TimeoutException e) {
             return false;
         }
