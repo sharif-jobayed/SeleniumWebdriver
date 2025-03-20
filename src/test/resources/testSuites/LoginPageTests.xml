@@ -1,7 +1,5 @@
-
 <suite name="Login page test suite" verbose="2" parallel="methods" thread-count="1">
 
-    <!-- Login Page Tests -->
     <test name="Login Page Tests">
         <!-- Login Page Tests -->
         <classes>

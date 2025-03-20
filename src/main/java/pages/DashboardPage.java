@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 public class DashboardPage extends BasePage {
     private final BaseElement HEADER_TITLE;
     private final BaseElement LEAVE_MENU_ITEM;
+    private final BaseElement PROFILE_ITEM;
     private final BaseElement PROFILE_DROPDOWN_ARROW;
     private final BaseElement PROFILE_DROPDOWN_MENU;
     private final BaseElement LOGOUT_LINK;
@@ -24,6 +25,10 @@ public class DashboardPage extends BasePage {
         this.LEAVE_MENU_ITEM = new BaseElement(
                 this.driverTools,
                 By.xpath("//span[normalize-space()='Leave']")
+        );
+        this.PROFILE_ITEM = new BaseElement(
+                this.driverTools,
+                By.xpath("//img[@class='oxd-userdropdown-img']")
         );
         this.PROFILE_DROPDOWN_ARROW = new BaseElement(
                 this.driverTools,
@@ -43,6 +48,11 @@ public class DashboardPage extends BasePage {
     public String getApplicationHeaderTitle() {
         this.HEADER_TITLE.waitTillPresence(5);
         return this.HEADER_TITLE.text();
+    }
+
+    @Step()
+    public Boolean isProfileItemVisible() {
+        return this.PROFILE_ITEM.isVisible(3);
     }
 
     @Step("Click the profile dropdown arrow")
