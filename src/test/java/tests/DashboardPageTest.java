@@ -26,56 +26,64 @@ public class DashboardPageTest extends BaseTest {
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Hover on the pivot table under the `Employee Distribution by Sub Unit` module"
     )
-    public void hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule() {}
+    public void hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule() {
+    }
 
     @Test(
             priority = 3,
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Check if the Time at Work widget is displayed"
     )
-    public void checkIfTheTimeAtWorkWidgetIsDisplayed() {}
+    public void checkIfTheTimeAtWorkWidgetIsDisplayed() {
+    }
 
     @Test(
             priority = 4,
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Check if the My Actions widget is displayed"
     )
-    public void checkIfTheMyActionsWidgetIsDisplayed() {}
+    public void checkIfTheMyActionsWidgetIsDisplayed() {
+    }
 
     @Test(
             priority = 5,
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Check if the Quick Launch widget is displayed"
     )
-    public void checkIfTheQuickLaunchWidgetIsDisplayed() {}
+    public void checkIfTheQuickLaunchWidgetIsDisplayed() {
+    }
 
     @Test(
             priority = 6,
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Check if the Buzz Latest Posts widget is displayed"
     )
-    public void checkIfTheBuzzLatestPostsWidgetIsDisplayed() {}
+    public void checkIfTheBuzzLatestPostsWidgetIsDisplayed() {
+    }
 
     @Test(
             priority = 7,
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Check if the Employees on Leave Today widget is displayed"
     )
-    public void checkIfTheEmployeesOnLeaveTodayWidgetIsDisplayed() {}
+    public void checkIfTheEmployeesOnLeaveTodayWidgetIsDisplayed() {
+    }
 
     @Test(
             priority = 8,
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Check if the Employee Distribution by Sub Unit widget is displayed"
     )
-    public void checkIfTheEmployeeDistributionBySubUnitWidgetIsDisplayed() {}
+    public void checkIfTheEmployeeDistributionBySubUnitWidgetIsDisplayed() {
+    }
 
     @Test(
             priority = 9,
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Check if the Employee Distribution by Location widget is displayed"
     )
-    public void checkIfTheEmployeeDistributionByLocationWidgetIsDisplayed() {}
+    public void checkIfTheEmployeeDistributionByLocationWidgetIsDisplayed() {
+    }
 
 
     @Test(
@@ -83,5 +91,6 @@ public class DashboardPageTest extends BaseTest {
             dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
             description = "Open & close the profile menu"
     )
-    public void openAndCloseTheProfileMenu() {}
+    public void openAndCloseTheProfileMenu() {
+    }
 }

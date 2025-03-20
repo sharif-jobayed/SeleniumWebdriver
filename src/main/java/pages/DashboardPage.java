@@ -50,7 +50,7 @@ public class DashboardPage extends BasePage {
         return this.HEADER_TITLE.text();
     }
 
-    @Step()
+    @Step("Verify that the Profile Item visible")
     public Boolean isProfileItemVisible() {
         return this.PROFILE_ITEM.isVisible(3);
     }
