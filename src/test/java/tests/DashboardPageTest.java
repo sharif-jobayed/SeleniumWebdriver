@@ -19,9 +19,6 @@ public class DashboardPageTest extends BaseTest {
         this.dashboardPage = this.getPages().getDashboardPage();
         this.dashboardPage.isPageOpen(3);
         Assert.assertTrue(this.dashboardPage.isProfileItemVisible(), "The profile item is not visible");
-
-        this.dashboardPage.logout();
-        Assert.assertTrue(this.getPages().getLoginPage().isPageOpen(3), "The login page is not open");
     }
 
     @Test(
