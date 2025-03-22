@@ -30,8 +30,6 @@ public class LoginPageTest extends BaseTest {
             if (this.loginPage.isPageOpen(5)) {
                 this.loginPage.login("Admin", "admin123");
                 Assert.assertTrue(this.dashboardPage.isPageOpen(3), "The Dashboard page is not open");
-            } else {
-                throw new RuntimeException("The login page is not open");
             }
         } else {
             throw new RuntimeException("The login page is not open");
@@ -54,8 +52,6 @@ public class LoginPageTest extends BaseTest {
             if (this.loginPage.isPageOpen(5)) {
                 this.loginPage.login("InvUser", "admin123");
                 Assert.assertTrue(this.loginPage.isInputWrong(), "Wrong credentials error is not displayed");
-            } else {
-                throw new RuntimeException("The login page is not open");
             }
         } else {
             throw new RuntimeException("The login page is not open");
@@ -78,8 +74,6 @@ public class LoginPageTest extends BaseTest {
             if (this.loginPage.isPageOpen(5)) {
                 this.loginPage.login("Admin", "InvPass");
                 Assert.assertTrue(this.loginPage.isInputWrong(), "Wrong credentials error is not displayed");
-            } else {
-                throw new RuntimeException("The login page is not open");
             }
         } else {
             throw new RuntimeException("The login page is not open");
@@ -102,8 +96,6 @@ public class LoginPageTest extends BaseTest {
             if (this.loginPage.isPageOpen(5)) {
                 this.loginPage.login("InvUser", "InvPass");
                 Assert.assertTrue(this.loginPage.isInputWrong(), "Wrong credentials error is not displayed");
-            } else {
-                throw new RuntimeException("The login page is not open");
             }
         } else {
             throw new RuntimeException("The login page is not open");
@@ -128,7 +120,7 @@ public class LoginPageTest extends BaseTest {
         this.forgotPasswordPage = getPages().getForgotPasswordPage();
         this.sentPWResetPage = getPages().getSentPWResetPage();
 
-        if(this.loginPage.isPageOpen(3)) {
+        if (this.loginPage.isPageOpen(3)) {
             this.loginPage
                     .clickForgotPwLink()
                     .enterUsername()
