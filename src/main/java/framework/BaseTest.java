@@ -1,18 +1,9 @@
 package framework;
 
 import io.qameta.allure.Step;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-
-import java.io.File;
-import java.io.IOException;
+import org.testng.annotations.*;
 
 public class BaseTest {
 
@@ -27,31 +18,31 @@ public class BaseTest {
     }
 
     @Step("Set up the driver and navigate to the login page")
-    @BeforeMethod
+    @BeforeSuite
     public void setUp() {
         if (driverTools == null) {
             driverTools = new DriverTools("Chrome");
-            driverTools.getDriver().manage().window().setSize(new Dimension(1440, 900));
-            driverTools.getDriver().get(getPages().getLoginPage().getBaseURL());
-            Assert.assertTrue(this.getPages().getLoginPage().isPageOpen(5), "The login page is not open");
         }
+        driverTools.getDriver().manage().window().setSize(new Dimension(1440, 900));
+        driverTools.getDriver().get(getPages().getLoginPage().getBaseURL());
+        Assert.assertTrue(this.getPages().getLoginPage().isPageOpen(5), "The login page is not open");
     }
 
-    @AfterMethod(enabled = false)
-    public void takeScreenshotOnFailure(ITestResult result) {
-        File screenshotFile = ((TakesScreenshot) this.getDriverTools().getDriver()).getScreenshotAs(OutputType.FILE);
-
-        try {
-            String screenshotName = result.getName() + "-" + System.currentTimeMillis() + ".png";
-            File fileDestination = new File("./src/test/resources/screenShots/" + screenshotName);
-            FileUtils.copyFile(screenshotFile, fileDestination);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (result.getStatus() == ITestResult.FAILURE) {
-            this.getDriverTools().saveScreenshot();
-        }
-    }
+//    @AfterMethod(enabled = false)
+//    public void takeScreenshotOnFailure(ITestResult result) {
+//        File screenshotFile = ((TakesScreenshot) this.getDriverTools().getDriver()).getScreenshotAs(OutputType.FILE);
+//
+//        try {
+//            String screenshotName = result.getName() + "-" + System.currentTimeMillis() + ".png";
+//            File fileDestination = new File("./src/test/resources/screenShots/" + screenshotName);
+//            FileUtils.copyFile(screenshotFile, fileDestination);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        if (result.getStatus() == ITestResult.FAILURE) {
+//            this.getDriverTools().saveScreenshot();
+//        }
+//    }
 
     @Step("Tear down the driver")
     @AfterSuite

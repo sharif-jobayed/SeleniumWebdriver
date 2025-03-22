@@ -20,7 +20,8 @@ public class DashboardPageTest extends BaseTest {
         this.dashboardPage.isPageOpen(3);
         Assert.assertTrue(this.dashboardPage.isProfileItemVisible(), "The profile item is not visible");
 
-        this.tearDown();
+        this.dashboardPage.logout();
+        Assert.assertTrue(this.getPages().getLoginPage().isPageOpen(3), "The login page is not open");
     }
 
     @Test(
@@ -29,6 +30,8 @@ public class DashboardPageTest extends BaseTest {
             description = "Hover on the pivot table under the `Employee Distribution by Sub Unit` module"
     )
     public void hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule() {
+        this.dashboardPage = this.getPages().getDashboardPage();
+
     }
 
     @Test(

@@ -80,10 +80,12 @@ public class DashboardPage extends BasePage {
             this.clickProfileDropdownArrow();
             if (this.isProfileDropdownMenuVisible()) {
                 this.clickLogoutLink();
+                loginPage.isPageOpen(3);
+                return loginPage;
             }
         }
 
-        return null;
+        throw new RuntimeException("Log out wasn't successful");
     }
 
     @Step("Click the leave menu item on the left-sidebar")
