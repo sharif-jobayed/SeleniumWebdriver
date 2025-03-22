@@ -12,13 +12,15 @@ public class DashboardPageTest extends BaseTest {
 
     @Test(
             priority = 1,
-            dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials"},
+            dependsOnMethods = {"tests.LoginPageTest.loginUsingValidCredentials",},
             description = "Validate that, the profile item is visible on the page"
     )
     public void validateThatTheProfileItemIsVisibleOnThePage() {
         this.dashboardPage = this.getPages().getDashboardPage();
         this.dashboardPage.isPageOpen(3);
         Assert.assertTrue(this.dashboardPage.isProfileItemVisible(), "The profile item is not visible");
+
+        this.tearDown();
     }
 
     @Test(
