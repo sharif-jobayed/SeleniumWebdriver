@@ -73,12 +73,11 @@ public class BaseElement {
     public String getAttribute(String attributeName) {
         return this.driverTools.getXWait(10)
                 .until(ExpectedConditions.presenceOfElementLocated(this.locator))
-                .getAttribute(attributeName);
+                .getDomProperty(attributeName);
     }
 
     public BaseElement scrollIntoView() {
-        this.driverTools.getJS().executeScript("arguments[0].scrollIntoView(true);",
-                this.driverTools.getDriver().findElement(this.locator));
+        this.driverTools.getJS().executeScript("arguments[0].scrollIntoView(true);", this.driverTools.getDriver().findElement(this.locator));
         return this;
     }
 
