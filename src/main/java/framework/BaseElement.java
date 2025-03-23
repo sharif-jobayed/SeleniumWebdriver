@@ -81,7 +81,7 @@ public class BaseElement {
         return this;
     }
 
-    public BaseElement hover() {
+    public BaseElement hoverOn() {
         this.driverTools.getActions()
                 .moveToElement(this.driverTools.getDriver().findElement(this.locator))
                 .perform();

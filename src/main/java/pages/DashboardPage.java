@@ -13,7 +13,8 @@ public class DashboardPage extends BasePage {
     private final BaseElement PROFILE_DROPDOWN_ARROW;
     private final BaseElement PROFILE_DROPDOWN_MENU;
     private final BaseElement LOGOUT_LINK;
-
+    private final BaseElement EDSU_HEADER;
+    private final BaseElement EDSU_PIE_CHART;
 
     public DashboardPage(DriverTools driverTools, String path, String pageName) {
         super(driverTools, path, pageName);
@@ -42,6 +43,14 @@ public class DashboardPage extends BasePage {
                 this.driverTools,
                 By.xpath("//a[normalize-space()='Logout']")
         );
+        this.EDSU_HEADER = new BaseElement(
+                this.driverTools,
+                By.xpath("//p[normalize-space()='Employee Distribution by Sub Unit']")
+        );
+        this.EDSU_PIE_CHART = new BaseElement(
+                this.driverTools,
+                By.xpath("(//div[@class='oxd-pie-chart'])[1]")
+        );
     }
 
     @Step("Get the application header title")
@@ -52,7 +61,7 @@ public class DashboardPage extends BasePage {
 
     @Step("Verify that the Profile Item visible")
     public Boolean isProfileItemVisible() {
-        return this.PROFILE_ITEM.isVisible(3);
+        return this.PROFILE_ITEM.isVisible(10);
     }
 
     @Step("Click the profile dropdown arrow")
@@ -92,6 +101,31 @@ public class DashboardPage extends BasePage {
     public LeaveListPage clickLeaveMenuItm() {
         this.LEAVE_MENU_ITEM.doClick();
         return this.getPages().getLeaveListPage();
+    }
+
+    @Step("Verify that the EDSU Header is visible")
+    public Boolean isEDSUHeaderVisible() {
+        return this.EDSU_HEADER.isVisible(3);
+    }
+
+    @Step("Verify that the EDSU Pie Chart is visible")
+    public Boolean isEDSUPieChartVisible() {
+        return this.EDSU_PIE_CHART.isVisible(3);
+    }
+
+    @Step("Hover on the EDSU Pie Chart")
+    public DashboardPage hoverOnTheEDSUPieChart() {
+        if(this.isEDSUPieChartVisible()) {
+            try {
+                this.EDSU_PIE_CHART.hoverOn();
+            } catch (Exception e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        } else {
+            this.EDSU_PIE_CHART.scrollIntoView();
+            this.EDSU_PIE_CHART.hoverOn();
+        }
+        return this;
     }
 
 }

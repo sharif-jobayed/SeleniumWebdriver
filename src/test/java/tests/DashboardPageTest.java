@@ -18,6 +18,7 @@ public class DashboardPageTest extends BaseTest {
     public void validateThatTheProfileItemIsVisibleOnThePage() {
         this.dashboardPage = this.getPages().getDashboardPage();
         this.dashboardPage.isPageOpen(3);
+        this.dashboardPage.isPageLoaded(5);
         Assert.assertTrue(this.dashboardPage.isProfileItemVisible(), "The profile item is not visible");
     }
 
@@ -28,7 +29,8 @@ public class DashboardPageTest extends BaseTest {
     )
     public void hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule() {
         this.dashboardPage = this.getPages().getDashboardPage();
-
+        this.dashboardPage.hoverOnTheEDSUPieChart();
+        Assert.assertTrue(this.dashboardPage.isEDSUHeaderVisible(), "The EDSU Header is not visible");
     }
 
     @Test(
@@ -37,6 +39,7 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Time at Work widget is displayed"
     )
     public void checkIfTheTimeAtWorkWidgetIsDisplayed() {
+        // To be done...
     }
 
     @Test(
@@ -45,6 +48,7 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the My Actions widget is displayed"
     )
     public void checkIfTheMyActionsWidgetIsDisplayed() {
+        // To be done...
     }
 
     @Test(
@@ -53,6 +57,7 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Quick Launch widget is displayed"
     )
     public void checkIfTheQuickLaunchWidgetIsDisplayed() {
+        // To be done...
     }
 
     @Test(
@@ -61,6 +66,7 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Buzz Latest Posts widget is displayed"
     )
     public void checkIfTheBuzzLatestPostsWidgetIsDisplayed() {
+        // To be done...
     }
 
     @Test(
@@ -69,6 +75,7 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Employees on Leave Today widget is displayed"
     )
     public void checkIfTheEmployeesOnLeaveTodayWidgetIsDisplayed() {
+        // To be done...
     }
 
     @Test(
@@ -77,6 +84,7 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Employee Distribution by Sub Unit widget is displayed"
     )
     public void checkIfTheEmployeeDistributionBySubUnitWidgetIsDisplayed() {
+        // To be done...
     }
 
     @Test(
@@ -85,6 +93,7 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Employee Distribution by Location widget is displayed"
     )
     public void checkIfTheEmployeeDistributionByLocationWidgetIsDisplayed() {
+        // To be done...
     }
 
 
@@ -94,5 +103,6 @@ public class DashboardPageTest extends BaseTest {
             description = "Open & close the profile menu"
     )
     public void openAndCloseTheProfileMenu() {
+        // To be done...
     }
 }
