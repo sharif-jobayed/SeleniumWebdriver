@@ -84,7 +84,8 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Employee Distribution by Sub Unit widget is displayed"
     )
     public void checkIfTheEmployeeDistributionBySubUnitWidgetIsDisplayed() {
-        // To be done...
+        this.dashboardPage = this.getPages().getDashboardPage();
+        Assert.assertTrue(this.dashboardPage.isEDSUPieChartVisible(), "The EDSU Pie Chart is not visible");
     }
 
     @Test(
@@ -93,7 +94,8 @@ public class DashboardPageTest extends BaseTest {
             description = "Check if the Employee Distribution by Location widget is displayed"
     )
     public void checkIfTheEmployeeDistributionByLocationWidgetIsDisplayed() {
-        // To be done...
+        this.dashboardPage = this.getPages().getDashboardPage();
+        Assert.assertTrue(this.dashboardPage.isEDLVisible(), "The EDL is not visible");
     }
 
 

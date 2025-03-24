@@ -15,6 +15,7 @@ public class DashboardPage extends BasePage {
     private final BaseElement LOGOUT_LINK;
     private final BaseElement EDSU_HEADER;
     private final BaseElement EDSU_PIE_CHART;
+    private final BaseElement EDL;
 
     public DashboardPage(DriverTools driverTools, String path, String pageName) {
         super(driverTools, path, pageName);
@@ -50,6 +51,10 @@ public class DashboardPage extends BasePage {
         this.EDSU_PIE_CHART = new BaseElement(
                 this.driverTools,
                 By.xpath("(//div[@class='oxd-pie-chart'])[1]")
+        );
+        this.EDL = new BaseElement(
+                this.driverTools,
+                By.xpath("//p[normalize-space()='Employee Distribution by Location']")
         );
     }
 
@@ -126,6 +131,12 @@ public class DashboardPage extends BasePage {
             this.EDSU_PIE_CHART.hoverOn();
         }
         return this;
+    }
+
+    @Step("Scroll to EDL")
+    public Boolean isEDLVisible() {
+        this.EDL.scrollIntoView();
+        return this.EDL.isVisible(3);
     }
 
 }
