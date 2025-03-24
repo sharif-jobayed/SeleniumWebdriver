@@ -108,12 +108,12 @@ public class DashboardPage extends BasePage {
         return this.getPages().getLeaveListPage();
     }
 
-    @Step("Verify that the EDSU Header is visible")
+    @Step("Verify that the EDSU widget header is visible")
     public Boolean isEDSUHeaderVisible() {
         return this.EDSU_HEADER.isVisible(3);
     }
 
-    @Step("Verify that the EDSU Pie Chart is visible")
+    @Step("Verify that the EDSU widget pie chart is visible")
     public Boolean isEDSUPieChartVisible() {
         return this.EDSU_PIE_CHART.isVisible(3);
     }
@@ -133,7 +133,7 @@ public class DashboardPage extends BasePage {
         return this;
     }
 
-    @Step("Scroll to EDL")
+    @Step("Verify that the EDL widget is visible")
     public Boolean isEDLVisible() {
         this.EDL.scrollIntoView();
         return this.EDL.isVisible(3);
