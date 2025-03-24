@@ -11,7 +11,7 @@
             <!-- Dashboard Page Tests -->
             <class name="tests.DashboardPageTest">
                 <methods>
-                    <include name="validateThatTheProfileItemIsVisibleOnThePage" />
+                    <include name="validateThatTheProfileItemIsVisibleOnThePage"/>
                     <include name="hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule"/>
                     <include name="checkIfTheTimeAtWorkWidgetIsDisplayed"/>
                     <include name="checkIfTheMyActionsWidgetIsDisplayed"/>
