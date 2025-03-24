@@ -64,7 +64,7 @@ public class BaseElement {
         return this;
     }
 
-    public String text() {
+    public String extractText() {
         return this.driverTools.getXWait(10)
                 .until(ExpectedConditions.presenceOfElementLocated(this.locator))
                 .getText();

@@ -18,6 +18,6 @@ public class SentPWResetPage extends BasePage {
     }
 
     public String getSentLinkConfirmationText() {
-        return this.SENT_LINK_CONFIRMATION.text();
+        return this.SENT_LINK_CONFIRMATION.extractText();
     }
 }

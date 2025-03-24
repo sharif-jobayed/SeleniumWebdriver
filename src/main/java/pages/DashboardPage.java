@@ -61,7 +61,7 @@ public class DashboardPage extends BasePage {
     @Step("Get the application header title")
     public String getApplicationHeaderTitle() {
         this.HEADER_TITLE.waitTillPresence(5);
-        return this.HEADER_TITLE.text();
+        return this.HEADER_TITLE.extractText();
     }
 
     @Step("Verify that the Profile Item visible")
@@ -120,7 +120,7 @@ public class DashboardPage extends BasePage {
 
     @Step("Hover on the EDSU Pie Chart")
     public DashboardPage hoverOnTheEDSUPieChart() {
-        if(this.isEDSUPieChartVisible()) {
+        if (this.isEDSUPieChartVisible()) {
             try {
                 this.EDSU_PIE_CHART.hoverOn();
             } catch (Exception e) {
