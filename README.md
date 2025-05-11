@@ -76,7 +76,7 @@ Test cases are grouped into test suites defined in the `./src/test/resources/tes
 
 ### Prerequisites
 
-*   Java Development Kit (JDK) 8 or later
+*   Java Development Kit (JDK) 21
 *   Gradle
 *   A web browser (e.g., Chrome)
 *   Git
@@ -110,7 +110,7 @@ Test cases are grouped into test suites defined in the `./src/test/resources/tes
 
 1.  **Generate the Allure report:**
     ```bash
-    ./gradlew allureReport
+    ./gradlew allureReport --clean
     ```
 2.  **Serve the Allure report:**
     ```bash
