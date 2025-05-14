@@ -49,3 +49,4 @@ bin/
 /gradle/wrapper/gradle-wrapper.properties
 /gradle/
 /allure-report/
+/build/allure-results/
