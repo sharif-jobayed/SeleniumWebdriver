@@ -1,6 +1,7 @@
 package framework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,13 +37,15 @@ public class BaseElement {
     }
 
     public BaseElement doClick() {
-        getElement().click();
+        getActions().click(getElement()).perform();
         return this;
     }
 
     public BaseElement clearAndType(String text) {
-        getElement().clear();
-        getElement().sendKeys(text);
+        getActions().click().perform();
+        getActions().keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL);
+        getActions().sendKeys(Keys.DELETE).perform();
+        getActions().sendKeys(this.getElement(), text).perform();
         return this;
     }
 
