@@ -4,17 +4,18 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class Hooks {
     private WebDriver driver;
 
     public Hooks() {
-        this.driver = new FirefoxDriver();
+        this.driver = new EdgeDriver();
     }
 
-    private void setDriver(String driverTitile) {}
+    private void setDriver(String driverTitile) {
+        // Conditional driver return code...
+    }
 
     public WebDriver getDriver() {
         return this.driver;
