@@ -11,16 +11,16 @@
             <!-- Dashboard Page Tests -->
             <class name="tests.DashboardPageTest">
                 <methods>
-                    <include name="validateThatTheProfileItemIsVisibleOnThePage"/>
-                    <include name="hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule"/>
-                    <include name="checkIfTheTimeAtWorkWidgetIsDisplayed"/>
-                    <include name="checkIfTheMyActionsWidgetIsDisplayed"/>
-                    <include name="checkIfTheQuickLaunchWidgetIsDisplayed"/>
-                    <include name="checkIfTheBuzzLatestPostsWidgetIsDisplayed"/>
-                    <include name="checkIfTheEmployeesOnLeaveTodayWidgetIsDisplayed"/>
-                    <include name="checkIfTheEmployeeDistributionBySubUnitWidgetIsDisplayed"/>
-                    <include name="checkIfTheEmployeeDistributionByLocationWidgetIsDisplayed"/>
-                    <include name="openAndCloseTheProfileMenu"/>
+                    <method name="validateThatTheProfileItemIsVisibleOnThePage"/>
+                    <method name="hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule"/>
+                    <method name="checkIfTheTimeAtWorkWidgetIsDisplayed"/>
+                    <method name="checkIfTheMyActionsWidgetIsDisplayed"/>
+                    <method name="checkIfTheQuickLaunchWidgetIsDisplayed"/>
+                    <method name="checkIfTheBuzzLatestPostsWidgetIsDisplayed"/>
+                    <method name="checkIfTheEmployeesOnLeaveTodayWidgetIsDisplayed"/>
+                    <method name="checkIfTheEmployeeDistributionBySubUnitWidgetIsDisplayed"/>
+                    <method name="checkIfTheEmployeeDistributionByLocationWidgetIsDisplayed"/>
+                    <method name="openAndCloseTheProfileMenu"/>
                 </methods>
             </class>
         </classes>
