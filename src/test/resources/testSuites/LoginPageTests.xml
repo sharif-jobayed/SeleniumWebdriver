@@ -1,0 +1,21 @@
+<suite name="Login page test suite" verbose="2" parallel="methods" thread-count="1">
+
+    <test name="Login Page Tests">
+        <!-- Login Page Tests -->
+        <classes>
+
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <method name="loginUsingValidCredentials"/>
+                    <method name="loginUsingInvalidUsernameAndValidPassword"/>
+                    <method name="loginUsingValidUsernameAndInvalidPassword"/>
+                    <method name="loginUsingInvalidUsernameAndInvalidPassword"/>
+                    <method name="validateThatTheApplicationBannerIsVisible"/>
+                    <method name="resetPasswordWithValidUsername"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,28 @@
+<suite name="Dashboard Test Suite" verbose="2" parallel="false" thread-count="1">
+    <test name="Dashboard Functionality Tests">
+        <classes>
+            <!-- Login Page Tests -->
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="loginUsingValidCredentials"/>
+                </methods>
+            </class>
+
+            <!-- Dashboard Page Tests -->
+            <class name="tests.DashboardPageTest">
+                <methods>
+                    <method name="validateThatTheProfileItemIsVisibleOnThePage"/>
+                    <method name="hoverOnThePivotTableUnderTheEmployeeDistributionBySubUnitModule"/>
+                    <method name="checkIfTheTimeAtWorkWidgetIsDisplayed"/>
+                    <method name="checkIfTheMyActionsWidgetIsDisplayed"/>
+                    <method name="checkIfTheQuickLaunchWidgetIsDisplayed"/>
+                    <method name="checkIfTheBuzzLatestPostsWidgetIsDisplayed"/>
+                    <method name="checkIfTheEmployeesOnLeaveTodayWidgetIsDisplayed"/>
+                    <method name="checkIfTheEmployeeDistributionBySubUnitWidgetIsDisplayed"/>
+                    <method name="checkIfTheEmployeeDistributionByLocationWidgetIsDisplayed"/>
+                    <method name="openAndCloseTheProfileMenu"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

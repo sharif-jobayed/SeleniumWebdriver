@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2' // Add the Allure Gradle plugin
+}
+
+group = 'SeleniumWebdriver'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def allureVersion = "2.24.0"
+def aspectJVersion = "1.9.20.1"
+
+configurations {
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
+
+dependencies {
+    // Selenium
+    implementation 'org.seleniumhq.selenium:selenium-java:4.28.1'
+    // TestNG
+    implementation 'org.testng:testng:7.10.2'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.12.1'
+    // Allure BOM
+    testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
+    // Allure TestNG
+    testImplementation "io.qameta.allure:allure-testng"
+    // AspectJ
+    agent "org.aspectj:aspectjweaver:$aspectJVersion"
+    // SLF4J API for Logback
+    implementation 'ch.qos.logback:logback-classic:1.5.13'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation 'commons-io:commons-io:2.18.0'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi
+    implementation 'org.apache.poi:poi:5.2.5'
+    implementation 'org.apache.poi:poi-ooxml:5.4.0'
+    // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+}
+
+test {
+    useTestNG()
+    jvmArgs = ["-javaagent:${configurations.agent.singleFile}"]
+    systemProperty 'allure.results.directory', 'build/allure-results' // Specify Allure results directory
+}

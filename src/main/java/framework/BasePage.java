@@ -1,0 +1,139 @@
+package framework;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Set;
+
+public class BasePage extends Page {
+    public BasePage(DriverTools driverTools, String path, String pageName) {
+        super(driverTools, path, pageName);
+    }
+
+    @Override
+    public String getBaseURL() {
+        return this.baseURL;
+    }
+
+    @Override
+    public String getPath() {
+        return this.path;
+    }
+
+    @Override
+    public String getPageName() {
+        return this.pageName;
+    }
+
+    @Override
+    public String getPageTitle() {
+        return this.driverTools.getDriver().getTitle();
+    }
+
+    @Override
+    public String getPageURL() {
+        return this.driverTools.getDriver().getCurrentUrl();
+    }
+
+    @Override
+    public Boolean isPageOpen(Integer timeout) {
+        try {
+            return this.driverTools.getXWait(timeout).until(ExpectedConditions.urlToBe(this.baseURL + this.getPath()));
+        } catch (Exception e) {
+            Assert.assertFalse(false, "The " + this.pageName + " is not open");
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean isPageLoaded(Integer timeout) {
+        try {
+            return this.driverTools.getXWait(timeout).until(d -> this.driverTools.getJS().executeScript("return document.readyState").equals("complete"));
+
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean isAlertOpen(Integer timeout) {
+        try {
+            WebDriverWait wait = this.driverTools.getXWait(timeout);
+            wait.until(ExpectedConditions.alertIsPresent());
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public Page typeInAlert(String text) {
+        Alert alert = this.driverTools.getDriver().switchTo().alert();
+        alert.sendKeys(text);
+        return this;
+    }
+
+    @Override
+    public Page acceptAlert() {
+        Alert alert = this.driverTools.getDriver().switchTo().alert();
+        alert.accept();
+        return this;
+    }
+
+    @Override
+    public Page rejectAlert() {
+        Alert alert = this.driverTools.getDriver().switchTo().alert();
+        alert.dismiss();
+        return this;
+    }
+
+    @Override
+    public Page backToDefaultPage() {
+        this.driverTools.getDriver().switchTo().defaultContent();
+        return this;
+    }
+
+    @Override
+    public Page openInNewWindow(String url) {
+        this.driverTools.getJS().executeScript("window.open(arguments[0]);", url);
+        return this;
+    }
+
+    @Override
+    public Page getWindow(Integer index) {
+        Set<String> windowHandles = this.driverTools.getDriver().getWindowHandles();
+        String[] handles = windowHandles.toArray(new String[0]);
+        if (index >= 0 && index < handles.length) {
+            this.driverTools.getDriver().switchTo().window(handles[index]);
+        } else {
+            throw new IllegalArgumentException("Invalid window index: " + index);
+        }
+        return this;
+    }
+
+    @Override
+    public Page closeCurrentWindow() {
+        this.driverTools.getDriver().close();
+        return this;
+    }
+
+    @Override
+    public <P extends BasePage> P getPageInstance(Class<P> pClass) {
+        try {
+            return pClass.getDeclaredConstructor(WebDriver.class).newInstance(this.driverTools.getDriver());
+        } catch (InstantiationException | NoSuchMethodException | InvocationTargetException |
+                 IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Pages getPages() {
+        return new Pages(this.driverTools);
+    }
+}
