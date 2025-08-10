@@ -21,8 +21,7 @@ public class EmployeeBuilder {
             String email,
             String username,
             String password
-    ) {
-    }
+    ) {}
 
     public EmployeeBuilder() {
         this.FAKER = new Faker();
